@@ -20,8 +20,8 @@ import {
     @Column()
     password: string;
 
-    // @Column()
-    // email: string;
+    @Column()
+    mail: string;
   
     @CreateDateColumn()
     created_at: Date;

@@ -12,7 +12,7 @@ async function bootstrap() {
     .addTag('tdl')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('swagger', app, document);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   await app.listen(3000).then((d) => console.log('running'));
