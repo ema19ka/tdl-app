@@ -15,7 +15,7 @@ async function bootstrap() {
   SwaggerModule.setup('swagger', app, document);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  await app.listen(3000).then((d) => console.log('running'));
+  await app.listen(3000).then((d) => console.log('backend running'));
   // kein code nach app.listen
 }
 bootstrap();
