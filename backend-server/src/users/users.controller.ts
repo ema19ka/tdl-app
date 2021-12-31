@@ -14,7 +14,7 @@ export class UsersController {
     return this.usersService.getUserById();
   }
   @ApiOperation({ summary: 'Register User' })
-  @Get('/register')
+  @Get('/register') // mit :/ parameter
   public registerUser(): Promise<string> {
     return this.usersService.registerUser();
   }
