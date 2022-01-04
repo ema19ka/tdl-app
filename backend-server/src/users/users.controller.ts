@@ -1,34 +1,28 @@
-import { Controller, Get } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  Body,
+  Controller,
+  Post,
+  Get,
+  ValidationPipe,
+  UseGuards,
+} from '@nestjs/common';
+import { AuthGuard } from 'src/auth/auth.guard';
+import { User } from './entity/User.entity';
 import { UsersService } from './users.service';
 
-// endpoints definieren, ohne logik, service wird aufgerufen + den return value returnen
-@ApiTags('UsersController')
-@Controller('users') // endpoint unter /users,
+@Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @ApiOperation({ summary: 'Get a specific user by id' })
-  @Get()
-  public getUserById(): Promise<string> {
-    return this.usersService.getUserById();
-  }
-  @ApiOperation({ summary: 'Register User' })
-  @Get('/register') // mit :/ parameter
-  public registerUser(): Promise<string> {
-    return this.usersService.registerUser();
+  @Post('/register') // mit :/ parameter
+  async registerUser(@Body(ValidationPipe) user: User): Promise<User> {
+    return this.usersService.registerUser(user);
   }
 
-  @ApiOperation({ summary: 'Login User' })
-  @Get('/login')
-  public loginUser(): Promise<string> {
-    return this.usersService.loginUser();
-  }
-  @ApiOperation({ summary: 'Logout User' })
-  @Get('/logout')
-  public logoutUser(): Promise<string> {
-    return this.usersService.logoutUser();
+  // test endpoint for guard
+  @UseGuards(AuthGuard)
+  @Get('/all')
+  protected getAllUsers() {
+    return 'true';
   }
 }
-
-// uudi not empty

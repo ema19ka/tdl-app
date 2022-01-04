@@ -1,27 +1,30 @@
-import { Injectable } from '@nestjs/common';
-import { User } from './Entity/User.entity';
-
-// zugriff auf repositories (get user by id, register new user)
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { RegisterUserDto } from './dtos/RegisterUser.dto';
+import { User } from './entity/User.entity';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
-  // Endpoint
-  public async getUserById(): Promise<string> {
-    return 'User';
-  }
+  constructor(
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
+  ) {}
 
-  public async registerUser(): Promise<string> {
-    // return User;
-    return 'Register';
-  }
-
-  public async loginUser(): Promise<string> {
-    // return User;
-    return 'Login';
-  }
-
-  public async logoutUser(): Promise<string> {
-    // return User;
-    return 'Logout';
+  public async registerUser(user: User): Promise<User> {
+    // console.log(user.username);
+    // const userInDb = await this.userRepository.findOne({
+    //   where: user.username,
+    // });
+    // if (userInDb) {
+    //   throw new HttpException('User already exists', HttpStatus.BAD_REQUEST);
+    // }
+    // const salt = await user.genSalt();
+    // await user.hashPassowrd(user.password, salt);
+    // console.log(test);
+    // user.password = test;
+    return await this.userRepository.save(user);
+    // return 'Register';
   }
 }
