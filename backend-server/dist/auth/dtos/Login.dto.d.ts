@@ -1,5 +1,5 @@
 export declare class LoginDto {
     username: string;
-    mail: string;
+    email: string;
     password: string;
 }
