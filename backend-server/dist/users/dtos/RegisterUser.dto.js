@@ -26,7 +26,7 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
-], RegisterUserDto.prototype, "mail", void 0);
+], RegisterUserDto.prototype, "email", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)

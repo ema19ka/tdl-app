@@ -11,18 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const typeorm_1 = require("typeorm");
-const bcrypt = require("bcrypt");
 let User = class User {
-    async genSalt() {
-        return bcrypt.genSalt();
-    }
-    async hashPassowrd(password, salt) {
-        return bcrypt.hash(password, salt);
-    }
-    async validatePassword(password) {
-        const hash = await bcrypt.hash(password, this.salt);
-        return hash === this.password;
-    }
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
@@ -35,15 +24,11 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "mail", void 0);
+], User.prototype, "email", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], User.prototype, "salt", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

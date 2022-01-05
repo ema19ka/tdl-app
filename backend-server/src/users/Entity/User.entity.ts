@@ -23,14 +23,14 @@ import {
     username: string;
 
     @Column()
-    mail: string;
+    email: string;
   
     // @Exclude()
     @Column()
     password: string;
 
-    @Column()
-    salt: string;
+    // @Column()
+    // salt: string;
   
     @CreateDateColumn()
     created_at: Date;
@@ -52,20 +52,20 @@ import {
     //   this.password = await bcrypt.hash(password || this.password, salt);
     // }
 
-    // generate random string for sal, that gets saved in the db
-    async genSalt(): Promise<string>{
-      return bcrypt.genSalt()
-    }
+    // // generate random string for sal, that gets saved in the db
+    // async genSalt(): Promise<string>{
+    //   return bcrypt.genSalt()
+    // }
 
-    // hash password
-    async hashPassowrd(password: string, salt: string): Promise<string> {
-      return bcrypt.hash(password, salt);
-    }
+    // // hash password
+    // async hashPassowrd(password: string, salt: string): Promise<string> {
+    //   return bcrypt.hash(password, salt);
+    // }
 
-    // vergleich has
-    async validatePassword(password: string): Promise<boolean> {
-      const hash = await bcrypt.hash(password, this.salt); 
-      return hash === this.password;
-    }
+    // // vergleich has
+    // async validatePassword(password: string): Promise<boolean> {
+    //   const hash = await bcrypt.hash(password, this.salt); 
+    //   return hash === this.password;
+    // }
   }
   
