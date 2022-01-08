@@ -8,7 +8,6 @@ const httpOptions = {
   headers: new HttpHeaders({ contentType: 'application/json' })
 };
 
-
 @Injectable({
   providedIn: 'root'
 })
