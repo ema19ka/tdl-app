@@ -14,7 +14,7 @@ export class CategoryPage implements OnInit {
   submitted = false;
   public category: Category;
 
-  constructor(public categoryService: CategoryService, private route: Router, public formBuilder: FormBuilder) { }
+  constructor(public categoryService: CategoryService, private router: Router, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
@@ -24,12 +24,19 @@ export class CategoryPage implements OnInit {
 
   onAddCategory(){
     // console.log(this.category.name);
+    const { name } = this.myForm.value;
     this.submitted = true;
     if (!this.myForm.valid) {
       console.log('All fields are required.');
       return false;
     } else {
       console.log(this.myForm.value);
+      this.categoryService.add(name).subscribe(
+        data => {
+          console.log(data);
+          this.router.navigate(['/login']);
+        },
+      );
     }
   }
 
