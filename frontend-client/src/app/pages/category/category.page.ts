@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Category } from 'src/app/services/Category';
+// import { Category } from 'src/app/services/Category';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { CategoryService } from 'src/app/services/category.service';
 export class CategoryPage implements OnInit {
   myForm: FormGroup;
   submitted = false;
-  public category: Category;
+  // public category: Category;
 
   constructor(public categoryService: CategoryService, private router: Router, public formBuilder: FormBuilder) { }
 

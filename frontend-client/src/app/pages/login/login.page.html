@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>login</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,7 +8,7 @@
   <ion-grid>
     <ion-row>
       <ion-col align-self-center>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
           <ion-item>
             <ion-label>Username: </ion-label>
             <ion-input formControlName="username" type="text" class="form-control"></ion-input>
@@ -26,14 +26,15 @@
       
           <ion-row>
             <ion-col>
-              <ion-button type="submit" color="success">Sign Up</ion-button>
+              <ion-button type="submit" color="success">Login</ion-button>
             </ion-col>
           </ion-row>
         </form>
-        <span class="already">Already a user?</span>
+        <span class="already">Not a user?</span>
 
-        <ion-button [routerLink]="['/login']" expand="block" color="danger">Login</ion-button>
+        <ion-button [routerLink]="['/register']" expand="block" color="danger">Sign up</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
+
 </ion-content>

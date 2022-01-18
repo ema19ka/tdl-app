@@ -21,8 +21,12 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: 'login',
+    path: 'compLogin',
     component: LoginComponent,
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
 ];
 @NgModule({
