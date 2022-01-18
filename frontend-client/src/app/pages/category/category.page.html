@@ -5,5 +5,21 @@
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self center>
+        <form [formGroup]="myForm" (ngSubmit)="onAddCategory()" novalidate>
+          <ion-item>
+            <ion-label>Name: </ion-label>
+            <ion-input formControlName="name" type="text" class="form-control"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-button type="submit">Add Category</ion-button>
+          </ion-item>
+        </form>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
