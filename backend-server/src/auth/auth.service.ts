@@ -29,6 +29,7 @@ export class AuthService {
     //token erzeugen
     const jwt = await this.JWTService.signAsync({ user });
     // cookie anhängen (an response)
+    console.log(jwt);
     response.cookie('jwt', jwt, {
       // name, payload, options des cookie
       httpOnly: true, // damits am frontend nicht ausgelesen werden kanns

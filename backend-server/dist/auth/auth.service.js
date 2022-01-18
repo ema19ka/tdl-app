@@ -31,6 +31,7 @@ let AuthService = class AuthService {
             throw new common_1.BadRequestException('User not found or password incorrect');
         }
         const jwt = await this.JWTService.signAsync({ user });
+        console.log(jwt);
         response.cookie('jwt', jwt, {
             httpOnly: true,
             sameSite: 'none',
