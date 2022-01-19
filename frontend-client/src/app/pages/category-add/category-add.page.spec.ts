@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CategoryPage } from './category.page';
+import { CategoryPage } from './category-add.page';
 
 describe('CategoryPage', () => {
   let component: CategoryPage;

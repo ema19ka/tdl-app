@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.page.html',
-  styleUrls: ['./category.page.scss'],
+  selector: 'app-category-add',
+  templateUrl: './category-add.page.html',
+  styleUrls: ['./category-add.page.scss'],
 })
 export class CategoryPage implements OnInit {
   myForm: FormGroup;

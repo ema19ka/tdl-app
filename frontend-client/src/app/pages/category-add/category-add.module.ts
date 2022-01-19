@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CategoryPageRoutingModule } from './category-routing.module';
+import { CategoryPageRoutingModule } from './category-add-routing.module';
 
-import { CategoryPage } from './category.page';
+import { CategoryPage } from './category-add.page';
 
 @NgModule({
   imports: [
