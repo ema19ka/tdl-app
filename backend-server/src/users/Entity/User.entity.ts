@@ -1,17 +1,19 @@
 /* eslint-disable prettier/prettier */
+// import * as bcrypt from 'bcrypt';
+
+import { Category } from 'src/categories/entity/Category.entity';
 import {
-  BeforeInsert,
     Column,
     CreateDateColumn,
     DeleteDateColumn,
     Entity,
+    OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
     VersionColumn,
   } from 'typeorm';
 
-  import * as bcrypt from 'bcrypt';
-import { Category } from 'src/categories/entity/Category.entity';
+
 
   // import { Exclude } from 'class-transformer';
   
@@ -45,9 +47,8 @@ import { Category } from 'src/categories/entity/Category.entity';
     @VersionColumn()
     version: number;
 
-    // @OneToMany(() => Category, categoryId => categoryId.userId)
-    // categoryId: string;
-
+    @OneToMany(() => Category, category => category.user)
+    category: Category [];
 
 
     // // @BeforeInsert()

@@ -1,11 +1,20 @@
 import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoriesController } from './categories.controller';
 import { CategoriesService } from './categories.service';
 import { Category } from './entity/Category.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Category])],
+  imports: [
+    TypeOrmModule.forFeature([Category]),
+    JwtModule.register({
+      secret: '12341234',
+      signOptions: {
+        expiresIn: '1m',
+      },
+    }),
+  ],
   controllers: [CategoriesController],
   providers: [CategoriesService],
 })

@@ -35,5 +35,5 @@ export class Category {
   version: number;
 
   @ManyToOne(() => User, (user) => user.id)
-  user: string;
+  user: User;
 }
