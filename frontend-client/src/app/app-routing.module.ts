@@ -13,8 +13,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'category',
-    loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryPageModule)
+    path: 'category-add',
+    loadChildren: () => import('./pages/category-add/category.module').then( m => m.CategoryPageModule)
   },
   // {
   //   path: 'test',
@@ -27,6 +27,10 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'category-overview',
+    loadChildren: () => import('./pages/category-overview/category-overview.module').then( m => m.CategoryOverviewPageModule)
   },
 ];
 @NgModule({

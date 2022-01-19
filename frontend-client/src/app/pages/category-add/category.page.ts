@@ -34,7 +34,7 @@ export class CategoryPage implements OnInit {
       this.categoryService.add(name).subscribe(
         data => {
           console.log(data);
-          this.router.navigate(['/login']);
+          this.router.navigate(['/category-overview']);
         },
       );
     }
