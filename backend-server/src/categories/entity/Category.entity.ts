@@ -4,6 +4,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -21,9 +22,6 @@ export class Category {
   // @Column()
   // color: string;
 
-  // @Column()
-  // userId: string;
-
   @CreateDateColumn()
   created_at: Date;
 
@@ -35,4 +33,7 @@ export class Category {
 
   @VersionColumn()
   version: number;
+
+  @ManyToOne(() => User, (user) => user.id)
+  user: string;
 }

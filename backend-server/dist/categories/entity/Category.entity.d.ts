@@ -5,4 +5,5 @@ export declare class Category {
     updated_at: Date;
     deleted_at: Date;
     version: number;
+    user: string;
 }

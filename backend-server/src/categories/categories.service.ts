@@ -11,6 +11,8 @@ export class CategoriesService {
   ) {}
 
   public async addCategory(category: Category): Promise<Category> {
+    console.log(category);
+    // const user = await
     return await this.categoryRepository.save(category);
   }
 }

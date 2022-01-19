@@ -11,6 +11,7 @@ import {
   } from 'typeorm';
 
   import * as bcrypt from 'bcrypt';
+import { Category } from 'src/categories/entity/Category.entity';
 
   // import { Exclude } from 'class-transformer';
   
@@ -43,6 +44,11 @@ import {
   
     @VersionColumn()
     version: number;
+
+    // @OneToMany(() => Category, categoryId => categoryId.userId)
+    // categoryId: string;
+
+
 
     // // @BeforeInsert()
     // async setPassword(password: string) {

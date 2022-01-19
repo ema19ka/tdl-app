@@ -34,7 +34,7 @@ export class LoginPage implements OnInit {
       this.userService.login(username,email,password).subscribe(
         data => {
           console.log(data);
-          this.router.navigate(['/login']);
+          this.router.navigate(['/category']);
         }
       );
     }

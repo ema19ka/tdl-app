@@ -22,6 +22,7 @@ let CategoriesService = class CategoriesService {
         this.categoryRepository = categoryRepository;
     }
     async addCategory(category) {
+        console.log(category);
         return await this.categoryRepository.save(category);
     }
 };
