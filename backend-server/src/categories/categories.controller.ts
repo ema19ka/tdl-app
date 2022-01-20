@@ -38,6 +38,13 @@ export class CategoriesController {
     return this.categoriesService.showAllCategoriesByUserId(param.userid);
   }
 
+  // @ApiOperation({ summary: 'Get all Books' })
+  @Get('/overview')
+  // @HttpCode(501)
+  public dummyGetAllCat(): Promise<Category[]> {
+    return this.categoriesService.testGetAllCat();
+  }
+
   // @Get('findByFilter')
   // async findByFilter(@Query() query: CategoryQueryDto): Promise<Category> {
   //   console.log(query);

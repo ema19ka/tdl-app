@@ -25,6 +25,9 @@ let CategoriesService = class CategoriesService {
         console.log(category);
         return await this.categoryRepository.save(category);
     }
+    async testGetAllCat() {
+        return await this.categoryRepository.find();
+    }
     async showAllCategoriesByUserId(userid) {
         return await this.categoryRepository
             .createQueryBuilder('category')

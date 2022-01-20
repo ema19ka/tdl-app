@@ -30,6 +30,9 @@ let CategoriesController = class CategoriesController {
         console.log(param.userid);
         return this.categoriesService.showAllCategoriesByUserId(param.userid);
     }
+    dummyGetAllCat() {
+        return this.categoriesService.testGetAllCat();
+    }
 };
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Add a Category' }),
@@ -48,6 +51,12 @@ __decorate([
     __metadata("design:paramtypes", [CategoryQuery_dto_1.CategoryQueryDto]),
     __metadata("design:returntype", Promise)
 ], CategoriesController.prototype, "showCategories", null);
+__decorate([
+    (0, common_1.Get)('/overview'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], CategoriesController.prototype, "dummyGetAllCat", null);
 CategoriesController = __decorate([
     (0, swagger_1.ApiTags)('Categories Controller'),
     (0, common_1.Controller)('categories'),

@@ -21,6 +21,10 @@ export class CategoriesService {
   //   return await this.categoryRepository.findOne(userid);
   // }
 
+  public async testGetAllCat(): Promise<Category[]> {
+    return await this.categoryRepository.find();
+  }
+
   public async showAllCategoriesByUserId(userid: string): Promise<Category[]> {
     return await this.categoryRepository
       .createQueryBuilder('category')

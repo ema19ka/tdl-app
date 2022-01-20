@@ -6,4 +6,5 @@ export declare class CategoriesController {
     constructor(categoriesService: CategoriesService);
     addCategory(category: Category): Promise<Category>;
     showCategories(param: CategoryQueryDto): Promise<Category[]>;
+    dummyGetAllCat(): Promise<Category[]>;
 }
