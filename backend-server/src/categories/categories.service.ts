@@ -16,8 +16,15 @@ export class CategoriesService {
     return await this.categoryRepository.save(category);
   }
 
-  public async showAllCategoriesByUserId(userid: string): Promise<Category> {
-    // console.log(id);
-    return await this.categoryRepository.findOne(userid);
+  // public async showAllCategories(userid: string): Promise<Category> {
+  //   // console.log(id);
+  //   return await this.categoryRepository.findOne(userid);
+  // }
+
+  public async showAllCategoriesByUserId(userid: string): Promise<Category[]> {
+    return await this.categoryRepository
+      .createQueryBuilder('category')
+      .where('category.userid = userid', { userid: userid })
+      .getMany();
   }
 }

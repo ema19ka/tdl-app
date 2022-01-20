@@ -26,7 +26,10 @@ let CategoriesService = class CategoriesService {
         return await this.categoryRepository.save(category);
     }
     async showAllCategoriesByUserId(userid) {
-        return await this.categoryRepository.findOne(userid);
+        return await this.categoryRepository
+            .createQueryBuilder('category')
+            .where('category.userid = userid', { userid: userid })
+            .getMany();
     }
 };
 CategoriesService = __decorate([

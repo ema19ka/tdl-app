@@ -27,6 +27,7 @@ let CategoriesController = class CategoriesController {
         return this.categoriesService.addCategory(category);
     }
     async showCategories(param) {
+        console.log(param.userid);
         return this.categoriesService.showAllCategoriesByUserId(param.userid);
     }
 };

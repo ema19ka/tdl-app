@@ -31,8 +31,10 @@ export class CategoriesController {
   @ApiOperation({ summary: 'Display the users Category' })
   // @UseGuards(AuthGuard)
   @Get('/overview/:id')
-  async showCategories(@Param() param: CategoryQueryDto): Promise<Category> {
+  async showCategories(@Param() param: CategoryQueryDto): Promise<Category[]> {
     // const userid = category.user.toString();
+    // return this.categoriesService.showAllCategoriesByUserId(param.userid);
+    console.log(param.userid);
     return this.categoriesService.showAllCategoriesByUserId(param.userid);
   }
 
