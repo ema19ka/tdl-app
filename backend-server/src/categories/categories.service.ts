@@ -15,4 +15,9 @@ export class CategoriesService {
     // const user = await
     return await this.categoryRepository.save(category);
   }
+
+  public async showAllCategoriesByUserId(userid: string): Promise<Category> {
+    // console.log(id);
+    return await this.categoryRepository.findOne(userid);
+  }
 }

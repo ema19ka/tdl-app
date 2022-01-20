@@ -18,12 +18,16 @@ const auth_guard_1 = require("../auth/auth.guard");
 const swagger_1 = require("@nestjs/swagger");
 const categories_service_1 = require("./categories.service");
 const Category_entity_1 = require("./entity/Category.entity");
+const CategoryQuery_dto_1 = require("./dtos/CategoryQuery.dto");
 let CategoriesController = class CategoriesController {
     constructor(categoriesService) {
         this.categoriesService = categoriesService;
     }
     async addCategory(category) {
         return this.categoriesService.addCategory(category);
+    }
+    async showCategories(param) {
+        return this.categoriesService.showAllCategoriesByUserId(param.userid);
     }
 };
 __decorate([
@@ -35,6 +39,14 @@ __decorate([
     __metadata("design:paramtypes", [Category_entity_1.Category]),
     __metadata("design:returntype", Promise)
 ], CategoriesController.prototype, "addCategory", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Display the users Category' }),
+    (0, common_1.Get)('/overview/:id'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [CategoryQuery_dto_1.CategoryQueryDto]),
+    __metadata("design:returntype", Promise)
+], CategoriesController.prototype, "showCategories", null);
 CategoriesController = __decorate([
     (0, swagger_1.ApiTags)('Categories Controller'),
     (0, common_1.Controller)('categories'),

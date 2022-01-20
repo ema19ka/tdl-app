@@ -25,6 +25,9 @@ let CategoriesService = class CategoriesService {
         console.log(category);
         return await this.categoryRepository.save(category);
     }
+    async showAllCategoriesByUserId(userid) {
+        return await this.categoryRepository.findOne(userid);
+    }
 };
 CategoriesService = __decorate([
     (0, common_1.Injectable)(),
