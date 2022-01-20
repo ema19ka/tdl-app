@@ -20,5 +20,10 @@ __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CategoryQueryDto.prototype, "userid", void 0);
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CategoryQueryDto.prototype, "name", void 0);
 exports.CategoryQueryDto = CategoryQueryDto;
 //# sourceMappingURL=CategoryQuery.dto.js.map

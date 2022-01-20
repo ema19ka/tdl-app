@@ -24,7 +24,14 @@ export class CategoriesService {
   public async showAllCategoriesByUserId(userid: string): Promise<Category[]> {
     return await this.categoryRepository
       .createQueryBuilder('category')
-      .where('category.userid = userid', { userid: userid })
+      // .leftJoin('category.user', 'user')
+      .where('category.userid = :userid', { userid })
+      // .where('category.userid = :userid', {
+      //   userid: '6fcd6e60-b80c-41ca-ba4d-1dbe605ffc9e',
+      // })
       .getMany();
   }
+
+  // 6fcd6e60-b80c-41ca-ba4d-1dbe605ffc9e
+  // 246181b3-29d4-4ecf-84f9-aa7246c33332
 }

@@ -10,8 +10,15 @@ export class insertSampleUser1642587912778 implements MigrationInterface {
     user.password = 'asdf1234';
     user.id = '246181b3-29d4-4ecf-84f9-aa7246c33332';
 
+    const user2 = new User();
+    user2.username = 'User 2';
+    user2.email = 'user2@user.com';
+    user2.password = 'asdf1234';
+    user2.id = '6fcd6e60-b80c-41ca-ba4d-1dbe605ffc9e';
+
     const userRepository = getConnection().getRepository(User);
     await userRepository.save(user);
+    await userRepository.save(user2);
 
     const category = new Category();
     category.name = 'CategoryName';
@@ -21,12 +28,23 @@ export class insertSampleUser1642587912778 implements MigrationInterface {
     const category2 = new Category();
     category2.name = 'CategoryName2';
     category2.id = '027e9313-e42d-4386-9e8d-de7515f05125';
-    category2.user = await userRepository.findOne(user.id);
+    category2.user = await userRepository.findOne(user2.id);
+
+    const category3 = new Category();
+    category3.name = 'CategoryNameNew';
+    category3.id = 'd874a5e0-febe-45dc-ab26-0055fa89e88e';
+    category3.user = await userRepository.findOne(user2.id);
+
+    const category24 = new Category();
+    category24.name = 'CategoryNameNew2';
+    category24.id = '241abfe3-085e-4393-90b2-31c4a92c9ed4';
+    category24.user = await userRepository.findOne(user2.id);
 
     const categoryRepository = getConnection().getRepository(Category);
     categoryRepository.save(category);
     categoryRepository.save(category2);
-
+    categoryRepository.save(category3);
+    categoryRepository.save(category24);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {}

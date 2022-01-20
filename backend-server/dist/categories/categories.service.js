@@ -28,7 +28,7 @@ let CategoriesService = class CategoriesService {
     async showAllCategoriesByUserId(userid) {
         return await this.categoryRepository
             .createQueryBuilder('category')
-            .where('category.userid = userid', { userid: userid })
+            .where('category.userid = :userid', { userid })
             .getMany();
     }
 };

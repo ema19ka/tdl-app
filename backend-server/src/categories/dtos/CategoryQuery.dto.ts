@@ -6,4 +6,8 @@ export class CategoryQueryDto {
   @IsNotEmpty()
   @IsString()
   userid: string;
+
+  @IsNotEmpty()
+  @IsString()
+  name: string;
 }
