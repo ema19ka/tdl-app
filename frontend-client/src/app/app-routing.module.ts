@@ -24,6 +24,18 @@ const routes: Routes = [
     path: 'category-overview',
     loadChildren: () => import('./pages/category-overview/category-overview.module').then( m => m.CategoryOverviewPageModule)
   },
+  {
+    path: 'list-add',
+    loadChildren: () => import('./pages/list-add/list-add.module').then( m => m.ListAddPageModule)
+  },
+  {
+    path: 'list-overview',
+    loadChildren: () => import('./pages/list-overview/list-overview.module').then( m => m.ListOverviewPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
   // {
   //   path: 'test',
   //   component: ExploreContainerComponentModule,
