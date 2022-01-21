@@ -8,10 +8,10 @@
   <ion-grid>
     <ion-row>
       <ion-col align-self center>
-        <form [formGroup]="myForm" (ngSubmit)="onAddCategory()" novalidate>
+        <form [formGroup]="addCategoryForm" (ngSubmit)="onAddCategory()" novalidate>
           <ion-item>
             <ion-label>Name: </ion-label>
-            <ion-input formControlName="name" type="text" class="form-control"></ion-input>
+            <ion-input formControlName="catName" type="text" class="form-control"></ion-input>
           </ion-item>
           <ion-item>
             <ion-button type="submit">Add Category</ion-button>

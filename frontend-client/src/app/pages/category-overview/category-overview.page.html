@@ -5,7 +5,15 @@
 </ion-header>
 
 <ion-content>
+  <!-- <ion-item>
+    <h1>{{categoryService.currentCategory.catName}}</h1>
+  </ion-item> -->
   <ion-item>
     <ion-button [routerLink]="['/category-add']">Add a new category</ion-button>
+  </ion-item>
+
+  <ion-item *ngFor="let category of categoryData">
+    <ion-label>{{ category.name }}</ion-label>
+
   </ion-item>
 </ion-content>

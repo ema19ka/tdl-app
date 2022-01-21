@@ -1,9 +1,9 @@
 import { List } from './List';
 
-export interface Category {
+export interface Item {
     // id: string;
-    catName: string;
-    // list: List[];
+    content: string;
+    list: List;
 }
 
 // keine methoden

@@ -6,7 +6,6 @@ import {
   Param,
   UseGuards,
   ValidationPipe,
-  Query,
 } from '@nestjs/common';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -20,7 +19,7 @@ export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
   @ApiOperation({ summary: 'Add a Category' })
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   @Post('/add')
   async addCategory(
     @Body(ValidationPipe) category: Category,

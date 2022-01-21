@@ -10,28 +10,28 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./category-add.page.scss'],
 })
 export class CategoryPage implements OnInit {
-  myForm: FormGroup;
+  addCategoryForm: FormGroup;
   submitted = false;
   // public category: Category;
 
   constructor(public categoryService: CategoryService, private router: Router, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.myForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+    this.addCategoryForm = this.formBuilder.group({
+      catName: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
   onAddCategory(){
     // console.log(this.category.name);
-    const { name } = this.myForm.value;
+    const { catName } = this.addCategoryForm.value;
     this.submitted = true;
-    if (!this.myForm.valid) {
+    if (!this.addCategoryForm.valid) {
       console.log('All fields are required.');
       return false;
     } else {
-      console.log(this.myForm.value);
-      this.categoryService.add(name).subscribe(
+      console.log(this.addCategoryForm.value);
+      this.categoryService.add(catName).subscribe(
         data => {
           console.log(data);
           this.router.navigate(['/category-overview']);
