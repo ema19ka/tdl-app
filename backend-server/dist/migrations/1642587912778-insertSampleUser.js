@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.insertSampleUser1642587912778 = void 0;
 const Category_entity_1 = require("../categories/entity/Category.entity");
+const List_entity_1 = require("../lists/entity/List.entity");
 const User_entity_1 = require("../users/entity/User.entity");
 const typeorm_1 = require("typeorm");
 class insertSampleUser1642587912778 {
@@ -40,6 +41,12 @@ class insertSampleUser1642587912778 {
         categoryRepository.save(category2);
         categoryRepository.save(category3);
         categoryRepository.save(category24);
+        const list = new List_entity_1.List();
+        list.name = 'New List';
+        list.id = '9d4aa061-7313-41cc-aaab-23c93f434b19';
+        list.category = await categoryRepository.findOne(category2.id);
+        const listRepository = (0, typeorm_1.getConnection)().getRepository(List_entity_1.List);
+        listRepository.save(list);
     }
     async down(queryRunner) { }
 }

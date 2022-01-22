@@ -8,14 +8,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListsModule = void 0;
 const common_1 = require("@nestjs/common");
+const jwt_1 = require("@nestjs/jwt");
+const typeorm_1 = require("@nestjs/typeorm");
+const List_entity_1 = require("./entity/List.entity");
 const lists_controller_1 = require("./lists.controller");
 const lists_service_1 = require("./lists.service");
 let ListsModule = class ListsModule {
 };
 ListsModule = __decorate([
     (0, common_1.Module)({
+        imports: [
+            typeorm_1.TypeOrmModule.forFeature([List_entity_1.List]),
+            jwt_1.JwtModule.register({
+                secret: '12341234',
+                signOptions: {
+                    expiresIn: '1m',
+                },
+            }),
+        ],
         controllers: [lists_controller_1.ListsController],
-        providers: [lists_service_1.ListsService]
+        providers: [lists_service_1.ListsService],
     })
 ], ListsModule);
 exports.ListsModule = ListsModule;
