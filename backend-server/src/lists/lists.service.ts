@@ -15,4 +15,8 @@ export class ListsService {
     // const user = await
     return await this.listRepository.save(list);
   }
+
+  public async dummyGetAllLists(): Promise<List[]> {
+    return await this.listRepository.find();
+  }
 }

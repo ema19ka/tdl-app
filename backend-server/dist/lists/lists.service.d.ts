@@ -4,4 +4,5 @@ export declare class ListsService {
     private listRepository;
     constructor(listRepository: Repository<List>);
     addList(list: List): Promise<List>;
+    dummyGetAllLists(): Promise<List[]>;
 }

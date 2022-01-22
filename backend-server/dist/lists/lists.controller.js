@@ -24,6 +24,9 @@ let ListsController = class ListsController {
     async addList(list) {
         return this.listServices.addList(list);
     }
+    dummyGetAllLists() {
+        return this.listServices.dummyGetAllLists();
+    }
 };
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Add a list' }),
@@ -33,6 +36,12 @@ __decorate([
     __metadata("design:paramtypes", [List_entity_1.List]),
     __metadata("design:returntype", Promise)
 ], ListsController.prototype, "addList", null);
+__decorate([
+    (0, common_1.Get)('/overview'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], ListsController.prototype, "dummyGetAllLists", null);
 ListsController = __decorate([
     (0, swagger_1.ApiTags)('Lists Controller'),
     (0, common_1.Controller)('lists'),

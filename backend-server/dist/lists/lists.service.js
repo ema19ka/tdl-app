@@ -25,6 +25,9 @@ let ListsService = class ListsService {
         console.log(list);
         return await this.listRepository.save(list);
     }
+    async dummyGetAllLists() {
+        return await this.listRepository.find();
+    }
 };
 ListsService = __decorate([
     (0, common_1.Injectable)(),
