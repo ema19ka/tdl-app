@@ -26,7 +26,7 @@ export class ListService {
       name,
     }, httpOptions);
   }
-  // getList(): Observable<List> {
-  //   return this.http.get<List>(LIST_API + 'overview');
-  // }
+  getList(): Observable<List> {
+    return this.http.get<List>(LIST_API + 'overview');
+  }
 }
