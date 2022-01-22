@@ -3,8 +3,9 @@ import { Item } from './Item';
 
 export interface List {
     // id: string;
-    category: Category;
-    items: Item[];
+    listName: string;
+    // scategory: Category;
+    // items: Item[];
 }
 
 // keine methoden
