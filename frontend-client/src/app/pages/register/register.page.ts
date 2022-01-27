@@ -34,7 +34,7 @@ export class RegisterPage implements OnInit {
       this.userService.register(username,email,password).subscribe(
         data => {
           console.log(data);
-          this.router.navigate(['/login']);
+          this.router.navigate(['/home']);
         }
       );
     }

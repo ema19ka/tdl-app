@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/users/entity/User.entity';
 import { Repository } from 'typeorm';
+import { AddCategoryDto } from './dtos/AddCategory.dto';
 import { Category } from './entity/Category.entity';
 
 @Injectable()
@@ -11,10 +13,18 @@ export class CategoriesService {
   ) {}
 
   public async addCategory(category: Category): Promise<Category> {
-    console.log(category);
-    // const user = await
     return await this.categoryRepository.save(category);
   }
+
+  // async insert(categoryDetails: AddCategoryDto): Promise<Category> {
+  //   const { name, userID } = categoryDetails;
+  //   const category = new Category;
+  //   category.name = name;
+  //   category.user = await User.findOne(userID);
+
+  //   await category.save();
+  //   return category;
+  // }
 
   // public async showAllCategories(userid: string): Promise<Category> {
   //   // console.log(id);
@@ -22,7 +32,7 @@ export class CategoriesService {
   // }
 
   public async testGetAllCat(): Promise<Category[]> {
-    return await this.categoryRepository.find();
+    return await this.categoryRepository.find({ relations: ['user'] });
   }
 
   public async showAllCategoriesByUserId(userid: string): Promise<Category[]> {

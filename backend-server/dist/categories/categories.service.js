@@ -22,11 +22,10 @@ let CategoriesService = class CategoriesService {
         this.categoryRepository = categoryRepository;
     }
     async addCategory(category) {
-        console.log(category);
         return await this.categoryRepository.save(category);
     }
     async testGetAllCat() {
-        return await this.categoryRepository.find();
+        return await this.categoryRepository.find({ relations: ['user'] });
     }
     async showAllCategoriesByUserId(userid) {
         return await this.categoryRepository

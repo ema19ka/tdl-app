@@ -33,8 +33,8 @@ export class LoginPage implements OnInit {
       console.log(this.loginForm.value);
       this.userService.login(username,email,password).subscribe(
         data => {
-          console.log(data);
-          this.router.navigate(['/category-overview']);
+          console.log(data['auth-token']);
+          this.router.navigate(['/home']);
         }
       );
     }

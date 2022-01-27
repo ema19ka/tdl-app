@@ -9,7 +9,7 @@ import * as bcrypt from 'bcrypt';
 export class UsersService {
   constructor(
     @InjectRepository(User)
-    private userRepository: Repository<User>,
+    private userRepository: Repository<User>, // private categoryRepository: Repository<Category>,
   ) {}
 
   public async registerUser(user: User): Promise<User> {
@@ -27,4 +27,9 @@ export class UsersService {
     return await this.userRepository.save(user);
     // return 'Register';
   }
+
+  // public async getCategoriesOfUser(userId: string): Promise<Category> {
+  //   this.categoryRepository. = await this.userRepository.findOne(userId);
+
+  // }
 }

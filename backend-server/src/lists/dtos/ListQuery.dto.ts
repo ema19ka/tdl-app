@@ -10,4 +10,6 @@ export class ListQuerydto {
   @IsNotEmpty()
   @IsString()
   name: string;
+
+  items: string[];
 }
