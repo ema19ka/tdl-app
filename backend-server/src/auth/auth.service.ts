@@ -43,10 +43,15 @@ export class AuthService {
     const user = await this.userRepository.findOne({
       email: loginDto.email,
     });
+    console.log(user);
     if (!user) {
-      throw new BadRequestException('User not found or password incorrect');
+      throw new BadRequestException('E-Mail not found or password incorrect');
     }
-    if (user.password !== loginDto.password) {
+    // if (user.password !== loginDto.password) {
+    //   throw new BadRequestException('User not found or password incorrect');
+    // }
+
+    if (!(await user.validatePassword(loginDto.password))) {
       throw new BadRequestException('User not found or password incorrect');
     }
 

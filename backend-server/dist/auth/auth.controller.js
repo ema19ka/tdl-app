@@ -26,6 +26,7 @@ let AuthController = class AuthController {
     }
 };
 __decorate([
+    (0, common_1.UseInterceptors)(common_1.ClassSerializerInterceptor),
     (0, swagger_1.ApiOperation)({ summary: 'User Login' }),
     (0, common_1.Post)('/login'),
     __param(0, (0, common_1.Body)(common_1.ValidationPipe)),

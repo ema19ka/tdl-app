@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import * as bcrypt from 'bcrypt';
+import { Exclude } from 'class-transformer';
 
 import { Category } from 'src/categories/entity/Category.entity';
 import {
@@ -28,10 +29,11 @@ import {
     @Column()
     email: string;
   
-    // @Exclude()
+    @Exclude()
     @Column()
     password: string;
 
+    @Exclude()
     @Column()
     salt: string;
   

@@ -43,10 +43,11 @@ let AuthService = class AuthService {
         const user = await this.userRepository.findOne({
             email: loginDto.email,
         });
+        console.log(user);
         if (!user) {
-            throw new common_1.BadRequestException('User not found or password incorrect');
+            throw new common_1.BadRequestException('E-Mail not found or password incorrect');
         }
-        if (user.password !== loginDto.password) {
+        if (!(await user.validatePassword(loginDto.password))) {
             throw new common_1.BadRequestException('User not found or password incorrect');
         }
         const jwt = await this.JWTService.signAsync({ user });

@@ -1,4 +1,12 @@
-import { Body, Controller, Post, Res, ValidationPipe } from '@nestjs/common';
+import {
+  Body,
+  ClassSerializerInterceptor,
+  Controller,
+  Post,
+  Res,
+  UseInterceptors,
+  ValidationPipe,
+} from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 import { AuthService } from './auth.service';
@@ -9,7 +17,7 @@ import { LoginDto } from './dtos/Login.dto';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  // @UseInterceptors()
+  @UseInterceptors(ClassSerializerInterceptor) // nur für diese methode, auch für ganzen controller möglich
   @ApiOperation({ summary: 'User Login' })
   @Post('/login')
   protected async login(
