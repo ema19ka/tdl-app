@@ -32,6 +32,6 @@ export class List {
   @VersionColumn()
   version: number;
 
-  @ManyToOne(() => Category, (category) => category.id)
+  @ManyToOne(() => Category, (category) => category.lists, { eager: true })
   category: Category;
 }

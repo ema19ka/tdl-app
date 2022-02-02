@@ -1,3 +1,4 @@
+import { List } from 'src/lists/entity/List.entity';
 import { User } from 'src/users/entity/User.entity';
 import {
   Column,
@@ -5,6 +6,7 @@ import {
   DeleteDateColumn,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   VersionColumn,
@@ -33,6 +35,9 @@ export class Category {
   @VersionColumn()
   version: number;
 
-  @ManyToOne(() => User, (user) => user.id)
+  @ManyToOne(() => User, (user) => user.category)
   user: User;
+
+  @OneToMany(() => List, (list) => list.category)
+  lists: List[];
 }
