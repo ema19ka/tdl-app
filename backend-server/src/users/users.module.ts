@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Category } from 'src/categories/entity/Category.entity';
 import { User } from './entity/User.entity';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
@@ -13,7 +14,7 @@ import { UsersService } from './users.service';
         expiresIn: '1m',
       },
     }),
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([User, Category]),
   ],
   controllers: [UsersController],
   providers: [UsersService],

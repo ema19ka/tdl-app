@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { RegisterUserDto } from './dtos/RegisterUser.dto';
 import { User } from './entity/User.entity';
 import * as bcrypt from 'bcrypt';
+// import { Category } from 'src/categories/entity/Category.entity';
 
 @Injectable()
 export class UsersService {

@@ -6,6 +6,7 @@ import {
   Param,
   UseGuards,
   ValidationPipe,
+  Req,
 } from '@nestjs/common';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -26,6 +27,14 @@ export class CategoriesController {
   ): Promise<Category> {
     return this.categoriesService.addCategory(category);
   }
+
+  // @UseGuards(AuthGuard)
+  // @Post('/create')
+  // async createCategory(
+  //   @Body() category: AddCategoryDto, @Req() req: RequestWithUser)
+  // ): Promise<Category> {
+  //   return this.categoriesService.createCategory(category, req.user);
+  // }
 
   @ApiOperation({ summary: 'Display the users Category' })
   // @UseGuards(AuthGuard)

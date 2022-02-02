@@ -1,3 +1,4 @@
+import { List } from 'src/lists/entity/List.entity';
 import { User } from 'src/users/entity/User.entity';
 export declare class Category {
     id: string;
@@ -7,4 +8,5 @@ export declare class Category {
     deleted_at: Date;
     version: number;
     user: User;
+    lists: List[];
 }

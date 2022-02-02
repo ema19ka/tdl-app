@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Category = void 0;
+const List_entity_1 = require("../../lists/entity/List.entity");
 const User_entity_1 = require("../../users/entity/User.entity");
 const typeorm_1 = require("typeorm");
 let Category = class Category {
@@ -39,9 +40,13 @@ __decorate([
     __metadata("design:type", Number)
 ], Category.prototype, "version", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => User_entity_1.User, (user) => user.id),
+    (0, typeorm_1.ManyToOne)(() => User_entity_1.User, (user) => user.category),
     __metadata("design:type", User_entity_1.User)
 ], Category.prototype, "user", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => List_entity_1.List, (list) => list.category),
+    __metadata("design:type", Array)
+], Category.prototype, "lists", void 0);
 Category = __decorate([
     (0, typeorm_1.Entity)()
 ], Category);
