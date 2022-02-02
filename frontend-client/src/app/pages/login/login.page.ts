@@ -31,12 +31,16 @@ export class LoginPage implements OnInit {
       return false;
     } else {
       console.log(this.loginForm.value);
-      this.userService.login(username,email,password).subscribe(
+      try {
+        this.userService.login(username,email,password).subscribe(
         data => {
-          console.log(data['auth-token']);
+          // console.log(data['auth-token']);
           this.router.navigate(['/home']);
         }
       );
+      } catch(err) {
+        console.log(err);
+      }
     }
   }
 

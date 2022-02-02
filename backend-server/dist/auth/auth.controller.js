@@ -22,7 +22,7 @@ let AuthController = class AuthController {
         this.authService = authService;
     }
     async login(loginDto, response) {
-        return this.authService.login(loginDto, response);
+        return this.authService.loginOld(loginDto, response);
     }
 };
 __decorate([

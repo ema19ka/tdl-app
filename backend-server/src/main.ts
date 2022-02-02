@@ -15,9 +15,11 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);
 
-  app.use(cookieParser());
-  app.enableCors();
+  app.enableCors({
+    credentials: true,
+  });
 
+  app.use(cookieParser());
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   await app.listen(3000).then((d) => console.log('backend running'));
 }

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-// import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 
 import { Category } from 'src/categories/entity/Category.entity';
 import {
@@ -32,8 +32,8 @@ import {
     @Column()
     password: string;
 
-    // @Column()
-    // salt: string;
+    @Column()
+    salt: string;
   
     @CreateDateColumn()
     created_at: Date;
@@ -47,8 +47,23 @@ import {
     @VersionColumn()
     version: number;
 
-    @OneToMany(() => Category, category => category.user)
+    @OneToMany(() => Category, category => category.user, { eager: true })
     category: Category [];
+
+
+    async genSalt(): Promise<string> {
+      return bcrypt.genSalt();
+    }
+
+    async hashPassword(password: string, salt: string): Promise<string> {
+      return bcrypt.hash(password, salt);
+    }
+
+    async validatePassword(password: string): Promise<boolean> {
+      // hash password
+      const hash = await bcrypt.hash(password, this.salt);
+      return hash === this.password;
+    }
 
 
     // // @BeforeInsert()

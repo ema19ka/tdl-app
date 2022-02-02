@@ -10,12 +10,14 @@ class insertSampleUser1642587912778 {
         const user = new User_entity_1.User();
         user.username = 'Testuser';
         user.email = 'test@user.com';
-        user.password = 'asdf1234';
+        user.salt = await user.genSalt();
+        user.password = await user.hashPassword('asdf1234', user.salt);
         user.id = '246181b3-29d4-4ecf-84f9-aa7246c33332';
         const user2 = new User_entity_1.User();
         user2.username = 'User 2';
         user2.email = 'user2@user.com';
-        user2.password = 'asdf1234';
+        user2.salt = await user.genSalt();
+        user2.password = await user.hashPassword('asdf1234', user.salt);
         user2.id = '6fcd6e60-b80c-41ca-ba4d-1dbe605ffc9e';
         const userRepository = (0, typeorm_1.getConnection)().getRepository(User_entity_1.User);
         await userRepository.save(user);
@@ -27,8 +29,8 @@ class insertSampleUser1642587912778 {
         const categoryRepository = (0, typeorm_1.getConnection)().getRepository(Category_entity_1.Category);
         categoryRepository.save(category);
         const list = new List_entity_1.List();
-        list.name = 'New List';
-        list.id = '9d4aa061-7313-41cc-aaab-23c93f434b19';
+        list.name = 'ListName';
+        list.id = '241abfe3-085e-4393-90b2-31c4a92c9ed4';
         list.category = await categoryRepository.findOne(category.id);
         const listRepository = (0, typeorm_1.getConnection)().getRepository(List_entity_1.List);
         listRepository.save(list);

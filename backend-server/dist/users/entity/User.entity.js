@@ -10,9 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
+const bcrypt = require("bcrypt");
 const Category_entity_1 = require("../../categories/entity/Category.entity");
 const typeorm_1 = require("typeorm");
 let User = class User {
+    async genSalt() {
+        return bcrypt.genSalt();
+    }
+    async hashPassword(password, salt) {
+        return bcrypt.hash(password, salt);
+    }
+    async validatePassword(password) {
+        const hash = await bcrypt.hash(password, this.salt);
+        return hash === this.password;
+    }
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
@@ -31,6 +42,10 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], User.prototype, "salt", void 0);
+__decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], User.prototype, "created_at", void 0);
@@ -47,7 +62,7 @@ __decorate([
     __metadata("design:type", Number)
 ], User.prototype, "version", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => Category_entity_1.Category, category => category.user),
+    (0, typeorm_1.OneToMany)(() => Category_entity_1.Category, category => category.user, { eager: true }),
     __metadata("design:type", Array)
 ], User.prototype, "category", void 0);
 User = __decorate([

@@ -12,7 +12,7 @@ export class AuthService {
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     private readonly JWTService: JwtService,
   ) {}
-  public async login(loginDto: LoginDto, response: Response): Promise<any> {
+  public async loginOld(loginDto: LoginDto, response: Response): Promise<any> {
     // can force error with fiindOneOrFail
     const user = await this.userRepository.findOne({
       username: loginDto.username,
@@ -36,6 +36,27 @@ export class AuthService {
       sameSite: 'none',
       secure: true,
     });
+    return user;
+  }
+
+  public async login(loginDto: LoginDto, response: Response): Promise<any> {
+    const user = await this.userRepository.findOne({
+      email: loginDto.email,
+    });
+    if (!user) {
+      throw new BadRequestException('User not found or password incorrect');
+    }
+    if (user.password !== loginDto.password) {
+      throw new BadRequestException('User not found or password incorrect');
+    }
+
+    const jwt = await this.JWTService.signAsync({ user });
+    response.cookie('jwt', jwt, {
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true,
+    });
+
     return user;
   }
 }

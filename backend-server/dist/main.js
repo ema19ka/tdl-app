@@ -14,8 +14,10 @@ async function bootstrap() {
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('swagger', app, document);
+    app.enableCors({
+        credentials: true,
+    });
     app.use(cookieParser());
-    app.enableCors();
     await app.listen(3000).then((d) => console.log('backend running'));
 }
 bootstrap();

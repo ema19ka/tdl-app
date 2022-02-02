@@ -38,6 +38,6 @@ export class Category {
   @ManyToOne(() => User, (user) => user.category)
   user: User;
 
-  @OneToMany(() => List, (list) => list.category)
+  @OneToMany(() => List, (list) => list.category, { eager: true })
   lists: List[];
 }

@@ -44,7 +44,7 @@ __decorate([
     __metadata("design:type", User_entity_1.User)
 ], Category.prototype, "user", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => List_entity_1.List, (list) => list.category),
+    (0, typeorm_1.OneToMany)(() => List_entity_1.List, (list) => list.category, { eager: true }),
     __metadata("design:type", Array)
 ], Category.prototype, "lists", void 0);
 Category = __decorate([
