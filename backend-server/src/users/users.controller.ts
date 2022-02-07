@@ -5,12 +5,9 @@ import {
   Get,
   ValidationPipe,
   UseGuards,
-  ParseUUIDPipe,
-  Param,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from 'src/auth/auth.guard';
-import { Category } from 'src/categories/entity/Category.entity';
 import { User } from './entity/User.entity';
 import { UsersService } from './users.service';
 @ApiTags('Users Controller')

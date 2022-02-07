@@ -31,4 +31,10 @@ export class AuthService {
       password
     }, httpOptions);
   }
+
+  test(): Observable<any> {
+    return this.http.get(AUTH_API + 'users/all',{
+      withCredentials: true
+    });
+  }
 }

@@ -6,7 +6,6 @@ import {
   Param,
   UseGuards,
   ValidationPipe,
-  Req,
 } from '@nestjs/common';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -20,7 +19,7 @@ export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
   @ApiOperation({ summary: 'Add a Category' })
-  // @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard)
   @Post('/add')
   async addCategory(
     @Body(ValidationPipe) category: Category,
@@ -52,10 +51,4 @@ export class CategoriesController {
   public dummyGetAllCat(): Promise<Category[]> {
     return this.categoriesService.testGetAllCat();
   }
-
-  // @Get('findByFilter')
-  // async findByFilter(@Query() query: CategoryQueryDto): Promise<Category> {
-  //   console.log(query);
-  //   return category;
-  // }
 }

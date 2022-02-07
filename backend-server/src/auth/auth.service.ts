@@ -17,16 +17,13 @@ export class AuthService {
     const user = await this.userRepository.findOne({
       email: loginDto.email,
     });
-    // console.log(user);
     if (!user) {
-      throw new BadRequestException('E-Mail not found or password incorrect');
+      throw new BadRequestException('User not found or password incorrect');
     }
-
-    console.log(await user.validatePassword(loginDto.password));
 
     if (!(await user.validatePassword(loginDto.password))) {
       console.log(loginDto.password);
-      throw new BadRequestException('User not found or password incorrect');
+      throw new BadRequestException('PUser not found or password incorrect');
     }
 
     const jwt = await this.JWTService.signAsync({ user });

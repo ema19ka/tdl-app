@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CategoriesController = void 0;
 const common_1 = require("@nestjs/common");
+const auth_guard_1 = require("../auth/auth.guard");
 const swagger_1 = require("@nestjs/swagger");
 const categories_service_1 = require("./categories.service");
 const Category_entity_1 = require("./entity/Category.entity");
@@ -35,6 +36,7 @@ let CategoriesController = class CategoriesController {
 };
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Add a Category' }),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Post)('/add'),
     __param(0, (0, common_1.Body)(common_1.ValidationPipe)),
     __metadata("design:type", Function),

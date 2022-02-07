@@ -12,11 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthGuard = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
-const users_service_1 = require("../users/users.service");
 let AuthGuard = class AuthGuard {
-    constructor(jwtService, userService) {
+    constructor(jwtService) {
         this.jwtService = jwtService;
-        this.userService = userService;
     }
     async canActivate(context) {
         const request = context.switchToHttp().getRequest();
@@ -33,8 +31,7 @@ let AuthGuard = class AuthGuard {
 };
 AuthGuard = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [jwt_1.JwtService,
-        users_service_1.UsersService])
+    __metadata("design:paramtypes", [jwt_1.JwtService])
 ], AuthGuard);
 exports.AuthGuard = AuthGuard;
 //# sourceMappingURL=auth.guard.js.map
