@@ -23,31 +23,16 @@ let AuthService = class AuthService {
         this.userRepository = userRepository;
         this.JWTService = JWTService;
     }
-    async loginOld(loginDto, response) {
-        const user = await this.userRepository.findOne({
-            username: loginDto.username,
-        });
-        if (!user) {
-            throw new common_1.BadRequestException('User not found or password incorrect');
-        }
-        const jwt = await this.JWTService.signAsync({ user });
-        console.log(jwt);
-        response.cookie('jwt', jwt, {
-            httpOnly: true,
-            sameSite: 'none',
-            secure: true,
-        });
-        return user;
-    }
     async login(loginDto, response) {
         const user = await this.userRepository.findOne({
             email: loginDto.email,
         });
-        console.log(user);
         if (!user) {
             throw new common_1.BadRequestException('E-Mail not found or password incorrect');
         }
+        console.log(await user.validatePassword(loginDto.password));
         if (!(await user.validatePassword(loginDto.password))) {
+            console.log(loginDto.password);
             throw new common_1.BadRequestException('User not found or password incorrect');
         }
         const jwt = await this.JWTService.signAsync({ user });

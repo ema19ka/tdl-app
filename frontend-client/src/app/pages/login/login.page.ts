@@ -34,12 +34,12 @@ export class LoginPage implements OnInit {
       try {
         this.userService.login(username,email,password).subscribe(
         data => {
-          // console.log(data['auth-token']);
+          console.log(data);
           this.router.navigate(['/home']);
         }
       );
       } catch(err) {
-        console.log(err);
+        console.log(err, 'err');
       }
     }
   }

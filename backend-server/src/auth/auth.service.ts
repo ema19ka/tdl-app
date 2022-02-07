@@ -12,46 +12,20 @@ export class AuthService {
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     private readonly JWTService: JwtService,
   ) {}
-  public async loginOld(loginDto: LoginDto, response: Response): Promise<any> {
-    // can force error with fiindOneOrFail
-    const user = await this.userRepository.findOne({
-      username: loginDto.username,
-    });
-    // check if user exist
-    if (!user) {
-      throw new BadRequestException('User not found or password incorrect');
-    }
-    // check if password is correct
-    // if (!(await user.validatePassword(loginDto.password))) {
-    //   throw new BadRequestException('User not found or password incorrect');
-    // }
-    // jwt implementieren
-    //token erzeugen
-    const jwt = await this.JWTService.signAsync({ user });
-    // cookie anhängen (an response)
-    console.log(jwt);
-    response.cookie('jwt', jwt, {
-      // name, payload, options des cookie
-      httpOnly: true, // damits am frontend nicht ausgelesen werden kanns
-      sameSite: 'none',
-      secure: true,
-    });
-    return user;
-  }
 
   public async login(loginDto: LoginDto, response: Response): Promise<any> {
     const user = await this.userRepository.findOne({
       email: loginDto.email,
     });
-    console.log(user);
+    // console.log(user);
     if (!user) {
       throw new BadRequestException('E-Mail not found or password incorrect');
     }
-    // if (user.password !== loginDto.password) {
-    //   throw new BadRequestException('User not found or password incorrect');
-    // }
+
+    console.log(await user.validatePassword(loginDto.password));
 
     if (!(await user.validatePassword(loginDto.password))) {
+      console.log(loginDto.password);
       throw new BadRequestException('User not found or password incorrect');
     }
 

@@ -25,6 +25,6 @@ export class AuthController {
     @Res({ passthrough: true }) response: Response, //gibt mir den response an jede methode weiter, express response
   ): Promise<any> {
     // return 'login';
-    return this.authService.loginOld(loginDto, response);
+    return this.authService.login(loginDto, response);
   }
 }

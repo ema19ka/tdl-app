@@ -8,10 +8,10 @@ const typeorm_1 = require("typeorm");
 class insertSampleUser1642587912778 {
     async up(queryRunner) {
         const user = new User_entity_1.User();
-        user.username = 'Testuser';
-        user.email = 'test@user.com';
+        user.username = 'User';
+        user.email = 'user@user.com';
         user.salt = await user.genSalt();
-        user.password = await user.hashPassword('asdf1234', user.salt);
+        user.password = await user.hashPassword('password', user.salt);
         user.id = '246181b3-29d4-4ecf-84f9-aa7246c33332';
         const user2 = new User_entity_1.User();
         user2.username = 'User 2';

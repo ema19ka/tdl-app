@@ -6,11 +6,11 @@ import { getConnection, MigrationInterface, QueryRunner } from 'typeorm';
 export class insertSampleUser1642587912778 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     const user = new User();
-    user.username = 'Testuser';
-    user.email = 'test@user.com';
+    user.username = 'User';
+    user.email = 'user@user.com';
     user.salt = await user.genSalt();
     // user.password = 'asdf1234';
-    user.password = await user.hashPassword('asdf1234', user.salt);
+    user.password = await user.hashPassword('password', user.salt);
     user.id = '246181b3-29d4-4ecf-84f9-aa7246c33332';
 
     const user2 = new User();

@@ -7,6 +7,5 @@ export declare class AuthService {
     private readonly userRepository;
     private readonly JWTService;
     constructor(userRepository: Repository<User>, JWTService: JwtService);
-    loginOld(loginDto: LoginDto, response: Response): Promise<any>;
     login(loginDto: LoginDto, response: Response): Promise<any>;
 }
