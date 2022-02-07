@@ -17,11 +17,21 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const User_entity_1 = require("./entity/User.entity");
+const bcrypt = require("bcrypt");
 let UsersService = class UsersService {
     constructor(userRepository) {
         this.userRepository = userRepository;
     }
     async registerUser(user) {
+        console.log(user);
+        const userInDb = await this.userRepository.findOne({
+            where: user.email,
+        });
+        if (userInDb) {
+            throw new common_1.HttpException('User already exists', common_1.HttpStatus.BAD_REQUEST);
+        }
+        user.salt = await bcrypt.genSalt();
+        user.password = await bcrypt.hash(user.password, user.salt);
         return await this.userRepository.save(user);
     }
 };

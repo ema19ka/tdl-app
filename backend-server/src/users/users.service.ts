@@ -14,17 +14,24 @@ export class UsersService {
   ) {}
 
   public async registerUser(user: User): Promise<User> {
-    // console.log(user.username);
-    // const userInDb = await this.userRepository.findOne({
-    //   where: user.username,
-    // });
-    // if (userInDb) {
-    //   throw new HttpException('User already exists', HttpStatus.BAD_REQUEST);
-    // }
-    // const salt = await user.genSalt();
-    // await user.hashPassowrd(user.password, salt);
+    console.log(user);
+    // console.log(user.password);
+    const userInDb = await this.userRepository.findOne({
+      where: user.email,
+    });
+    if (userInDb) {
+      throw new HttpException('User already exists', HttpStatus.BAD_REQUEST);
+    }
+    // const salt = await bcrypt.genSalt();
+
+    // const hash = await bcrypt.hash(user.password, salt);
+
+    user.salt = await bcrypt.genSalt();
+    user.password = await bcrypt.hash(user.password, user.salt);
+
+    // await user.hashPassword(user.password, salt);
     // console.log(test);
-    // user.password = test;
+    // user.password = 'test';
     return await this.userRepository.save(user);
     // return 'Register';
   }
