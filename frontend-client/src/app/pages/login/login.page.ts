@@ -32,9 +32,9 @@ export class LoginPage implements OnInit {
     } else {
       console.log(this.loginForm.value);
       try {
-        this.userService.login(username,email,password).subscribe(
-        data => {
-          console.log(data);
+        this.userService.login(username,email,password).then(
+        resp => {
+          console.log(resp);
           this.router.navigate(['/home']);
         }
       );
