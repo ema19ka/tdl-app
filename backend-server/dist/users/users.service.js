@@ -24,12 +24,6 @@ let UsersService = class UsersService {
     }
     async registerUser(user) {
         console.log(user);
-        const userInDb = await this.userRepository.findOne({
-            where: user.email,
-        });
-        if (userInDb) {
-            throw new common_1.HttpException('User already exists', common_1.HttpStatus.BAD_REQUEST);
-        }
         user.salt = await bcrypt.genSalt();
         user.password = await bcrypt.hash(user.password, user.salt);
         return await this.userRepository.save(user);

@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const bcrypt = require("bcrypt");
 const class_transformer_1 = require("class-transformer");
+const class_validator_1 = require("class-validator");
 const Category_entity_1 = require("../../categories/entity/Category.entity");
 const typeorm_1 = require("typeorm");
 let User = class User {
@@ -35,6 +36,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "username", void 0);
 __decorate([
+    (0, class_validator_1.IsEmail)(),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], User.prototype, "email", void 0);
