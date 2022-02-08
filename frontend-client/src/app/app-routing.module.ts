@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 // import { ExploreContainerComponentModule } from './explore-container/explore-container.component';
 
 const routes: Routes = [
@@ -35,10 +36,9 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
-  // {
-  //   path: '**', component: PageNotFoundComponent ,  // Wildcard route for a 404 page
-  // },
-  // {
+  {
+    path: '**', component: NotFoundComponent ,  // Wildcard route for a 404 page
+  },
   //   path: 'test',
   //   component: ExploreContainerComponentModule,
   // },
