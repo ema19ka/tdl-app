@@ -33,7 +33,7 @@ export class AuthController {
 
   @ApiOperation({ summary: 'User Logout' })
   @UseGuards(AuthGuard)
-  @Get('logout')
+  @Get('/logout')
   async logout(@Res() res: Response, @Req() req: Request) {
     if (req.cookies['jwt']) {
       res.clearCookie('jwt').status(200).json({

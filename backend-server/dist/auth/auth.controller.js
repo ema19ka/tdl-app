@@ -51,7 +51,7 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'User Logout' }),
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
-    (0, common_1.Get)('logout'),
+    (0, common_1.Get)('/logout'),
     __param(0, (0, common_1.Res)()),
     __param(1, (0, common_1.Req)()),
     __metadata("design:type", Function),
