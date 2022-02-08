@@ -7,18 +7,25 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./category-overview.page.scss'],
 })
 export class CategoryOverviewPage implements OnInit {
-  categoryData: any;
+  categoryData: any[];
+  responseArray: any[];
 
   constructor(public categoryService: CategoryService) {
     this.categoryData = [];
+    this.responseArray = [];
   }
 
   ngOnInit() {
-    // this.reload();
-    console.log(this.categoryService.currentCategory.catName);
-    this.categoryService.getCategory().subscribe(response => {
+    this.categoryService.getCategory().then(response => {
       console.log(response);
-      this.categoryData = response;
+      this.responseArray.push(response.data);
+      console.log(this.responseArray);
+
+      this.responseArray[0].forEach(element => {
+        this.categoryData.push(element.name);
+      });
+
+      console.log(this.categoryData);
     });
   }
 }

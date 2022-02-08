@@ -15,9 +15,10 @@ export class ListOverviewPage implements OnInit {
 
   ngOnInit() {
     console.log(this.listService.currentList.listName);
-    this.listService.getList().subscribe(response => {
+    this.listService.getList().then(response => {
       console.log(response);
-      this.listData = response;
+      this.listData.push(response.data[0].name);
+      console.log(this.listData);
     });
   }
 

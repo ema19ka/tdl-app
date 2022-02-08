@@ -36,7 +36,7 @@ export class CategoriesController {
   // }
 
   @ApiOperation({ summary: 'Display the users Category' })
-  // @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard)
   @Get('/overview/:id')
   async showCategories(@Param() param: CategoryQueryDto): Promise<Category[]> {
     // const userid = category.user.toString();
@@ -47,6 +47,7 @@ export class CategoriesController {
 
   // @ApiOperation({ summary: 'Get all Books' })
   @Get('/overview')
+  @UseGuards(AuthGuard)
   // @HttpCode(501)
   public dummyGetAllCat(): Promise<Category[]> {
     return this.categoriesService.testGetAllCat();

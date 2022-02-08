@@ -31,7 +31,7 @@ export class CategoryPage implements OnInit {
       return false;
     } else {
       console.log(this.addCategoryForm.value);
-      this.categoryService.add(catName).subscribe(
+      this.categoryService.add(catName).then(
         data => {
           console.log(data);
           this.router.navigate(['/category-overview']);

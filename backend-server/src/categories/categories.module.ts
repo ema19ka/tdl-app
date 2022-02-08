@@ -11,7 +11,7 @@ import { Category } from './entity/Category.entity';
     JwtModule.register({
       secret: '12341234',
       signOptions: {
-        expiresIn: '1m',
+        expiresIn: '24h',
       },
     }),
   ],

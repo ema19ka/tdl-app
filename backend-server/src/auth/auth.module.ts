@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
     JwtModule.register({
       secret: '12341234', // key mit dem jwt signiert wird, so safe wie möglich
       signOptions: {
-        expiresIn: '1m',
+        expiresIn: '24h',
       },
     }),
     TypeOrmModule.forFeature([User]),

@@ -29,26 +29,26 @@ export class insertSampleUser1642587912778 implements MigrationInterface {
     category.id = 'a8be0883-95db-4711-8cfc-c9b865fc8957';
     category.user = await userRepository.findOne(user.id);
 
-    // const category2 = new Category();
-    // category2.name = 'CategoryName2';
-    // category2.id = '027e9313-e42d-4386-9e8d-de7515f05125';
-    // category2.user = await userRepository.findOne(user2.id);
+    const category2 = new Category();
+    category2.name = 'CategoryName2';
+    category2.id = '027e9313-e42d-4386-9e8d-de7515f05125';
+    category2.user = await userRepository.findOne(user2.id);
 
-    // const category3 = new Category();
-    // category3.name = 'CategoryNameNew';
-    // category3.id = 'd874a5e0-febe-45dc-ab26-0055fa89e88e';
-    // category3.user = await userRepository.findOne(user2.id);
+    const category3 = new Category();
+    category3.name = 'CategoryNameNew';
+    category3.id = 'd874a5e0-febe-45dc-ab26-0055fa89e88e';
+    category3.user = await userRepository.findOne(user2.id);
 
-    // const category24 = new Category();
-    // category24.name = 'CategoryNameNew2';
-    // category24.id = '241abfe3-085e-4393-90b2-31c4a92c9ed4';
-    // category24.user = await userRepository.findOne(user2.id);
+    const category24 = new Category();
+    category24.name = 'CategoryNameNew2';
+    category24.id = '241abfe3-085e-4393-90b2-31c4a92c9ed4';
+    category24.user = await userRepository.findOne(user2.id);
 
     const categoryRepository = getConnection().getRepository(Category);
     categoryRepository.save(category);
-    // categoryRepository.save(category2);
-    // categoryRepository.save(category3);
-    // categoryRepository.save(category24);
+    categoryRepository.save(category2);
+    categoryRepository.save(category3);
+    categoryRepository.save(category24);
 
     const list = new List();
     list.name = 'ListName';

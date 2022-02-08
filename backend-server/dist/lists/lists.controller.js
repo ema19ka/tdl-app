@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListsController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
+const auth_guard_1 = require("../auth/auth.guard");
 const List_entity_1 = require("./entity/List.entity");
 const lists_service_1 = require("./lists.service");
 let ListsController = class ListsController {
@@ -30,6 +31,7 @@ let ListsController = class ListsController {
 };
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Add a list' }),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Post)('/add'),
     __param(0, (0, common_1.Body)(common_1.ValidationPipe)),
     __metadata("design:type", Function),
@@ -38,6 +40,7 @@ __decorate([
 ], ListsController.prototype, "addList", null);
 __decorate([
     (0, common_1.Get)('/overview'),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)

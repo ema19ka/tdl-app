@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import axios from 'axios';
 
-const AUTH_API = 'http://localhost:3000/';
+const API = 'http://localhost:3000/';
 
 const httpOptions = {
   headers: new HttpHeaders({ contentType: 'application/json' })
@@ -11,7 +11,7 @@ const httpOptions = {
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: AUTH_API
+  baseURL: API
 });
 
 @Injectable({
@@ -30,7 +30,7 @@ export class AuthService {
     });
   }
   register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post(AUTH_API + 'users/register', {
+    return this.http.post(API + 'users/register', {
       username,
       email,
       password,

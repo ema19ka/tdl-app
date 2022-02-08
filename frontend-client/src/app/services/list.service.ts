@@ -2,12 +2,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { List } from './List';
+import axios from 'axios';
 
 const LIST_API = 'http://localhost:3000/lists/';
 
 const httpOptions = {
   headers: new HttpHeaders({ contentType: 'application/json'})
 };
+
+const instance = axios.create({
+  withCredentials: true,
+  baseURL: LIST_API,
+});
 
 @Injectable({
   providedIn: 'root'
@@ -20,13 +26,11 @@ export class ListService {
 
   constructor(private http: HttpClient) { }
 
-  add(name: string): Observable<any> {
+  add(name: string) {
     console.log(name);
-    return this.http.post(LIST_API + 'add', {
-      name,
-    }, httpOptions);
+    return instance.post('add', { name });
   }
-  getList(): Observable<List> {
-    return this.http.get<List>(LIST_API + 'overview');
+  getList() {
+    return instance.get<List>('overview');
   }
 }

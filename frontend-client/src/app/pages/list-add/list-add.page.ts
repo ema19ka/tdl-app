@@ -28,9 +28,9 @@ export class ListAddPage implements OnInit {
       return false;
     } else {
       console.log(this.addListForm.value);
-      this.listService.add(listName).subscribe(
-        data => {
-          console.log(data);
+      this.listService.add(listName).then(
+        res => {
+          console.log(res);
           this.router.navigate(['/list-overview']);
         },
       );

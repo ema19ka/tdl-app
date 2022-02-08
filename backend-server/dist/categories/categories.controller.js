@@ -45,6 +45,7 @@ __decorate([
 ], CategoriesController.prototype, "addCategory", null);
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Display the users Category' }),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Get)('/overview/:id'),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
@@ -53,6 +54,7 @@ __decorate([
 ], CategoriesController.prototype, "showCategories", null);
 __decorate([
     (0, common_1.Get)('/overview'),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)

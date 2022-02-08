@@ -22,7 +22,7 @@ CategoriesModule = __decorate([
             jwt_1.JwtModule.register({
                 secret: '12341234',
                 signOptions: {
-                    expiresIn: '1m',
+                    expiresIn: '24h',
                 },
             }),
         ],
