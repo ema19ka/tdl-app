@@ -4,13 +4,14 @@ import {
   Controller,
   Get,
   Post,
+  Req,
   Res,
   UseGuards,
   UseInterceptors,
   ValidationPipe,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { Response } from 'express';
+import { Response, Request } from 'express';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dtos/Login.dto';
@@ -30,14 +31,18 @@ export class AuthController {
     return this.authService.login(loginDto, response);
   }
 
+  @ApiOperation({ summary: 'User Logout' })
   @UseGuards(AuthGuard)
   @Get('logout')
-  async logout(@Res() res: Response) {
-    // Some internal checks
-    // console.log(res);
-    res.setHeader('Set-Cookie', this.authService.getCookieForLogOut());
-    console.log(res);
-    return res.sendStatus(200);
-    // res.cookie('token', '', { expires: new Date() });
+  async logout(@Res() res: Response, @Req() req: Request) {
+    if (req.cookies['jwt']) {
+      res.clearCookie('jwt').status(200).json({
+        message: 'You have logged out',
+      });
+    } else {
+      res.status(401).json({
+        error: 'Invalid jwt',
+      });
+    }
   }
 }

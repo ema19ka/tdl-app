@@ -25,10 +25,17 @@ let AuthController = class AuthController {
     async login(loginDto, response) {
         return this.authService.login(loginDto, response);
     }
-    async logout(res) {
-        res.setHeader('Set-Cookie', this.authService.getCookieForLogOut());
-        console.log(res);
-        return res.sendStatus(200);
+    async logout(res, req) {
+        if (req.cookies['jwt']) {
+            res.clearCookie('jwt').status(200).json({
+                message: 'You have logged out',
+            });
+        }
+        else {
+            res.status(401).json({
+                error: 'Invalid jwt',
+            });
+        }
     }
 };
 __decorate([
@@ -42,11 +49,13 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'User Logout' }),
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Get)('logout'),
     __param(0, (0, common_1.Res)()),
+    __param(1, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "logout", null);
 AuthController = __decorate([
