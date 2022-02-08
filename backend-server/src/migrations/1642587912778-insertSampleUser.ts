@@ -32,12 +32,12 @@ export class insertSampleUser1642587912778 implements MigrationInterface {
     const category2 = new Category();
     category2.name = 'CategoryName2';
     category2.id = '027e9313-e42d-4386-9e8d-de7515f05125';
-    category2.user = await userRepository.findOne(user2.id);
+    category2.user = await userRepository.findOne(user.id);
 
     const category3 = new Category();
     category3.name = 'CategoryNameNew';
     category3.id = 'd874a5e0-febe-45dc-ab26-0055fa89e88e';
-    category3.user = await userRepository.findOne(user2.id);
+    category3.user = await userRepository.findOne(user.id);
 
     const category24 = new Category();
     category24.name = 'CategoryNameNew2';

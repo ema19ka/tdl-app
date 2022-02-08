@@ -21,6 +21,7 @@ async function bootstrap() {
   });
 
   app.use(cookieParser());
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   await app.listen(3000).then((d) => console.log('backend running'));
 }

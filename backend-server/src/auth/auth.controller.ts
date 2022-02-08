@@ -17,7 +17,7 @@ import { LoginDto } from './dtos/Login.dto';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @UseInterceptors(ClassSerializerInterceptor) // nur für diese methode, auch für ganzen controller möglich
+  @UseInterceptors(ClassSerializerInterceptor) // nur für diese methode, auch für ganzen controller möglich, because of exlude in entity
   @ApiOperation({ summary: 'User Login' })
   @Post('/login')
   protected async login(
