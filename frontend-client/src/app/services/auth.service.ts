@@ -21,9 +21,9 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, email: string, password: string) {
+  async login(username: string, email: string, password: string) {
     console.log(username,password,email);
-    return instance.post('auth/login', {
+    return await instance.post('auth/login', {
       username,
       email,
       password
@@ -40,5 +40,9 @@ export class AuthService {
 
   async test() {
     return await instance.get('users/all');
+  }
+
+  async logout() {
+    return await instance.get('auth/logout');
   }
 }

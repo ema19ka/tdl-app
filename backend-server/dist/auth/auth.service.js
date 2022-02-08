@@ -42,6 +42,9 @@ let AuthService = class AuthService {
         });
         return user;
     }
+    getCookieForLogOut() {
+        return `Authentication=; HttpOnly; Path=/; Max-Age=0`;
+    }
 };
 AuthService = __decorate([
     (0, common_1.Injectable)(),

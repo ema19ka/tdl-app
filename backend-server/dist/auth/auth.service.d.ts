@@ -8,4 +8,5 @@ export declare class AuthService {
     private readonly JWTService;
     constructor(userRepository: Repository<User>, JWTService: JwtService);
     login(loginDto: LoginDto, response: Response): Promise<any>;
+    getCookieForLogOut(): string;
 }
