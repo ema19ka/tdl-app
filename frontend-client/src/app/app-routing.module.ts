@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 // import { ExploreContainerComponentModule } from './explore-container/explore-container.component';
-// import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+    redirectTo: '/home', pathMatch: 'full'
   },
   {
     path: 'register',
@@ -37,13 +36,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   // {
+  //   path: '**', component: PageNotFoundComponent ,  // Wildcard route for a 404 page
+  // },
+  // {
   //   path: 'test',
   //   component: ExploreContainerComponentModule,
   // },
   // {
-  //   path: 'compLogin',
-  //   component: LoginComponent,
-  // },
 
 ];
 @NgModule({

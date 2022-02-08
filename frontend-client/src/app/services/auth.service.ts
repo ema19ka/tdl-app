@@ -18,10 +18,14 @@ const instance = axios.create({
   providedIn: 'root'
 })
 export class AuthService {
+  isLoggedIn = false;
+
+  redirectUrl: string | null = null;
 
   constructor(private http: HttpClient) { }
 
   async login(username: string, email: string, password: string) {
+    this.isLoggedIn = true;
     console.log(username,password,email);
     return await instance.post('auth/login', {
       username,
@@ -43,6 +47,7 @@ export class AuthService {
   }
 
   async logout() {
-    return await instance.get('auth/logout');
+    this.isLoggedIn = false;
+    return await axios.get('auth/logout');
   }
 }
