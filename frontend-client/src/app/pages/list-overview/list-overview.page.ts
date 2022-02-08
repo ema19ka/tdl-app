@@ -8,16 +8,22 @@ import { ListService } from 'src/app/services/list.service';
 })
 export class ListOverviewPage implements OnInit {
   listData: any;
+  responseArray: any[];
 
   constructor(public listService: ListService) {
     this.listData = [];
+    this.responseArray = [];
   }
 
   ngOnInit() {
     console.log(this.listService.currentList.listName);
     this.listService.getList().then(response => {
       console.log(response);
-      this.listData.push(response.data[0].name);
+      this.responseArray.push(response.data);
+
+      this.responseArray[0].forEach(element => {
+        this.listData.push(element.name);
+      });
       console.log(this.listData);
     });
   }

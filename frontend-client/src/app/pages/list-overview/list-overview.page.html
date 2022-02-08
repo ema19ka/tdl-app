@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>list-overview</ion-title>
+    <ion-title [routerLink]="['/home']">list-overview</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,7 +10,7 @@
   </ion-item>
 
   <ion-item *ngFor="let list of listData">
-    <ion-label>{{ list.name }}</ion-label>
+    <ion-label>{{ list }}</ion-label>
 
   </ion-item>
 
