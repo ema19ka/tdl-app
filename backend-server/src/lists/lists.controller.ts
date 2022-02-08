@@ -16,6 +16,7 @@ import { ListsService } from './lists.service';
 export class ListsController {
   constructor(private readonly listServices: ListsService) {}
 
+  // TODO: fix create
   @ApiOperation({ summary: 'Add a list' })
   @UseGuards(AuthGuard)
   @Post('/add')
@@ -23,10 +24,15 @@ export class ListsController {
     return this.listServices.addList(list);
   }
 
+  // TODO: fix read
   @Get('/overview')
   @UseGuards(AuthGuard)
   // @HttpCode(501)
   public dummyGetAllLists(): Promise<List[]> {
     return this.listServices.dummyGetAllLists();
   }
+
+  // TODO: update
+
+  // TODO: delete
 }
