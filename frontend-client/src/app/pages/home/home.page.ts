@@ -17,6 +17,7 @@ export class HomePage implements OnInit {
 
   onLogout() {
     console.log('test');
+    localStorage.removeItem('user');
     this.userService.logout();
     this.router.navigate(['/login']);
   }
