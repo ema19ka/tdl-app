@@ -18,10 +18,8 @@ let AuthGuard = class AuthGuard {
     }
     async canActivate(context) {
         const request = context.switchToHttp().getRequest();
-        console.log(request.cookies);
         try {
             const jwt = request.cookies['jwt'];
-            console.log(jwt);
             return this.jwtService.verify(jwt);
         }
         catch (error) {
