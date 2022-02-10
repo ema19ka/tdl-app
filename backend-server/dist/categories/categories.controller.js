@@ -18,12 +18,18 @@ const auth_guard_1 = require("../auth/auth.guard");
 const swagger_1 = require("@nestjs/swagger");
 const categories_service_1 = require("./categories.service");
 const Category_entity_1 = require("./entity/Category.entity");
+const AddCategory_dto_1 = require("./dtos/AddCategory.dto");
 let CategoriesController = class CategoriesController {
     constructor(categoriesService) {
         this.categoriesService = categoriesService;
     }
     async addCategory(category) {
         return this.categoriesService.addCategory(category);
+    }
+    async createCategory(category, req) {
+        console.log('req');
+        console.log(req.user);
+        return this.categoriesService.createCategory(category, req.user);
     }
 };
 __decorate([
@@ -35,6 +41,15 @@ __decorate([
     __metadata("design:paramtypes", [Category_entity_1.Category]),
     __metadata("design:returntype", Promise)
 ], CategoriesController.prototype, "addCategory", null);
+__decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Post)('/create'),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [AddCategory_dto_1.AddCategoryDto, Object]),
+    __metadata("design:returntype", Promise)
+], CategoriesController.prototype, "createCategory", null);
 CategoriesController = __decorate([
     (0, swagger_1.ApiTags)('Categories Controller'),
     (0, common_1.Controller)('categories'),

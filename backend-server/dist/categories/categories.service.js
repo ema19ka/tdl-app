@@ -24,6 +24,14 @@ let CategoriesService = class CategoriesService {
     async addCategory(category) {
         return await this.categoryRepository.save(category);
     }
+    async createCategory(category, userid) {
+        const newCategory = await this.categoryRepository.create(Object.assign(Object.assign({}, category), { user: userid }));
+        console.log('service');
+        console.log(userid);
+        console.log(category);
+        await this.categoryRepository.save(newCategory);
+        return newCategory;
+    }
 };
 CategoriesService = __decorate([
     (0, common_1.Injectable)(),

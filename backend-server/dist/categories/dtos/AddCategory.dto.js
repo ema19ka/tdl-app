@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AddCategoryDto = void 0;
 const class_validator_1 = require("class-validator");
+const User_entity_1 = require("../../users/entity/User.entity");
 class AddCategoryDto {
 }
 __decorate([
@@ -19,7 +20,7 @@ __decorate([
 ], AddCategoryDto.prototype, "name", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], AddCategoryDto.prototype, "userID", void 0);
+    __metadata("design:type", User_entity_1.User)
+], AddCategoryDto.prototype, "user", void 0);
 exports.AddCategoryDto = AddCategoryDto;
 //# sourceMappingURL=AddCategory.dto.js.map
