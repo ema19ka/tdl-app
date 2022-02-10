@@ -5,10 +5,12 @@ import {
   Get,
   ValidationPipe,
   UseGuards,
+  Param,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { User } from './entity/User.entity';
+import { RegisterUserDto } from './dtos/RegisterUser.dto';
 import { UsersService } from './users.service';
 @ApiTags('Users Controller')
 @Controller('users')
@@ -28,8 +30,15 @@ export class UsersController {
     return 'true';
   }
 
-  // @Get('/categories')
-  // getCategories(@Param('userid') userid: string): Promise<Category> {
-  //   return this.usersService.getCategoriesOfUser(userid);
+  @UseGuards(AuthGuard)
+  @Get('/categories/:id')
+  getCategories(@Param() params: RegisterUserDto): Promise<User> {
+    return this.usersService.getCategoriesOfUser(params.id);
+  }
+
+  // @ApiOperation({ summary: 'Get Book by given ID' })
+  // @Get('/:id')
+  // public async getBookByID(@Param() params: BooksQueryDto): Promise<Book> {
+  //   return this.booksService.getBookByID(params.id);
   // }
 }

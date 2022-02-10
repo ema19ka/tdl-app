@@ -17,7 +17,7 @@ export class insertSampleUser1642587912778 implements MigrationInterface {
     user2.username = 'User 2';
     user2.email = 'user2@user.com';
     user2.salt = await user.genSalt();
-    user2.password = await user.hashPassword('asdf1234', user.salt);
+    user2.password = await user.hashPassword('asdf1234', user2.salt);
     user2.id = '6fcd6e60-b80c-41ca-ba4d-1dbe605ffc9e';
 
     const userRepository = getConnection().getRepository(User);
@@ -25,22 +25,22 @@ export class insertSampleUser1642587912778 implements MigrationInterface {
     await userRepository.save(user2);
 
     const category = new Category();
-    category.name = 'CategoryName';
+    category.name = 'User 1 Category 1';
     category.id = 'a8be0883-95db-4711-8cfc-c9b865fc8957';
     category.user = await userRepository.findOne(user.id);
 
     const category2 = new Category();
-    category2.name = 'CategoryName2';
+    category2.name = 'User 1 Category 2';
     category2.id = '027e9313-e42d-4386-9e8d-de7515f05125';
     category2.user = await userRepository.findOne(user.id);
 
     const category3 = new Category();
-    category3.name = 'CategoryNameNew';
+    category3.name = 'User 1 Category 3';
     category3.id = 'd874a5e0-febe-45dc-ab26-0055fa89e88e';
     category3.user = await userRepository.findOne(user.id);
 
     const category24 = new Category();
-    category24.name = 'CategoryNameNew2';
+    category24.name = 'User 2 Category 1';
     category24.id = '241abfe3-085e-4393-90b2-31c4a92c9ed4';
     category24.user = await userRepository.findOne(user2.id);
 

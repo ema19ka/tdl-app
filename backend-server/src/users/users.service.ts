@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { RegisterUserDto } from './dtos/RegisterUser.dto';
 import { User } from './entity/User.entity';
 import * as bcrypt from 'bcrypt';
+import { Response } from 'express';
 // import { Category } from 'src/categories/entity/Category.entity';
 
 @Injectable()
@@ -22,8 +23,7 @@ export class UsersService {
     return await this.userRepository.save(user);
   }
 
-  // public async getCategoriesOfUser(userId: string): Promise<Category> {
-  //   this.categoryRepository. = await this.userRepository.findOne(userId);
-
-  // }
+  public async getCategoriesOfUser(userId: string): Promise<User> {
+    return await this.userRepository.findOne(userId);
+  }
 }

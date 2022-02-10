@@ -28,6 +28,9 @@ let UsersService = class UsersService {
         user.password = await bcrypt.hash(user.password, user.salt);
         return await this.userRepository.save(user);
     }
+    async getCategoriesOfUser(userId) {
+        return await this.userRepository.findOne(userId);
+    }
 };
 UsersService = __decorate([
     (0, common_1.Injectable)(),

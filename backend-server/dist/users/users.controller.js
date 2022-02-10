@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const auth_guard_1 = require("../auth/auth.guard");
 const User_entity_1 = require("./entity/User.entity");
+const RegisterUser_dto_1 = require("./dtos/RegisterUser.dto");
 const users_service_1 = require("./users.service");
 let UsersController = class UsersController {
     constructor(usersService) {
@@ -27,6 +28,9 @@ let UsersController = class UsersController {
     }
     getAllUsers() {
         return 'true';
+    }
+    getCategories(params) {
+        return this.usersService.getCategoriesOfUser(params.id);
     }
 };
 __decorate([
@@ -44,6 +48,14 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getAllUsers", null);
+__decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Get)('/categories/:id'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [RegisterUser_dto_1.RegisterUserDto]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "getCategories", null);
 UsersController = __decorate([
     (0, swagger_1.ApiTags)('Users Controller'),
     (0, common_1.Controller)('users'),
