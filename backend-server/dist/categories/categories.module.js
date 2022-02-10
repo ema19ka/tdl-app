@@ -10,6 +10,9 @@ exports.CategoriesModule = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const typeorm_1 = require("@nestjs/typeorm");
+const User_entity_1 = require("../users/entity/User.entity");
+const users_controller_1 = require("../users/users.controller");
+const users_service_1 = require("../users/users.service");
 const categories_controller_1 = require("./categories.controller");
 const categories_service_1 = require("./categories.service");
 const Category_entity_1 = require("./entity/Category.entity");
@@ -18,7 +21,7 @@ let CategoriesModule = class CategoriesModule {
 CategoriesModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            typeorm_1.TypeOrmModule.forFeature([Category_entity_1.Category]),
+            typeorm_1.TypeOrmModule.forFeature([Category_entity_1.Category, User_entity_1.User]),
             jwt_1.JwtModule.register({
                 secret: '12341234',
                 signOptions: {
@@ -26,8 +29,8 @@ CategoriesModule = __decorate([
                 },
             }),
         ],
-        controllers: [categories_controller_1.CategoriesController],
-        providers: [categories_service_1.CategoriesService],
+        controllers: [categories_controller_1.CategoriesController, users_controller_1.UsersController],
+        providers: [categories_service_1.CategoriesService, users_service_1.UsersService],
     })
 ], CategoriesModule);
 exports.CategoriesModule = CategoriesModule;

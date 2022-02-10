@@ -24,19 +24,6 @@ let CategoriesService = class CategoriesService {
     async addCategory(category) {
         return await this.categoryRepository.save(category);
     }
-    async createCategory(category, user) {
-        const newCat = await this.categoryRepository.create(Object.assign(Object.assign({}, category), { user: user }));
-        return await this.categoryRepository.save(newCat);
-    }
-    async testGetAllCat() {
-        return await this.categoryRepository.find({ relations: ['user'] });
-    }
-    async showAllCategoriesByUserId(userid) {
-        return await this.categoryRepository
-            .createQueryBuilder('category')
-            .where('category.userid = :userid', { userid })
-            .getMany();
-    }
 };
 CategoriesService = __decorate([
     (0, common_1.Injectable)(),

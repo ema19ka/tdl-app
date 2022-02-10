@@ -1,9 +1,7 @@
 import {
   Body,
   Controller,
-  Get,
   Post,
-  Param,
   UseGuards,
   ValidationPipe,
 } from '@nestjs/common';
@@ -25,14 +23,6 @@ export class CategoriesController {
     @Body(ValidationPipe) category: Category,
   ): Promise<Category> {
     return this.categoriesService.addCategory(category);
-  }
-  // TODO: fix read
-  // @ApiOperation({ summary: 'Get all Books' })
-  @Get('/overview')
-  @UseGuards(AuthGuard)
-  // @HttpCode(501)
-  public dummyGetAllCat(): Promise<Category[]> {
-    return this.categoriesService.testGetAllCat();
   }
   // TODO: update
   // TODO: delete
