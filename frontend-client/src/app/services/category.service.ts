@@ -6,7 +6,7 @@ import { Category } from './Category';
 import axios from 'axios';
 
 
-const CATEGORY_API = 'http://localhost:3000/categories/';
+const CATEGORY_API = 'http://localhost:3000/';
 
 const httpOptions = {
   headers: new HttpHeaders({ contentType: 'application/json'})
@@ -30,11 +30,11 @@ export class CategoryService {
 
   add(name: string) {
     console.log(name);
-    return instance.post('add', { name });
+    return instance.post('categories/add', { name });
   }
 
-  getCategory() {
-    return instance.get<Category>('overview');
+  getCategory(id: string) {
+    return instance.get(`users/categories/${id}`);
   }
 
 

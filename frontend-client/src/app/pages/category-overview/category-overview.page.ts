@@ -16,12 +16,14 @@ export class CategoryOverviewPage implements OnInit {
   }
 
   ngOnInit() {
-    this.categoryService.getCategory().then(response => {
+    const userId = localStorage.getItem('user');
+    console.log(userId);
+    this.categoryService.getCategory(userId).then(response => {
       console.log(response);
       this.responseArray.push(response.data);
       console.log(this.responseArray);
 
-      this.responseArray[0].forEach(element => {
+      this.responseArray[0].category.forEach(element => {
         this.categoryData.push(element.name);
       });
 
