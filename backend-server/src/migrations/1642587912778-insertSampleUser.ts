@@ -45,10 +45,10 @@ export class insertSampleUser1642587912778 implements MigrationInterface {
     category24.user = await userRepository.findOne(user2.id);
 
     const categoryRepository = getConnection().getRepository(Category);
-    categoryRepository.save(category);
-    categoryRepository.save(category2);
-    categoryRepository.save(category3);
-    categoryRepository.save(category24);
+    await categoryRepository.save(category);
+    // categoryRepository.save(category2);
+    // categoryRepository.save(category3);
+    // categoryRepository.save(category24);
 
     const list = new List();
     list.name = 'ListName';
@@ -56,7 +56,7 @@ export class insertSampleUser1642587912778 implements MigrationInterface {
     list.category = await categoryRepository.findOne(category.id);
 
     const listRepository = getConnection().getRepository(List);
-    listRepository.save(list);
+    await listRepository.save(list);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {}

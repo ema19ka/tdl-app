@@ -39,7 +39,7 @@ __decorate([
     __metadata("design:type", Number)
 ], List.prototype, "version", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => Category_entity_1.Category, (category) => category.lists),
+    (0, typeorm_1.ManyToOne)(() => Category_entity_1.Category, (category) => category.lists, { cascade: true }),
     __metadata("design:type", Category_entity_1.Category)
 ], List.prototype, "category", void 0);
 List = __decorate([

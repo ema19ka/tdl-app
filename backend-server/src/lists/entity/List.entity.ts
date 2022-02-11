@@ -32,6 +32,6 @@ export class List {
   @VersionColumn()
   version: number;
 
-  @ManyToOne(() => Category, (category) => category.lists)
+  @ManyToOne(() => Category, (category) => category.lists, { cascade: true })
   category: Category;
 }

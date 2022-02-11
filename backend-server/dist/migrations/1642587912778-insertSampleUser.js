@@ -39,16 +39,13 @@ class insertSampleUser1642587912778 {
         category24.id = '241abfe3-085e-4393-90b2-31c4a92c9ed4';
         category24.user = await userRepository.findOne(user2.id);
         const categoryRepository = (0, typeorm_1.getConnection)().getRepository(Category_entity_1.Category);
-        categoryRepository.save(category);
-        categoryRepository.save(category2);
-        categoryRepository.save(category3);
-        categoryRepository.save(category24);
+        await categoryRepository.save(category);
         const list = new List_entity_1.List();
         list.name = 'ListName';
         list.id = '241abfe3-085e-4393-90b2-31c4a92c9ed4';
         list.category = await categoryRepository.findOne(category.id);
         const listRepository = (0, typeorm_1.getConnection)().getRepository(List_entity_1.List);
-        listRepository.save(list);
+        await listRepository.save(list);
     }
     async down(queryRunner) { }
 }

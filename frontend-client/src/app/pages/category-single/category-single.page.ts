@@ -9,6 +9,7 @@ import { ListService } from 'src/app/services/list.service';
 export class CategorySinglePage implements OnInit {
   listData: any[];
   responseArray: any[];
+  categoriesName: string;
 
   constructor(public listService: ListService) { 
     this.listData = [];
@@ -20,6 +21,7 @@ export class CategorySinglePage implements OnInit {
     console.log(categoryId);
     this.listService.getList(categoryId).then(response => {
       console.log(response);
+      this.categoriesName = response.data.name;
       this.responseArray.push(response.data);
       console.log(this.responseArray);
 
