@@ -10,6 +10,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { List } from './entity/List.entity';
 import { ListsService } from './lists.service';
+import { AddListDto } from './dtos/AddList.dto';
 
 @ApiTags('Lists Controller')
 @Controller('lists')
@@ -19,18 +20,14 @@ export class ListsController {
   // TODO: fix create
   @ApiOperation({ summary: 'Add a list' })
   @UseGuards(AuthGuard)
-  @Post('/add')
-  async addList(@Body(ValidationPipe) list: List): Promise<List> {
-    return this.listServices.addList(list);
+  @Post('/create')
+  async createCategory(
+    @Body(ValidationPipe) createDto: AddListDto,
+  ): Promise<any> {
+    return this.listServices.createList(createDto);
   }
 
   // TODO: fix read
-  @Get('/overview')
-  @UseGuards(AuthGuard)
-  // @HttpCode(501)
-  public dummyGetAllLists(): Promise<List[]> {
-    return this.listServices.dummyGetAllLists();
-  }
 
   // TODO: update
 

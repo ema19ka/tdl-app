@@ -10,6 +10,7 @@ exports.ListsModule = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const typeorm_1 = require("@nestjs/typeorm");
+const Category_entity_1 = require("../categories/entity/Category.entity");
 const List_entity_1 = require("./entity/List.entity");
 const lists_controller_1 = require("./lists.controller");
 const lists_service_1 = require("./lists.service");
@@ -18,7 +19,7 @@ let ListsModule = class ListsModule {
 ListsModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            typeorm_1.TypeOrmModule.forFeature([List_entity_1.List]),
+            typeorm_1.TypeOrmModule.forFeature([List_entity_1.List, Category_entity_1.Category]),
             jwt_1.JwtModule.register({
                 secret: '12341234',
                 signOptions: {

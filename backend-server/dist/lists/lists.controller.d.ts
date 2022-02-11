@@ -1,8 +1,7 @@
-import { List } from './entity/List.entity';
 import { ListsService } from './lists.service';
+import { AddListDto } from './dtos/AddList.dto';
 export declare class ListsController {
     private readonly listServices;
     constructor(listServices: ListsService);
-    addList(list: List): Promise<List>;
-    dummyGetAllLists(): Promise<List[]>;
+    createCategory(createDto: AddListDto): Promise<any>;
 }

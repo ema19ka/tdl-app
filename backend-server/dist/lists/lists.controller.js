@@ -16,35 +16,25 @@ exports.ListsController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const auth_guard_1 = require("../auth/auth.guard");
-const List_entity_1 = require("./entity/List.entity");
 const lists_service_1 = require("./lists.service");
+const AddList_dto_1 = require("./dtos/AddList.dto");
 let ListsController = class ListsController {
     constructor(listServices) {
         this.listServices = listServices;
     }
-    async addList(list) {
-        return this.listServices.addList(list);
-    }
-    dummyGetAllLists() {
-        return this.listServices.dummyGetAllLists();
+    async createCategory(createDto) {
+        return this.listServices.createList(createDto);
     }
 };
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Add a list' }),
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
-    (0, common_1.Post)('/add'),
+    (0, common_1.Post)('/create'),
     __param(0, (0, common_1.Body)(common_1.ValidationPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [List_entity_1.List]),
+    __metadata("design:paramtypes", [AddList_dto_1.AddListDto]),
     __metadata("design:returntype", Promise)
-], ListsController.prototype, "addList", null);
-__decorate([
-    (0, common_1.Get)('/overview'),
-    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], ListsController.prototype, "dummyGetAllLists", null);
+], ListsController.prototype, "createCategory", null);
 ListsController = __decorate([
     (0, swagger_1.ApiTags)('Lists Controller'),
     (0, common_1.Controller)('lists'),

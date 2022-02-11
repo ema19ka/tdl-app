@@ -15,24 +15,29 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListsService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
+const Category_entity_1 = require("../categories/entity/Category.entity");
 const typeorm_2 = require("typeorm");
 const List_entity_1 = require("./entity/List.entity");
 let ListsService = class ListsService {
-    constructor(listRepository) {
+    constructor(listRepository, categoryRepository) {
         this.listRepository = listRepository;
+        this.categoryRepository = categoryRepository;
     }
-    async addList(list) {
-        console.log(list);
-        return await this.listRepository.save(list);
-    }
-    async dummyGetAllLists() {
-        return await this.listRepository.find();
+    async createList(createDto) {
+        const category = await this.categoryRepository.findOne(createDto.category);
+        const list = this.listRepository.create({
+            name: createDto.name,
+            category: category,
+        });
+        return this.listRepository.save(list);
     }
 };
 ListsService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(List_entity_1.List)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __param(1, (0, typeorm_1.InjectRepository)(Category_entity_1.Category)),
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository])
 ], ListsService);
 exports.ListsService = ListsService;
 //# sourceMappingURL=lists.service.js.map
