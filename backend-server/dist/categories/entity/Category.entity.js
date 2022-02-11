@@ -40,7 +40,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Category.prototype, "version", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => User_entity_1.User, (user) => user.category),
+    (0, typeorm_1.ManyToOne)(() => User_entity_1.User, (user) => user.category, { cascade: true }),
     __metadata("design:type", User_entity_1.User)
 ], Category.prototype, "user", void 0);
 __decorate([

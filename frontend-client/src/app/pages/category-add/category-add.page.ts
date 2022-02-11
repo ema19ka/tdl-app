@@ -24,6 +24,7 @@ export class CategoryPage implements OnInit {
 
   onAddCategory(){
     // console.log(this.category.name);
+    const userid = localStorage.getItem('user');
     const { catName } = this.addCategoryForm.value;
     this.submitted = true;
     if (!this.addCategoryForm.valid) {
@@ -31,7 +32,7 @@ export class CategoryPage implements OnInit {
       return false;
     } else {
       console.log(this.addCategoryForm.value);
-      this.categoryService.add(catName).then(
+      this.categoryService.add(catName, userid).then(
         data => {
           console.log(data);
           this.router.navigate(['/category-overview']);

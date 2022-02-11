@@ -28,9 +28,9 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  add(name: string) {
+  add(name: string, user: string) {
     console.log(name);
-    return instance.post('categories/add', { name });
+    return instance.post('categories/test', { name, user });
   }
 
   getCategory(id: string) {

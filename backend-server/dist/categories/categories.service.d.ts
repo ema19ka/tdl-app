@@ -4,7 +4,9 @@ import { AddCategoryDto } from './dtos/AddCategory.dto';
 import { Category } from './entity/Category.entity';
 export declare class CategoriesService {
     private categoryRepository;
-    constructor(categoryRepository: Repository<Category>);
+    private userRepository;
+    constructor(categoryRepository: Repository<Category>, userRepository: Repository<User>);
     addCategory(category: Category): Promise<Category>;
     createCategory(category: AddCategoryDto, userid: User): Promise<Category>;
+    testCreate(createDto: AddCategoryDto): Promise<any>;
 }

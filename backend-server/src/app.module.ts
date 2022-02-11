@@ -21,7 +21,7 @@ import { ListsModule } from './lists/lists.module';
       migrations: ['dist/migrations/**/*.js'],
       migrationsRun: true,
       synchronize: true,
-      logging: true,
+      // logging: true,
       dropSchema: true,
     }),
     AuthModule,

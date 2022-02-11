@@ -32,7 +32,6 @@ AppModule = __decorate([
                 migrations: ['dist/migrations/**/*.js'],
                 migrationsRun: true,
                 synchronize: true,
-                logging: true,
                 dropSchema: true,
             }),
             auth_module_1.AuthModule,

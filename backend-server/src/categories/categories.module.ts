@@ -3,6 +3,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/users/entity/User.entity';
 import { UsersController } from 'src/users/users.controller';
+import { UsersModule } from 'src/users/users.module';
 import { UsersService } from 'src/users/users.service';
 import { CategoriesController } from './categories.controller';
 import { CategoriesService } from './categories.service';
@@ -18,7 +19,7 @@ import { Category } from './entity/Category.entity';
       },
     }),
   ],
-  controllers: [CategoriesController, UsersController],
-  providers: [CategoriesService, UsersService],
+  controllers: [CategoriesController],
+  providers: [CategoriesService],
 })
 export class CategoriesModule {}

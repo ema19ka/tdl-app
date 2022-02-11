@@ -35,7 +35,7 @@ export class Category {
   @VersionColumn()
   version: number;
 
-  @ManyToOne(() => User, (user) => user.category)
+  @ManyToOne(() => User, (user) => user.category, { cascade: true })
   user: User;
 
   @OneToMany(() => List, (list) => list.category, { eager: true })

@@ -30,6 +30,7 @@ export class UsersController {
     return 'true';
   }
 
+  // TODO: rename get user
   @UseGuards(AuthGuard)
   @Get('/categories/:id')
   getCategories(@Param() params: RegisterUserDto): Promise<User> {

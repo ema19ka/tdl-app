@@ -7,4 +7,5 @@ export declare class CategoriesController {
     constructor(categoriesService: CategoriesService);
     addCategory(category: Category): Promise<Category>;
     createCategory(category: AddCategoryDto, req: RequestWithUser): Promise<Category>;
+    testCreate(createDto: AddCategoryDto): Promise<any>;
 }

@@ -15,11 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CategoriesService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
+const User_entity_1 = require("../users/entity/User.entity");
 const typeorm_2 = require("typeorm");
 const Category_entity_1 = require("./entity/Category.entity");
 let CategoriesService = class CategoriesService {
-    constructor(categoryRepository) {
+    constructor(categoryRepository, userRepository) {
         this.categoryRepository = categoryRepository;
+        this.userRepository = userRepository;
     }
     async addCategory(category) {
         return await this.categoryRepository.save(category);
@@ -32,11 +34,21 @@ let CategoriesService = class CategoriesService {
         await this.categoryRepository.save(newCategory);
         return newCategory;
     }
+    async testCreate(createDto) {
+        const user = await this.userRepository.findOne(createDto.user);
+        const cat = this.categoryRepository.create({
+            name: createDto.name,
+            user: user,
+        });
+        return this.categoryRepository.save(cat);
+    }
 };
 CategoriesService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(Category_entity_1.Category)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __param(1, (0, typeorm_1.InjectRepository)(User_entity_1.User)),
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository])
 ], CategoriesService);
 exports.CategoriesService = CategoriesService;
 //# sourceMappingURL=categories.service.js.map

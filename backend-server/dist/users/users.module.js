@@ -10,6 +10,7 @@ exports.UsersModule = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const typeorm_1 = require("@nestjs/typeorm");
+const categories_module_1 = require("../categories/categories.module");
 const Category_entity_1 = require("../categories/entity/Category.entity");
 const User_entity_1 = require("./entity/User.entity");
 const users_controller_1 = require("./users.controller");
@@ -26,6 +27,7 @@ UsersModule = __decorate([
                 },
             }),
             typeorm_1.TypeOrmModule.forFeature([User_entity_1.User, Category_entity_1.Category]),
+            categories_module_1.CategoriesModule,
         ],
         controllers: [users_controller_1.UsersController],
         providers: [users_service_1.UsersService],

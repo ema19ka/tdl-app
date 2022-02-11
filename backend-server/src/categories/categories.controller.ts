@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Param,
   Post,
   Req,
   UseGuards,
@@ -14,6 +15,7 @@ import { Request } from 'express';
 import { AddCategoryDto } from './dtos/AddCategory.dto';
 import { User } from 'src/users/entity/User.entity';
 import RequestWithUser from 'src/auth/requestWithUser.interface';
+import { RegisterUserDto } from 'src/users/dtos/RegisterUser.dto';
 
 @ApiTags('Categories Controller')
 @Controller('categories')
@@ -42,5 +44,28 @@ export class CategoriesController {
     console.log('req');
     console.log(req.user);
     return this.categoriesService.createCategory(category, req.user);
+  }
+
+  // @UseGuards(AuthGuard)
+  // @Post('/test')
+  // async testCreate(
+  //   @Body(ValidationPipe)
+  //   category: Category,
+  //   params: string,
+  // ): Promise<Category> {
+  //   // console.log(user, category);
+  //   // return 'test';
+  //   console.log('controller');
+  //   console.log(category);
+  //   console.log(params);
+  //   return this.categoriesService.testCreate(category, params);
+  // }
+
+  @UseGuards(AuthGuard)
+  @Post('/test')
+  async testCreate(
+    @Body(ValidationPipe) createDto: AddCategoryDto,
+  ): Promise<any> {
+    return this.categoriesService.testCreate(createDto);
   }
 }
