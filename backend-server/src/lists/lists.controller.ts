@@ -21,9 +21,7 @@ export class ListsController {
   @ApiOperation({ summary: 'Add a list' })
   @UseGuards(AuthGuard)
   @Post('/create')
-  async createCategory(
-    @Body(ValidationPipe) createDto: AddListDto,
-  ): Promise<any> {
+  async createList(@Body(ValidationPipe) createDto: AddListDto): Promise<any> {
     return this.listServices.createList(createDto);
   }
 

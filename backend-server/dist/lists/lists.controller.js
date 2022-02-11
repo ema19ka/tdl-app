@@ -22,7 +22,7 @@ let ListsController = class ListsController {
     constructor(listServices) {
         this.listServices = listServices;
     }
-    async createCategory(createDto) {
+    async createList(createDto) {
         return this.listServices.createList(createDto);
     }
 };
@@ -34,7 +34,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [AddList_dto_1.AddListDto]),
     __metadata("design:returntype", Promise)
-], ListsController.prototype, "createCategory", null);
+], ListsController.prototype, "createList", null);
 ListsController = __decorate([
     (0, swagger_1.ApiTags)('Lists Controller'),
     (0, common_1.Controller)('lists'),

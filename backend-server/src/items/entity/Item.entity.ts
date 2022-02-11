@@ -1,5 +1,5 @@
-import { Category } from 'src/categories/entity/Category.entity';
-import { Item } from 'src/items/entity/Item.entity';
+import { List } from 'src/lists/entity/List.entity';
+
 import {
   Column,
   CreateDateColumn,
@@ -11,8 +11,9 @@ import {
   UpdateDateColumn,
   VersionColumn,
 } from 'typeorm';
+
 @Entity()
-export class List {
+export class Item {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -34,9 +35,6 @@ export class List {
   @VersionColumn()
   version: number;
 
-  @ManyToOne(() => Category, (category) => category.lists)
-  category: Category;
-
-  @OneToMany(() => Item, (item) => item.list, { eager: true })
-  items: Item[];
+  @ManyToOne(() => List, (list) => list.items)
+  list: List;
 }

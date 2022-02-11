@@ -1,4 +1,5 @@
 import { Category } from 'src/categories/entity/Category.entity';
+import { Item } from 'src/items/entity/Item.entity';
 import { List } from 'src/lists/entity/List.entity';
 import { User } from 'src/users/entity/User.entity';
 import { getConnection, MigrationInterface, QueryRunner } from 'typeorm';
@@ -57,6 +58,14 @@ export class insertSampleUser1642587912778 implements MigrationInterface {
 
     const listRepository = getConnection().getRepository(List);
     await listRepository.save(list);
+
+    const item = new Item();
+    item.name = 'ItemName';
+    item.id = '06823a29-ee09-43a0-bba3-e4c71f61f886';
+    item.list = await listRepository.findOne(list.id);
+
+    const itemRepository = getConnection().getRepository(Item);
+    await itemRepository.save(item);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {}

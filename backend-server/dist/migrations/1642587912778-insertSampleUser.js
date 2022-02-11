@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.insertSampleUser1642587912778 = void 0;
 const Category_entity_1 = require("../categories/entity/Category.entity");
+const Item_entity_1 = require("../items/entity/Item.entity");
 const List_entity_1 = require("../lists/entity/List.entity");
 const User_entity_1 = require("../users/entity/User.entity");
 const typeorm_1 = require("typeorm");
@@ -46,6 +47,12 @@ class insertSampleUser1642587912778 {
         list.category = await categoryRepository.findOne(category.id);
         const listRepository = (0, typeorm_1.getConnection)().getRepository(List_entity_1.List);
         await listRepository.save(list);
+        const item = new Item_entity_1.Item();
+        item.name = 'ItemName';
+        item.id = '06823a29-ee09-43a0-bba3-e4c71f61f886';
+        item.list = await listRepository.findOne(list.id);
+        const itemRepository = (0, typeorm_1.getConnection)().getRepository(Item_entity_1.Item);
+        await itemRepository.save(item);
     }
     async down(queryRunner) { }
 }
