@@ -24,10 +24,18 @@ export class CategoryOverviewPage implements OnInit {
       console.log(this.responseArray);
 
       this.responseArray[0].category.forEach(element => {
-        this.categoryData.push(element.name);
+        this.categoryData.push({
+          name: element.name,
+          id: element.id
+        });
       });
 
       console.log(this.categoryData);
     });
+  }
+
+  currentCategory(id){
+    console.log(id);
+    localStorage.setItem('category', id);
   }
 }

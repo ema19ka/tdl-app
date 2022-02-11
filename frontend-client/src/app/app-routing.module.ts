@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/category-overview/category-overview.module').then( m => m.CategoryOverviewPageModule)
   },
   {
+    path: 'category-single',
+    loadChildren: () => import('./pages/category-single/category-single.module').then( m => m.CategorySinglePageModule)
+  },
+  {
     path: 'list-add',
     loadChildren: () => import('./pages/list-add/list-add.module').then( m => m.ListAddPageModule)
   },

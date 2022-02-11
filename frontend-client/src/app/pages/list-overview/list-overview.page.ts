@@ -16,16 +16,16 @@ export class ListOverviewPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.listService.currentList.listName);
-    this.listService.getList().then(response => {
-      console.log(response);
-      this.responseArray.push(response.data);
+    // console.log(this.listService.currentList.listName);
+    // this.listService.getList().then(response => {
+    //   console.log(response);
+    //   this.responseArray.push(response.data);
 
-      this.responseArray[0].forEach(element => {
-        this.listData.push(element.name);
-      });
-      console.log(this.listData);
-    });
+    //   this.responseArray[0].forEach(element => {
+    //     this.listData.push(element.name);
+    //   });
+    //   console.log(this.listData);
+    // });
   }
 
 }

@@ -13,7 +13,7 @@
   </ion-item>
 
   <ion-item *ngFor="let category of categoryData">
-    <ion-label>{{ category }}</ion-label>
+    <ion-label [routerLink]="['/category-single']" (click)="currentCategory(category.id)">{{ category.name }}</ion-label>
 
   </ion-item>
 </ion-content>

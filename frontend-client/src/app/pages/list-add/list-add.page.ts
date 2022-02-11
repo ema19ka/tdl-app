@@ -22,13 +22,14 @@ export class ListAddPage implements OnInit {
 
   onAddList() {
     const { listName } = this.addListForm.value;
+    const category = localStorage.getItem('category');
     this.submitted = true;
     if(!this.addListForm.valid) {
       console.log('All fields required.');
       return false;
     } else {
       console.log(this.addListForm.value);
-      this.listService.add(listName).then(
+      this.listService.add(listName, category).then(
         res => {
           console.log(res);
           this.router.navigate(['/list-overview']);

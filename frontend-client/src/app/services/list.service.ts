@@ -1,14 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { List } from './List';
 import axios from 'axios';
 
 const LIST_API = 'http://localhost:3000/lists/';
-
-const httpOptions = {
-  headers: new HttpHeaders({ contentType: 'application/json'})
-};
 
 const instance = axios.create({
   withCredentials: true,
@@ -20,17 +13,11 @@ const instance = axios.create({
 })
 export class ListService {
 
-  public currentList: List = {
-    listName: 'ListName',
-  };
-
-  constructor(private http: HttpClient) { }
-
-  add(name: string) {
+  add(name: string, category: string) {
     console.log(name);
-    return instance.post('add', { name });
+    return instance.post('create', { name, category });
   }
-  getList() {
-    return instance.get<List>('overview');
-  }
+  // getList() {
+  //   return instance.get<List>('overview');
+  // }
 }
