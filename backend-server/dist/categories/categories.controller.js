@@ -25,6 +25,9 @@ let CategoriesController = class CategoriesController {
     async createCategory(createDto) {
         return this.categoriesService.createCategory(createDto);
     }
+    getCategories(params) {
+        return this.categoriesService.getListFromCategory(params.id);
+    }
 };
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Add a Category' }),
@@ -35,6 +38,14 @@ __decorate([
     __metadata("design:paramtypes", [AddCategory_dto_1.AddCategoryDto]),
     __metadata("design:returntype", Promise)
 ], CategoriesController.prototype, "createCategory", null);
+__decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Get)('/lists/:id'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [AddCategory_dto_1.AddCategoryDto]),
+    __metadata("design:returntype", Promise)
+], CategoriesController.prototype, "getCategories", null);
 CategoriesController = __decorate([
     (0, swagger_1.ApiTags)('Categories Controller'),
     (0, common_1.Controller)('categories'),

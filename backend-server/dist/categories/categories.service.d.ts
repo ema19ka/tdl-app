@@ -7,4 +7,5 @@ export declare class CategoriesService {
     private userRepository;
     constructor(categoryRepository: Repository<Category>, userRepository: Repository<User>);
     createCategory(createDto: AddCategoryDto): Promise<any>;
+    getListFromCategory(categoryId: string): Promise<Category>;
 }

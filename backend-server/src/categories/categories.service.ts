@@ -22,4 +22,7 @@ export class CategoriesService {
     });
     return this.categoryRepository.save(category);
   }
+  public async getListFromCategory(categoryId: string): Promise<Category> {
+    return await this.categoryRepository.findOne(categoryId);
+  }
 }

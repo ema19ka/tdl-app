@@ -31,6 +31,9 @@ let CategoriesService = class CategoriesService {
         });
         return this.categoryRepository.save(category);
     }
+    async getListFromCategory(categoryId) {
+        return await this.categoryRepository.findOne(categoryId);
+    }
 };
 CategoriesService = __decorate([
     (0, common_1.Injectable)(),
