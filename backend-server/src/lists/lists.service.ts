@@ -22,4 +22,8 @@ export class ListsService {
     });
     return this.listRepository.save(list);
   }
+
+  public async getItemFromList(listId: string): Promise<List> {
+    return await this.listRepository.findOne(listId);
+  }
 }

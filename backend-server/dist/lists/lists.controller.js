@@ -25,6 +25,9 @@ let ListsController = class ListsController {
     async createList(createDto) {
         return this.listServices.createList(createDto);
     }
+    getCategories(params) {
+        return this.listServices.getItemFromList(params.id);
+    }
 };
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Add a list' }),
@@ -35,6 +38,14 @@ __decorate([
     __metadata("design:paramtypes", [AddList_dto_1.AddListDto]),
     __metadata("design:returntype", Promise)
 ], ListsController.prototype, "createList", null);
+__decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Get)('/items/:id'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [AddList_dto_1.AddListDto]),
+    __metadata("design:returntype", Promise)
+], ListsController.prototype, "getCategories", null);
 ListsController = __decorate([
     (0, swagger_1.ApiTags)('Lists Controller'),
     (0, common_1.Controller)('lists'),

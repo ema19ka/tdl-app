@@ -31,6 +31,9 @@ let ListsService = class ListsService {
         });
         return this.listRepository.save(list);
     }
+    async getItemFromList(listId) {
+        return await this.listRepository.findOne(listId);
+    }
 };
 ListsService = __decorate([
     (0, common_1.Injectable)(),

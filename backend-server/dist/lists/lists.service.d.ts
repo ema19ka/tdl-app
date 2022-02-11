@@ -7,4 +7,5 @@ export declare class ListsService {
     private categoryRepository;
     constructor(listRepository: Repository<List>, categoryRepository: Repository<Category>);
     createList(createDto: AddListDto): Promise<any>;
+    getItemFromList(listId: string): Promise<List>;
 }
