@@ -21,4 +21,12 @@ export class ListService {
   getList(id: string) {
     return instance.get(`categories/lists/${id}`);
   }
+
+  addItem(name: string, list: string) {
+    return instance.post('items/create', { name, list });
+  }
+
+  getItems(listId: string) {
+    return instance.get(`lists/items/${listId}`);
+  }
 }

@@ -36,4 +36,9 @@ export class CategorySinglePage implements OnInit {
     });
   }
 
+  currentList(id){
+    console.log(id);
+    localStorage.setItem('list', id);
+  }
+
 }

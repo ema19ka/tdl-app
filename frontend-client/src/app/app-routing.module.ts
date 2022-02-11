@@ -33,6 +33,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/list-add/list-add.module').then( m => m.ListAddPageModule)
   },
   {
+    path: 'list-single',
+    loadChildren: () => import('./pages/list-single/list-single.module').then( m => m.ListSinglePageModule)
+  },
+  {
+    path: 'item-add',
+    loadChildren: () => import('./pages/item-add/item-add.module').then( m => m.ItemAddPageModule)
+  },
+  {
     path: 'list-overview',
     loadChildren: () => import('./pages/list-overview/list-overview.module').then( m => m.ListOverviewPageModule)
   },

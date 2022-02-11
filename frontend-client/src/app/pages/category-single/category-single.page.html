@@ -10,7 +10,7 @@
   </ion-item>
 
   <ion-item *ngFor="let list of listData">
-    <ion-label>{{ list.name }}</ion-label>
+    <ion-label [routerLink]="['/list-single']" (click)="currentList(list.id)">{{ list.name }}</ion-label>
 
   </ion-item>
 </ion-content>
