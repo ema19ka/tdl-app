@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 
-const LIST_API = 'http://localhost:3000/lists/';
+const LIST_API = 'http://localhost:3000/';
 
 const instance = axios.create({
   withCredentials: true,
@@ -15,9 +15,10 @@ export class ListService {
 
   add(name: string, category: string) {
     console.log(name);
-    return instance.post('create', { name, category });
+    return instance.post('lists/create', { name, category });
   }
-  // getList() {
-  //   return instance.get<List>('overview');
-  // }
+
+  getList(id: string) {
+    return instance.get(`categories/lists/${id}`);
+  }
 }
