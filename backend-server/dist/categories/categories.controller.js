@@ -17,50 +17,24 @@ const common_1 = require("@nestjs/common");
 const auth_guard_1 = require("../auth/auth.guard");
 const swagger_1 = require("@nestjs/swagger");
 const categories_service_1 = require("./categories.service");
-const Category_entity_1 = require("./entity/Category.entity");
 const AddCategory_dto_1 = require("./dtos/AddCategory.dto");
 let CategoriesController = class CategoriesController {
     constructor(categoriesService) {
         this.categoriesService = categoriesService;
     }
-    async addCategory(category) {
-        return this.categoriesService.addCategory(category);
-    }
-    async createCategory(category, req) {
-        console.log('req');
-        console.log(req.user);
-        return this.categoriesService.createCategory(category, req.user);
-    }
-    async testCreate(createDto) {
-        return this.categoriesService.testCreate(createDto);
+    async createCategory(createDto) {
+        return this.categoriesService.createCategory(createDto);
     }
 };
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Add a Category' }),
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
-    (0, common_1.Post)('/add'),
-    __param(0, (0, common_1.Body)(common_1.ValidationPipe)),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Category_entity_1.Category]),
-    __metadata("design:returntype", Promise)
-], CategoriesController.prototype, "addCategory", null);
-__decorate([
-    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Post)('/create'),
-    __param(0, (0, common_1.Body)()),
-    __param(1, (0, common_1.Req)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [AddCategory_dto_1.AddCategoryDto, Object]),
-    __metadata("design:returntype", Promise)
-], CategoriesController.prototype, "createCategory", null);
-__decorate([
-    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
-    (0, common_1.Post)('/test'),
     __param(0, (0, common_1.Body)(common_1.ValidationPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [AddCategory_dto_1.AddCategoryDto]),
     __metadata("design:returntype", Promise)
-], CategoriesController.prototype, "testCreate", null);
+], CategoriesController.prototype, "createCategory", null);
 CategoriesController = __decorate([
     (0, swagger_1.ApiTags)('Categories Controller'),
     (0, common_1.Controller)('categories'),

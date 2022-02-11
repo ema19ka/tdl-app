@@ -8,10 +8,6 @@ import axios from 'axios';
 
 const CATEGORY_API = 'http://localhost:3000/';
 
-const httpOptions = {
-  headers: new HttpHeaders({ contentType: 'application/json'})
-};
-
 const instance = axios.create({
   withCredentials: true,
   baseURL: CATEGORY_API,
@@ -22,15 +18,11 @@ const instance = axios.create({
 })
 export class CategoryService {
 
-  // public currentCategory: Category = [
-  //   catName: 'test',
-  // ];
-
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   add(name: string, user: string) {
     console.log(name);
-    return instance.post('categories/test', { name, user });
+    return instance.post('categories/create', { name, user });
   }
 
   getCategory(id: string) {

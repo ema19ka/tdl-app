@@ -23,24 +23,13 @@ let CategoriesService = class CategoriesService {
         this.categoryRepository = categoryRepository;
         this.userRepository = userRepository;
     }
-    async addCategory(category) {
-        return await this.categoryRepository.save(category);
-    }
-    async createCategory(category, userid) {
-        const newCategory = await this.categoryRepository.create(Object.assign(Object.assign({}, category), { user: userid }));
-        console.log('service');
-        console.log(userid);
-        console.log(category);
-        await this.categoryRepository.save(newCategory);
-        return newCategory;
-    }
-    async testCreate(createDto) {
+    async createCategory(createDto) {
         const user = await this.userRepository.findOne(createDto.user);
-        const cat = this.categoryRepository.create({
+        const category = this.categoryRepository.create({
             name: createDto.name,
             user: user,
         });
-        return this.categoryRepository.save(cat);
+        return this.categoryRepository.save(category);
     }
 };
 CategoriesService = __decorate([

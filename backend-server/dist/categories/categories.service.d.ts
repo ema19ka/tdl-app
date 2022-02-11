@@ -6,7 +6,5 @@ export declare class CategoriesService {
     private categoryRepository;
     private userRepository;
     constructor(categoryRepository: Repository<Category>, userRepository: Repository<User>);
-    addCategory(category: Category): Promise<Category>;
-    createCategory(category: AddCategoryDto, userid: User): Promise<Category>;
-    testCreate(createDto: AddCategoryDto): Promise<any>;
+    createCategory(createDto: AddCategoryDto): Promise<any>;
 }
