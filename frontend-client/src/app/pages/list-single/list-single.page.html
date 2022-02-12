@@ -4,12 +4,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-button [routerLink]="['/item-add']">Add a new item to {{ listName }}</ion-button>
-
   <ion-title>{{ listName }}</ion-title>
 
   <ion-item *ngFor="let list of listData">
     <ion-label>{{ list.name }}</ion-label>
-
+    <ion-checkbox slot="start"></ion-checkbox>
   </ion-item>
+
+  <ion-button [routerLink]="['/item-add']">Add a new item to {{ listName }}</ion-button>
+
 </ion-content>
