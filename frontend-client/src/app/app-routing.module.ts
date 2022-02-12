@@ -6,7 +6,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home', pathMatch: 'full'
+    redirectTo: '/category-overview', pathMatch: 'full'
   },
   {
     path: 'register',
@@ -21,7 +21,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/category-add/category-add.module').then( m => m.CategoryPageModule)
   },
   {
-    path: 'category-overview',
+    path: 'home',
     loadChildren: () => import('./pages/category-overview/category-overview.module').then( m => m.CategoryOverviewPageModule)
   },
   {
