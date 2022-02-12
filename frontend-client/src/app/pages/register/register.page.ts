@@ -33,8 +33,12 @@ export class RegisterPage implements OnInit {
       console.log(this.registerForm.value);
       this.userService.register(username,email,password).subscribe(
         data => {
-          console.log(data);
-          this.router.navigate(['/home']);
+          this.userService.login(username,email,password).then(
+            resp => {
+              localStorage.setItem('user', resp.data.id);
+              this.router.navigate(['/home']);
+            }
+          );
         }
       );
     }

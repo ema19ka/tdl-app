@@ -16,6 +16,10 @@ export class CategoryOverviewPage implements OnInit {
   }
 
   ngOnInit() {
+    this.getCategory();
+  }
+
+  getCategory(){
     const userId = localStorage.getItem('user');
     console.log(userId);
     this.categoryService.getCategory(userId).then(response => {
@@ -26,16 +30,23 @@ export class CategoryOverviewPage implements OnInit {
       this.responseArray[0].category.forEach(element => {
         this.categoryData.push({
           name: element.name,
-          id: element.id
+          id: element.id,
+          lists: element.lists
         });
       });
 
       console.log(this.categoryData);
     });
+
   }
 
   currentCategory(id){
     console.log(id);
     localStorage.setItem('category', id);
+  }
+
+  currentList(id){
+    console.log(id);
+    localStorage.setItem('list', id);
   }
 }

@@ -1,16 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title [routerLink]="['/home']">{{ categoriesName }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-button [routerLink]="['/list-add']">Add a new list</ion-button>
-  </ion-item>
 
-  <ion-item *ngFor="let list of listData">
-    <ion-label [routerLink]="['/list-single']" (click)="currentList(list.id)">{{ list.name }}</ion-label>
+  <ion-button [routerLink]="['/list-add']">Add a new list</ion-button>
 
-  </ion-item>
+  <ion-title>{{ categoriesName }}</ion-title>
+  <ion-list>
+    <div *ngFor="let list of listData">
+      <ion-titel [routerLink]="['/list-single']" (click)="currentList(list.id)">{{ list.name }}</ion-titel>
+      <ion-list>
+        <ion-item *ngFor="let item of list.items">
+          <ion-label>{{ item.name }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-list>
 </ion-content>

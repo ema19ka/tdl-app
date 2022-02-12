@@ -11,28 +11,33 @@ export class CategorySinglePage implements OnInit {
   responseArray: any[];
   categoriesName: string;
 
-  constructor(public listService: ListService) { 
+  constructor(public listService: ListService) {
     this.listData = [];
     this.responseArray = [];
   }
 
   ngOnInit() {
+   this.getLists();
+  }
+
+  getLists(){
     const categoryId = localStorage.getItem('category');
-    console.log(categoryId);
+    // console.log(categoryId);
     this.listService.getList(categoryId).then(response => {
-      console.log(response);
+      // console.log(response);
       this.categoriesName = response.data.name;
       this.responseArray.push(response.data);
-      console.log(this.responseArray);
+      // console.log(this.responseArray);
 
       this.responseArray[0].lists.forEach(element => {
         this.listData.push({
           name: element.name,
-          id: element.id
+          id: element.id,
+          items: element.items
         });
       });
 
-      console.log(this.listData);
+      // console.log(this.listData);
     });
   }
 
