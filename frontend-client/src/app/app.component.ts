@@ -8,7 +8,9 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(public userService: AuthService, private router: Router) { }
+  constructor(public userService: AuthService, private router: Router) {
+    const isLoggedIn = localStorage.getItem('user');
+  }
 
   onLogout(){
     // console.log('test');
@@ -18,4 +20,5 @@ export class AppComponent {
     this.userService.logout();
     this.router.navigate(['/login']);
   }
+
 }

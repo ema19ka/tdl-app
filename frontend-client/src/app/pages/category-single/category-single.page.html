@@ -11,7 +11,7 @@
       <ion-card-title>
         <ion-item>
           <ion-label>{{ list.name }}</ion-label>
-          <ion-checkbox slot="start" [(ngModel)]="list.isDone"  (ngModelChange)="updateList(list.id, list.name, list.isDone, list.category, list.index)"></ion-checkbox>
+          <ion-checkbox slot="end" [(ngModel)]="list.isDone"  (ngModelChange)="updateList(list.id, list.name, list.isDone, list.category, list.index)"></ion-checkbox>
         </ion-item>
       </ion-card-title>
     </ion-card-header>

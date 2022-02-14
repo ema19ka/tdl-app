@@ -8,7 +8,7 @@
 
   <!-- <ion-reorder-group disabled="false"> -->
   <ion-item *ngFor="let item of listData">
-    <ion-label>{{ item.name }}</ion-label>
+    <ion-label [class.boxChecked]="item.isDone">{{ item.name }}</ion-label>
     <ion-checkbox slot="start" [(ngModel)]="item.isDone"
       (ngModelChange)="updateItem(item.id, item.name, item.isDone, item.list)"></ion-checkbox>
     <!-- <ion-reorder slot="end"></ion-reorder> -->

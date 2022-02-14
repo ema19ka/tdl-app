@@ -24,12 +24,9 @@ export class ListSinglePage implements OnInit {
 
   getList() {
     const listId = localStorage.getItem('list');
-    // console.log(listId);
     this.listService.getItems(listId).then(response => {
-      // console.log(response);
       this.listName = response.data.name;
       this.responseArray.push(response.data);
-      // console.log(this.responseArray);
 
       this.responseArray[0].items.forEach(element => {
         this.listData.push({
@@ -39,14 +36,10 @@ export class ListSinglePage implements OnInit {
           list: listId
         });
       });
-
-      // console.log(this.listData);
     });
   }
 
   updateItem(id, name, isDone, list){
-    // console.log(id, name, isDone, list);
     this.listService.updateItem(id, name, isDone, list);
-    // console.log(this.listData);
   }
 }
