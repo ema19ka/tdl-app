@@ -7,4 +7,6 @@ export class AddListDto {
   @IsNotEmpty() name: string;
 
   @IsNotEmpty() category: Category;
+
+  isDone: boolean;
 }

@@ -23,6 +23,10 @@ __decorate([
     __metadata("design:type", String)
 ], Item.prototype, "name", void 0);
 __decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Boolean)
+], Item.prototype, "isDone", void 0);
+__decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], Item.prototype, "created_at", void 0);

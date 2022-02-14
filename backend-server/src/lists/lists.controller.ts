@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   Param,
+  Patch,
   Post,
   UseGuards,
   ValidationPipe,
@@ -32,7 +33,12 @@ export class ListsController {
     return this.listServices.getItemFromList(params.id);
   }
 
-  // TODO: update
+  @ApiOperation({ summary: 'Update a list' })
+  @UseGuards(AuthGuard)
+  @Patch('/update')
+  async updateList(@Body(ValidationPipe) createDto: AddListDto): Promise<any> {
+    return this.listServices.updateList(createDto);
+  }
 
   // TODO: delete
 }

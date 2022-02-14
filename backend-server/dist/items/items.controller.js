@@ -25,9 +25,12 @@ let ItemsController = class ItemsController {
     async createItem(createDto) {
         return this.itemServices.createItem(createDto);
     }
+    async updateItem(createDto) {
+        return this.itemServices.updateItem(createDto);
+    }
 };
 __decorate([
-    (0, swagger_1.ApiOperation)({ summary: 'Add a list' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Add an item to a list' }),
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Post)('/create'),
     __param(0, (0, common_1.Body)(common_1.ValidationPipe)),
@@ -35,6 +38,15 @@ __decorate([
     __metadata("design:paramtypes", [AddItem_dto_1.AddItemDto]),
     __metadata("design:returntype", Promise)
 ], ItemsController.prototype, "createItem", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Update an item' }),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Patch)('/update'),
+    __param(0, (0, common_1.Body)(common_1.ValidationPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [AddItem_dto_1.AddItemDto]),
+    __metadata("design:returntype", Promise)
+], ItemsController.prototype, "updateItem", null);
 ItemsController = __decorate([
     (0, swagger_1.ApiTags)('Items Controller'),
     (0, common_1.Controller)('items'),

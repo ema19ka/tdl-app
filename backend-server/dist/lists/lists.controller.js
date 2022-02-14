@@ -28,6 +28,9 @@ let ListsController = class ListsController {
     getCategories(params) {
         return this.listServices.getItemFromList(params.id);
     }
+    async updateList(createDto) {
+        return this.listServices.updateList(createDto);
+    }
 };
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Add a list' }),
@@ -46,6 +49,15 @@ __decorate([
     __metadata("design:paramtypes", [AddList_dto_1.AddListDto]),
     __metadata("design:returntype", Promise)
 ], ListsController.prototype, "getCategories", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Update a list' }),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Patch)('/update'),
+    __param(0, (0, common_1.Body)(common_1.ValidationPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [AddList_dto_1.AddListDto]),
+    __metadata("design:returntype", Promise)
+], ListsController.prototype, "updateList", null);
 ListsController = __decorate([
     (0, swagger_1.ApiTags)('Lists Controller'),
     (0, common_1.Controller)('lists'),

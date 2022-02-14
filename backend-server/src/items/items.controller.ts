@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Patch,
   Post,
   UseGuards,
   ValidationPipe,
@@ -15,10 +16,17 @@ import { ItemsService } from './items.service';
 export class ItemsController {
   constructor(private readonly itemServices: ItemsService) {}
 
-  @ApiOperation({ summary: 'Add a list' })
+  @ApiOperation({ summary: 'Add an item to a list' })
   @UseGuards(AuthGuard)
   @Post('/create')
   async createItem(@Body(ValidationPipe) createDto: AddItemDto): Promise<any> {
     return this.itemServices.createItem(createDto);
+  }
+
+  @ApiOperation({ summary: 'Update an item' })
+  @UseGuards(AuthGuard)
+  @Patch('/update')
+  async updateItem(@Body(ValidationPipe) createDto: AddItemDto): Promise<any> {
+    return this.itemServices.updateItem(createDto);
   }
 }

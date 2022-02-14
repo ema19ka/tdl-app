@@ -3,6 +3,7 @@ import { Item } from 'src/items/entity/Item.entity';
 export declare class List {
     id: string;
     name: string;
+    isDone: boolean;
     created_at: Date;
     updated_at: Date;
     deleted_at: Date;

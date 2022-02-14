@@ -22,6 +22,9 @@ export class List {
   // @Column()
   // color: string;
 
+  @Column()
+  isDone: boolean;
+
   @CreateDateColumn()
   created_at: Date;
 

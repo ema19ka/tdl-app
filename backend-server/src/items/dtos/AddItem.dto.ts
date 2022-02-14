@@ -7,4 +7,6 @@ export class AddItemDto {
   @IsNotEmpty() name: string;
 
   @IsNotEmpty() list: List;
+
+  isDone: boolean;
 }

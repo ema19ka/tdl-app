@@ -4,4 +4,5 @@ export declare class ItemsController {
     private readonly itemServices;
     constructor(itemServices: ItemsService);
     createItem(createDto: AddItemDto): Promise<any>;
+    updateItem(createDto: AddItemDto): Promise<any>;
 }

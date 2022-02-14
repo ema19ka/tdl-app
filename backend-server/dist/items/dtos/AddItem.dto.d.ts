@@ -3,4 +3,5 @@ export declare class AddItemDto {
     id: string;
     name: string;
     list: List;
+    isDone: boolean;
 }

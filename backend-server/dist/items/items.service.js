@@ -28,8 +28,15 @@ let ItemsService = class ItemsService {
         const item = this.itemRepository.create({
             name: createDto.name,
             list: list,
+            isDone: createDto.isDone,
         });
         return this.itemRepository.save(item);
+    }
+    async updateItem(createDto) {
+        const item = await this.itemRepository.findOne(createDto.id);
+        item.isDone = createDto.isDone;
+        item.name = createDto.name;
+        return await this.itemRepository.save(item);
     }
 };
 ItemsService = __decorate([

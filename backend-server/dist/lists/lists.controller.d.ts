@@ -6,4 +6,5 @@ export declare class ListsController {
     constructor(listServices: ListsService);
     createList(createDto: AddListDto): Promise<any>;
     getCategories(params: AddListDto): Promise<List>;
+    updateList(createDto: AddListDto): Promise<any>;
 }

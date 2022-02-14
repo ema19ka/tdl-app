@@ -19,11 +19,19 @@ export class ListsService {
     const list = this.listRepository.create({
       name: createDto.name,
       category: category,
+      isDone: createDto.isDone,
     });
     return this.listRepository.save(list);
   }
 
   public async getItemFromList(listId: string): Promise<List> {
     return await this.listRepository.findOne(listId);
+  }
+
+  async updateList(createDto: AddListDto): Promise<any> {
+    const list = await this.listRepository.findOne(createDto.id);
+    list.isDone = createDto.isDone;
+    list.name = createDto.name;
+    return await this.listRepository.save(list);
   }
 }
