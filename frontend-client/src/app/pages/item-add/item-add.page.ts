@@ -12,7 +12,9 @@ export class ItemAddPage implements OnInit {
   addItemForm: FormGroup;
   submitted = false;
 
-  constructor(public listService: ListService, private router: Router, public formBuilder: FormBuilder) { }
+  constructor(public listService: ListService, private router: Router, public formBuilder: FormBuilder) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+   }
 
   ngOnInit() {
     this.addItemForm = this.formBuilder.group({
@@ -33,7 +35,7 @@ export class ItemAddPage implements OnInit {
       this.listService.addItem(itemName, isDone, list).then(
         res => {
           // console.log(res);
-          this.router.navigate(['/list-single']);
+          this.router.navigate(['/list-single']).then(() => window.location.reload());
         },
       );
     }

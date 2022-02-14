@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -10,9 +11,10 @@ export class CategoryOverviewPage implements OnInit {
   categoryData: any[];
   responseArray: any[];
 
-  constructor(public categoryService: CategoryService) {
+  constructor(public categoryService: CategoryService, private route: ActivatedRoute, private router: Router) {
     this.categoryData = [];
     this.responseArray = [];
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit() {

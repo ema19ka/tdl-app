@@ -33,7 +33,7 @@ export class ListAddPage implements OnInit {
       this.listService.add(listName, isDone, category).then(
         res => {
           // console.log(res);
-          this.router.navigate(['/category-single']);
+          this.router.navigate(['/category-single']).then(() => window.location.reload());
         },
       );
     }

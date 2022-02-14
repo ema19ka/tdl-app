@@ -35,7 +35,7 @@ export class CategoryPage implements OnInit {
       this.categoryService.add(catName, userid).then(
         data => {
           // console.log(data);
-          this.router.navigate(['/category-overview']);
+          this.router.navigate(['/home']).then(() => window.location.reload());
         },
       );
     }
