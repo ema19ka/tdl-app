@@ -45,14 +45,14 @@ class insertSampleUser1642587912778 {
         list.name = 'Marketing';
         list.id = '241abfe3-085e-4393-90b2-31c4a92c9ed4';
         list.category = await categoryRepository.findOne(category.id);
-        list.isDone = true;
+        list.isDone = false;
         const listRepository = (0, typeorm_1.getConnection)().getRepository(List_entity_1.List);
         await listRepository.save(list);
         const item = new Item_entity_1.Item();
         item.name = 'Kapitel 3-4';
         item.id = '06823a29-ee09-43a0-bba3-e4c71f61f886';
         item.list = await listRepository.findOne(list.id);
-        item.isDone = true;
+        item.isDone = false;
         const itemRepository = (0, typeorm_1.getConnection)().getRepository(Item_entity_1.Item);
         await itemRepository.save(item);
     }

@@ -14,6 +14,7 @@ export class AppComponent {
     console.log('test');
     localStorage.removeItem('user');
     localStorage.removeItem('category');
+    localStorage.removeItem('list');
     this.userService.logout();
     this.router.navigate(['/login']);
   }

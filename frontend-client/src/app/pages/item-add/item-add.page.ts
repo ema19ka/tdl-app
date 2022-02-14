@@ -22,6 +22,7 @@ export class ItemAddPage implements OnInit {
 
   onAddItem() {
     const { itemName } = this.addItemForm.value;
+    const isDone = false;
     const list = localStorage.getItem('list');
     this.submitted = true;
     if(!this.addItemForm.valid) {
@@ -29,7 +30,7 @@ export class ItemAddPage implements OnInit {
       return false;
     } else {
       console.log(this.addItemForm.value);
-      this.listService.addItem(itemName, list).then(
+      this.listService.addItem(itemName, isDone, list).then(
         res => {
           console.log(res);
           this.router.navigate(['/list-single']);

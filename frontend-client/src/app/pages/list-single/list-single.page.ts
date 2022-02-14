@@ -17,6 +17,10 @@ export class ListSinglePage implements OnInit {
    }
 
   ngOnInit() {
+    this.getList();
+  }
+
+  getList() {
     const listId = localStorage.getItem('list');
     console.log(listId);
     this.listService.getItems(listId).then(response => {
@@ -28,11 +32,19 @@ export class ListSinglePage implements OnInit {
       this.responseArray[0].items.forEach(element => {
         this.listData.push({
           name: element.name,
-          id: element.id
+          id: element.id,
+          isDone: element.isDone,
+          list: listId
         });
       });
 
       console.log(this.listData);
     });
+  }
+
+  updateItem(id, name, isDone, list){
+    console.log(id, name, isDone, list);
+    this.listService.updateItem(id, name, isDone, list);
+    console.log(this.listData);
   }
 }

@@ -55,7 +55,7 @@ export class insertSampleUser1642587912778 implements MigrationInterface {
     list.name = 'Marketing';
     list.id = '241abfe3-085e-4393-90b2-31c4a92c9ed4';
     list.category = await categoryRepository.findOne(category.id);
-    list.isDone = true;
+    list.isDone = false;
 
     const listRepository = getConnection().getRepository(List);
     await listRepository.save(list);
@@ -64,7 +64,7 @@ export class insertSampleUser1642587912778 implements MigrationInterface {
     item.name = 'Kapitel 3-4';
     item.id = '06823a29-ee09-43a0-bba3-e4c71f61f886';
     item.list = await listRepository.findOne(list.id);
-    item.isDone = true;
+    item.isDone = false;
 
     const itemRepository = getConnection().getRepository(Item);
     await itemRepository.save(item);

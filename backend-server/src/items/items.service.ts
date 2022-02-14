@@ -28,6 +28,7 @@ export class ItemsService {
     const item = await this.itemRepository.findOne(createDto.id);
     item.isDone = createDto.isDone;
     item.name = createDto.name;
+    item.id = createDto.id;
     return await this.itemRepository.save(item);
   }
 }

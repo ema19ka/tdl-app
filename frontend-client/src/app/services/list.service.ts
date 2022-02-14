@@ -22,11 +22,16 @@ export class ListService {
     return instance.get(`categories/lists/${id}`);
   }
 
-  addItem(name: string, list: string) {
-    return instance.post('items/create', { name, list });
+  addItem(name: string, isDone: boolean, list: string) {
+    return instance.post('items/create', { name, isDone, list });
   }
 
   getItems(listId: string) {
     return instance.get(`lists/items/${listId}`);
+  }
+
+  updateItem(id: string, name: string, isDone: boolean, list: string) {
+    console.log(id, name, isDone, list);
+    return instance.patch('items/update', { id, name, isDone, list });
   }
 }
