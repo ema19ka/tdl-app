@@ -29,10 +29,10 @@ export class ItemAddPage implements OnInit {
       console.log('All fields required.');
       return false;
     } else {
-      console.log(this.addItemForm.value);
+      // console.log(this.addItemForm.value);
       this.listService.addItem(itemName, isDone, list).then(
         res => {
-          console.log(res);
+          // console.log(res);
           this.router.navigate(['/list-single']);
         },
       );

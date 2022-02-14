@@ -27,7 +27,7 @@ export class AuthService {
   async login(username: string, email: string, password: string) {
     this.isLoggedIn = 'true';
     localStorage.setItem('isLoggedIn', this.isLoggedIn);
-    console.log(username,password,email);
+    // console.log(username,password,email);
     return await instance.post('auth/login', {
       username,
       email,

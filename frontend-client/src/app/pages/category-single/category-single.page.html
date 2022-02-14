@@ -11,7 +11,7 @@
       <ion-card-title>
         <ion-item>
           <ion-label>{{ list.name }}</ion-label>
-          <ion-checkbox slot="start" [(ngModel)]="list.isDone"  (ngModelChange)="updateList(list.id, list.name, list.isDone, list.category)"></ion-checkbox>
+          <ion-checkbox slot="start" [(ngModel)]="list.isDone"  (ngModelChange)="updateList(list.id, list.name, list.isDone, list.category, list.index)"></ion-checkbox>
         </ion-item>
       </ion-card-title>
     </ion-card-header>
@@ -19,7 +19,6 @@
     <ion-card-content *ngFor="let item of list.items">
       <ion-item>
         <ion-label [routerLink]="['/list-single']" (click)="currentList(list.id)">{{ item.name }}</ion-label>
-        <!-- <ion-checkbox slot="start"></ion-checkbox> -->
       </ion-item>
     </ion-card-content>
   </ion-card>

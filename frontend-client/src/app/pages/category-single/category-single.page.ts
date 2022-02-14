@@ -10,6 +10,7 @@ export class CategorySinglePage implements OnInit {
   listData: any[];
   responseArray: any[];
   categoriesName: string;
+  checked: boolean;
 
   constructor(public listService: ListService) {
     this.listData = [];
@@ -27,31 +28,34 @@ export class CategorySinglePage implements OnInit {
       // console.log(response);
       this.categoriesName = response.data.name;
       this.responseArray.push(response.data);
-      // console.log(this.responseArray);
 
-      this.responseArray[0].lists.forEach(element => {
+      this.responseArray[0].lists.forEach((element, index) =>  {
         this.listData.push({
           name: element.name,
           id: element.id,
           isDone: element.isDone,
           items: element.items,
-          category: categoryId
+          category: categoryId,
+          index
         });
       });
 
-      // console.log(this.listData);
     });
   }
 
   currentList(id){
-    console.log(id);
+    // console.log(id);
     localStorage.setItem('list', id);
   }
 
-  updateList(id, name, isDone, list){
-    console.log(id, name, isDone, list);
-    this.listService.updateList(id, name, isDone, list);
-    console.log(this.listData);
+  updateList(id, name, isDone, category, index){
+    // console.log(id, name, isDone, category);
+    this.listService.updateList(id, name, isDone, category);
+    const currentStatus = this.listData[index].isDone;
+    this.listData[index].items.forEach(element => {
+      this.listService.updateItem(element.id, element.name, currentStatus, this.listData[index]);
+    });
+    // console.log(this.listData[index]);
   }
 
 }

@@ -31,10 +31,10 @@ export class CategoryPage implements OnInit {
       console.log('All fields are required.');
       return false;
     } else {
-      console.log(this.addCategoryForm.value);
+      // console.log(this.addCategoryForm.value);
       this.categoryService.add(catName, userid).then(
         data => {
-          console.log(data);
+          // console.log(data);
           this.router.navigate(['/category-overview']);
         },
       );

@@ -23,14 +23,12 @@ export class RegisterPage implements OnInit {
   }
 
   onSubmit(){
-    console.log('test');
     const {username, email, password } = this.registerForm.value;
     this.submitted = true;
     if(!this.registerForm.valid) {
       console.log('All fields are required');
       return false;
     } else {
-      console.log(this.registerForm.value);
       this.userService.register(username,email,password).subscribe(
         data => {
           this.userService.login(username,email,password).then(

@@ -11,7 +11,7 @@ export class AppComponent {
   constructor(public userService: AuthService, private router: Router) { }
 
   onLogout(){
-    console.log('test');
+    // console.log('test');
     localStorage.removeItem('user');
     localStorage.removeItem('category');
     localStorage.removeItem('list');

@@ -21,11 +21,11 @@ export class CategoryOverviewPage implements OnInit {
 
   getCategory(){
     const userId = localStorage.getItem('user');
-    console.log(userId);
+    // console.log(userId);
     this.categoryService.getCategory(userId).then(response => {
-      console.log(response);
+      // console.log(response);
       this.responseArray.push(response.data);
-      console.log(this.responseArray);
+      // console.log(this.responseArray);
 
       this.responseArray[0].category.forEach(element => {
         this.categoryData.push({
@@ -35,18 +35,18 @@ export class CategoryOverviewPage implements OnInit {
         });
       });
 
-      console.log(this.categoryData);
+      // console.log(this.categoryData);
     });
 
   }
 
   currentCategory(id){
-    console.log(id);
+    // console.log(id);
     localStorage.setItem('category', id);
   }
 
   currentList(id){
-    console.log(id);
+    // console.log(id);
     localStorage.setItem('list', id);
   }
 }

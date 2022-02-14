@@ -13,9 +13,9 @@ const instance = axios.create({
 })
 export class ListService {
 
-  add(name: string, category: string) {
-    console.log(name);
-    return instance.post('lists/create', { name, category });
+  add(name: string, isDone: boolean, category: string) {
+    // console.log(name);
+    return instance.post('lists/create', { name, isDone, category });
   }
 
   getList(id: string) {
@@ -23,7 +23,7 @@ export class ListService {
   }
 
   updateList(id: string, name: string, isDone: boolean, category: string) {
-    console.log(id, name, isDone, category);
+    // console.log(id, name, isDone, category);
     return instance.patch('lists/update', { id, name, isDone, category });
   }
 
@@ -36,7 +36,7 @@ export class ListService {
   }
 
   updateItem(id: string, name: string, isDone: boolean, list: string) {
-    console.log(id, name, isDone, list);
+    // console.log(id, name, isDone, list);
     return instance.patch('items/update', { id, name, isDone, list });
   }
 }
