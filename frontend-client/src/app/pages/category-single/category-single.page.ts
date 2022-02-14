@@ -33,7 +33,9 @@ export class CategorySinglePage implements OnInit {
         this.listData.push({
           name: element.name,
           id: element.id,
-          items: element.items
+          isDone: element.isDone,
+          items: element.items,
+          category: categoryId
         });
       });
 
@@ -44,6 +46,12 @@ export class CategorySinglePage implements OnInit {
   currentList(id){
     console.log(id);
     localStorage.setItem('list', id);
+  }
+
+  updateList(id, name, isDone, list){
+    console.log(id, name, isDone, list);
+    this.listService.updateList(id, name, isDone, list);
+    console.log(this.listData);
   }
 
 }
