@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Patch,
   Post,
   UseGuards,
@@ -9,6 +10,7 @@ import {
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { AddItemDto } from './dtos/AddItem.dto';
+import { Item } from './entity/Item.entity';
 import { ItemsService } from './items.service';
 
 @ApiTags('Items Controller')
@@ -28,5 +30,12 @@ export class ItemsController {
   @Patch('/update')
   async updateItem(@Body(ValidationPipe) createDto: AddItemDto): Promise<any> {
     return this.itemServices.updateItem(createDto);
+  }
+
+  @ApiOperation({ summary: 'Delete an item' })
+  @UseGuards(AuthGuard)
+  @Delete('/delete')
+  async deleteItem(@Body(ValidationPipe) item: Item): Promise<Item> {
+    return this.itemServices.deleteItem(item);
   }
 }

@@ -18,6 +18,7 @@ const auth_guard_1 = require("../auth/auth.guard");
 const swagger_1 = require("@nestjs/swagger");
 const categories_service_1 = require("./categories.service");
 const AddCategory_dto_1 = require("./dtos/AddCategory.dto");
+const Category_entity_1 = require("./entity/Category.entity");
 let CategoriesController = class CategoriesController {
     constructor(categoriesService) {
         this.categoriesService = categoriesService;
@@ -27,6 +28,9 @@ let CategoriesController = class CategoriesController {
     }
     getCategories(params) {
         return this.categoriesService.getListFromCategory(params.id);
+    }
+    async deleteCateogry(category) {
+        return this.categoriesService.deleteCategory(category);
     }
 };
 __decorate([
@@ -46,6 +50,15 @@ __decorate([
     __metadata("design:paramtypes", [AddCategory_dto_1.AddCategoryDto]),
     __metadata("design:returntype", Promise)
 ], CategoriesController.prototype, "getCategories", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Delete a category' }),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Delete)('/delete'),
+    __param(0, (0, common_1.Body)(common_1.ValidationPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Category_entity_1.Category]),
+    __metadata("design:returntype", Promise)
+], CategoriesController.prototype, "deleteCateogry", null);
 CategoriesController = __decorate([
     (0, swagger_1.ApiTags)('Categories Controller'),
     (0, common_1.Controller)('categories'),

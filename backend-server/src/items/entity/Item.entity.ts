@@ -38,6 +38,8 @@ export class Item {
   @VersionColumn()
   version: number;
 
-  @ManyToOne(() => List, (list) => list.items)
+  @ManyToOne(() => List, (list) => list.items, {
+    onDelete: 'CASCADE',
+  })
   list: List;
 }

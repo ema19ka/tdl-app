@@ -37,7 +37,9 @@ export class List {
   @VersionColumn()
   version: number;
 
-  @ManyToOne(() => Category, (category) => category.lists)
+  @ManyToOne(() => Category, (category) => category.lists, {
+    onDelete: 'CASCADE',
+  })
   category: Category;
 
   @OneToMany(() => Item, (item) => item.list, { eager: true })

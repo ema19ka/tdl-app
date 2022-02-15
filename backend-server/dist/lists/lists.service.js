@@ -41,6 +41,9 @@ let ListsService = class ListsService {
         list.name = createDto.name;
         return await this.listRepository.save(list);
     }
+    async deleteList(list) {
+        return await this.listRepository.delete(list);
+    }
 };
 ListsService = __decorate([
     (0, common_1.Injectable)(),

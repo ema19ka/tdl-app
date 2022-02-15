@@ -4,9 +4,9 @@ import { List } from 'src/lists/entity/List.entity';
 export class AddItemDto {
   id: string;
 
-  @IsNotEmpty() name: string;
+  name: string;
 
-  @IsNotEmpty() list: List;
+  list: List;
 
   isDone: boolean;
 }

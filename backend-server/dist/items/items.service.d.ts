@@ -8,4 +8,5 @@ export declare class ItemsService {
     constructor(itemRepository: Repository<Item>, listRepository: Repository<List>);
     createItem(createDto: AddItemDto): Promise<any>;
     updateItem(createDto: AddItemDto): Promise<any>;
+    deleteItem(item: Item): Promise<any>;
 }

@@ -6,4 +6,5 @@ export declare class CategoriesController {
     constructor(categoriesService: CategoriesService);
     createCategory(createDto: AddCategoryDto): Promise<any>;
     getCategories(params: AddCategoryDto): Promise<Category>;
+    deleteCateogry(category: Category): Promise<Category>;
 }

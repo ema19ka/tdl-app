@@ -31,4 +31,9 @@ export class ItemsService {
     item.id = createDto.id;
     return await this.itemRepository.save(item);
   }
+
+  async deleteItem(item: Item): Promise<any> {
+    // const item = await this.itemRepository.findOne(createDto.id);
+    return await this.itemRepository.delete(item);
+  }
 }

@@ -35,6 +35,9 @@ let CategoriesService = class CategoriesService {
     async getListFromCategory(categoryId) {
         return await this.categoryRepository.findOne(categoryId);
     }
+    async deleteCategory(category) {
+        return await this.categoryRepository.delete(category);
+    }
 };
 CategoriesService = __decorate([
     (0, common_1.Injectable)(),

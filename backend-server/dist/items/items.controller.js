@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const auth_guard_1 = require("../auth/auth.guard");
 const AddItem_dto_1 = require("./dtos/AddItem.dto");
+const Item_entity_1 = require("./entity/Item.entity");
 const items_service_1 = require("./items.service");
 let ItemsController = class ItemsController {
     constructor(itemServices) {
@@ -27,6 +28,9 @@ let ItemsController = class ItemsController {
     }
     async updateItem(createDto) {
         return this.itemServices.updateItem(createDto);
+    }
+    async deleteItem(item) {
+        return this.itemServices.deleteItem(item);
     }
 };
 __decorate([
@@ -47,6 +51,15 @@ __decorate([
     __metadata("design:paramtypes", [AddItem_dto_1.AddItemDto]),
     __metadata("design:returntype", Promise)
 ], ItemsController.prototype, "updateItem", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Delete an item' }),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Delete)('/delete'),
+    __param(0, (0, common_1.Body)(common_1.ValidationPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Item_entity_1.Item]),
+    __metadata("design:returntype", Promise)
+], ItemsController.prototype, "deleteItem", null);
 ItemsController = __decorate([
     (0, swagger_1.ApiTags)('Items Controller'),
     (0, common_1.Controller)('items'),

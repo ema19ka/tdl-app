@@ -26,4 +26,8 @@ export class CategoriesService {
   public async getListFromCategory(categoryId: string): Promise<Category> {
     return await this.categoryRepository.findOne(categoryId);
   }
+
+  public async deleteCategory(category: Category): Promise<any> {
+    return await this.categoryRepository.delete(category);
+  }
 }

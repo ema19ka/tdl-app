@@ -7,4 +7,5 @@ export declare class ListsController {
     createList(createDto: AddListDto): Promise<any>;
     getCategories(params: AddListDto): Promise<List>;
     updateList(createDto: AddListDto): Promise<any>;
+    deleteList(list: List): Promise<List>;
 }

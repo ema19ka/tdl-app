@@ -18,6 +18,7 @@ const swagger_1 = require("@nestjs/swagger");
 const auth_guard_1 = require("../auth/auth.guard");
 const lists_service_1 = require("./lists.service");
 const AddList_dto_1 = require("./dtos/AddList.dto");
+const List_entity_1 = require("./entity/List.entity");
 let ListsController = class ListsController {
     constructor(listServices) {
         this.listServices = listServices;
@@ -30,6 +31,9 @@ let ListsController = class ListsController {
     }
     async updateList(createDto) {
         return this.listServices.updateList(createDto);
+    }
+    async deleteList(list) {
+        return this.listServices.deleteList(list);
     }
 };
 __decorate([
@@ -58,6 +62,15 @@ __decorate([
     __metadata("design:paramtypes", [AddList_dto_1.AddListDto]),
     __metadata("design:returntype", Promise)
 ], ListsController.prototype, "updateList", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Delete list' }),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Delete)('/delete'),
+    __param(0, (0, common_1.Body)(common_1.ValidationPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [List_entity_1.List]),
+    __metadata("design:returntype", Promise)
+], ListsController.prototype, "deleteList", null);
 ListsController = __decorate([
     (0, swagger_1.ApiTags)('Lists Controller'),
     (0, common_1.Controller)('lists'),

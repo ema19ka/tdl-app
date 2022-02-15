@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -34,5 +35,13 @@ export class CategoriesController {
     return this.categoriesService.getListFromCategory(params.id);
   }
   // TODO: update
-  // TODO: delete
+
+  @ApiOperation({ summary: 'Delete a category' })
+  @UseGuards(AuthGuard)
+  @Delete('/delete')
+  async deleteCateogry(
+    @Body(ValidationPipe) category: Category,
+  ): Promise<Category> {
+    return this.categoriesService.deleteCategory(category);
+  }
 }

@@ -39,6 +39,9 @@ let ItemsService = class ItemsService {
         item.id = createDto.id;
         return await this.itemRepository.save(item);
     }
+    async deleteItem(item) {
+        return await this.itemRepository.delete(item);
+    }
 };
 ItemsService = __decorate([
     (0, common_1.Injectable)(),

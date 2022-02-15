@@ -9,4 +9,5 @@ export declare class ListsService {
     createList(createDto: AddListDto): Promise<any>;
     getItemFromList(listId: string): Promise<List>;
     updateList(createDto: AddListDto): Promise<any>;
+    deleteList(list: List): Promise<any>;
 }

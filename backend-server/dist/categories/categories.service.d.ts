@@ -8,4 +8,5 @@ export declare class CategoriesService {
     constructor(categoryRepository: Repository<Category>, userRepository: Repository<User>);
     createCategory(createDto: AddCategoryDto): Promise<any>;
     getListFromCategory(categoryId: string): Promise<Category>;
+    deleteCategory(category: Category): Promise<any>;
 }

@@ -43,7 +43,9 @@ __decorate([
     __metadata("design:type", Number)
 ], Item.prototype, "version", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => List_entity_1.List, (list) => list.items),
+    (0, typeorm_1.ManyToOne)(() => List_entity_1.List, (list) => list.items, {
+        onDelete: 'CASCADE',
+    }),
     __metadata("design:type", List_entity_1.List)
 ], Item.prototype, "list", void 0);
 Item = __decorate([

@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -40,5 +41,11 @@ export class ListsController {
     return this.listServices.updateList(createDto);
   }
 
-  // TODO: delete
+  // delete
+  @ApiOperation({ summary: 'Delete list' })
+  @UseGuards(AuthGuard)
+  @Delete('/delete')
+  async deleteList(@Body(ValidationPipe) list: List): Promise<List> {
+    return this.listServices.deleteList(list);
+  }
 }

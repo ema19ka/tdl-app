@@ -34,4 +34,8 @@ export class ListsService {
     list.name = createDto.name;
     return await this.listRepository.save(list);
   }
+
+  async deleteList(list: List): Promise<any> {
+    return await this.listRepository.delete(list);
+  }
 }
