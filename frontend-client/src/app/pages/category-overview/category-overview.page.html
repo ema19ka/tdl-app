@@ -6,7 +6,7 @@
 <ion-content>
   <ion-title [routerLink]="['/home']">HOME</ion-title>
 
-  <ion-card *ngFor="let category of categoryData">
+  <ion-card *ngFor="let category of categoryData" [ngStyle]="{'border': '1px solid' + category.color}">
     <ion-card-header [routerLink]="['/category-single']" (click)="currentCategory(category.id)">
       <ion-card-title [ngStyle]="{'color': category.color}">{{ category.name }}</ion-card-title>
     </ion-card-header>
