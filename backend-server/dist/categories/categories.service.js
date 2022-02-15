@@ -28,6 +28,7 @@ let CategoriesService = class CategoriesService {
         const category = this.categoryRepository.create({
             name: createDto.name,
             user: user,
+            color: createDto.color,
         });
         return this.categoryRepository.save(category);
     }

@@ -27,6 +27,7 @@ class insertSampleUser1642587912778 {
         category.name = 'Study';
         category.id = 'a8be0883-95db-4711-8cfc-c9b865fc8957';
         category.user = await userRepository.findOne(user.id);
+        category.color = '#ff0000';
         const category2 = new Category_entity_1.Category();
         category2.name = 'Work';
         category2.id = '027e9313-e42d-4386-9e8d-de7515f05125';

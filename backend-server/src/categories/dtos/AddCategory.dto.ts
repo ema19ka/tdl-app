@@ -7,4 +7,6 @@ export class AddCategoryDto {
   @IsNotEmpty() name: string;
 
   @IsNotEmpty() user: User;
+
+  color: string;
 }

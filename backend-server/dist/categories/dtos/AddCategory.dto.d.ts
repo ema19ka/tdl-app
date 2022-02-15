@@ -3,4 +3,5 @@ export declare class AddCategoryDto {
     id: string;
     name: string;
     user: User;
+    color: string;
 }

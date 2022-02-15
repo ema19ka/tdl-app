@@ -29,6 +29,7 @@ export class insertSampleUser1642587912778 implements MigrationInterface {
     category.name = 'Study';
     category.id = 'a8be0883-95db-4711-8cfc-c9b865fc8957';
     category.user = await userRepository.findOne(user.id);
+    category.color = '#ff0000';
 
     const category2 = new Category();
     category2.name = 'Work';

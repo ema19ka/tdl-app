@@ -16,8 +16,8 @@ export class CategoryService {
 
   constructor() { }
 
-  add(name: string, user: string) {
-    return instance.post('categories/create', { name, user });
+  add(name: string, color: string, user: string) {
+    return instance.post('categories/create', { name, color, user });
   }
 
   getCategory(id: string) {

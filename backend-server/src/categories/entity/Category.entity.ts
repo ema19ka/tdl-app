@@ -20,8 +20,8 @@ export class Category {
   @Column()
   name: string;
 
-  // @Column()
-  // color: string;
+  @Column()
+  color: string;
 
   @CreateDateColumn()
   created_at: Date;
