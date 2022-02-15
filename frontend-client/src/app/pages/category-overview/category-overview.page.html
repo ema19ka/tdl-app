@@ -8,7 +8,7 @@
 
   <ion-card *ngFor="let category of categoryData">
     <ion-card-header [routerLink]="['/category-single']" (click)="currentCategory(category.id)">
-      <ion-card-title>{{ category.name }}</ion-card-title>
+      <ion-card-title [ngStyle]="{'color': category.color}">{{ category.name }}</ion-card-title>
     </ion-card-header>
   
     <ion-card-content *ngFor="let list of category.lists">

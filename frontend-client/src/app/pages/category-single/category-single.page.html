@@ -4,15 +4,15 @@
 </ion-header>
 
 <ion-content>
-  <ion-title [routerLink]="['/home']">{{ categoriesName }}</ion-title>
+  <ion-title [routerLink]="['/home']"[ngStyle]="{'color': categoryColor}">{{ categoriesName }}</ion-title>
 
-  <ion-card *ngFor="let list of listData">
+  <ion-card *ngFor="let list of listData" class="category-card" [ngStyle]="{'border': '1px solid' + categoryColor}">
     <ion-card-header [routerLink]="['/list-single']" (click)="currentList(list.id)">
       <ion-card-title>
-        <ion-item>
-          <ion-label>{{ list.name }}</ion-label>
-          <ion-checkbox slot="end" [(ngModel)]="list.isDone"  (ngModelChange)="updateList(list.id, list.name, list.isDone, list.category, list.index)"></ion-checkbox>
-        </ion-item>
+        <!-- <ion-item> -->
+          {{ list.name }}
+          <!-- <ion-checkbox slot="end" [(ngModel)]="list.isDone"  (ngModelChange)="updateList(list.id, list.name, list.isDone, list.category, list.index)"></ion-checkbox> -->
+        <!-- </ion-item> -->
       </ion-card-title>
     </ion-card-header>
 

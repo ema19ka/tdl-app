@@ -11,6 +11,7 @@ export class CategorySinglePage implements OnInit {
   listData: any[];
   responseArray: any[];
   categoriesName: string;
+  categoryColor: string;
   checked: boolean;
 
   constructor(public listService: ListService, private route: ActivatedRoute, private router: Router) {
@@ -29,6 +30,7 @@ export class CategorySinglePage implements OnInit {
     this.listService.getList(categoryId).then(response => {
       // console.log(response);
       this.categoriesName = response.data.name;
+      this.categoryColor = response.data.color;
       this.responseArray.push(response.data);
 
       this.responseArray[0].lists.forEach((element, index) =>  {

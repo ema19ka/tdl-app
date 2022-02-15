@@ -33,14 +33,16 @@ export class CategoryOverviewPage implements OnInit {
         this.categoryData.push({
           name: element.name,
           id: element.id,
-          lists: element.lists
+          lists: element.lists,
+          color: element.color
         });
       });
-
-      // console.log(this.categoryData);
     });
-
   }
+
+  // changeColor(color) {
+  //    console.log(color);
+  // }
 
   currentCategory(id){
     // console.log(id);
