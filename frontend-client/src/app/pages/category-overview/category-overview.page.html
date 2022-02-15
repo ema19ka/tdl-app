@@ -4,7 +4,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-title [routerLink]="['/home']">HOME</ion-title>
+  <ion-text>
+    <h1 [routerLink]="['/home']">HOME</h1>
+  </ion-text>
 
   <ion-card *ngFor="let category of categoryData" [ngStyle]="{'border': '1px solid' + category.color}">
     <ion-card-header [routerLink]="['/category-single']" (click)="currentCategory(category.id)">
@@ -12,10 +14,15 @@
     </ion-card-header>
   
     <ion-card-content *ngFor="let list of category.lists">
-      <ion-label [routerLink]="['/list-single']" (click)="currentList(list.id)">{{ list.name }}</ion-label>
+      <h2 [routerLink]="['/list-single']" (click)="currentList(list.id)">{{ list.name }}</h2>
     </ion-card-content>
   </ion-card>
 
-  <ion-button [routerLink]="['/category-add']">Add a new category</ion-button>
 
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="addBtn" [routerLink]="['/category-add']">Add a new category</ion-button>
+  </ion-toolbar>
+</ion-footer>

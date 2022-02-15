@@ -62,4 +62,12 @@ export class CategorySinglePage implements OnInit {
     // console.log(this.listData[index]);
   }
 
+  updateItem(id, name, isDone, list){
+    this.listService.updateItem(id, name, isDone, list);
+  }
+
+  deleteItem(id){
+    this.listService.deleteItem(id).then(() => window.location.reload());
+  }
+
 }

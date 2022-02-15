@@ -4,21 +4,25 @@
 </ion-header>
 
 <ion-content>
-  <ion-title [routerLink]="['/home']"[ngStyle]="{'color': categoryColor}">{{ categoriesName }}</ion-title>
+  <h1 [routerLink]="['/home']" [ngStyle]="{'color': categoryColor}">{{ categoriesName }}</h1>
 
   <ion-card *ngFor="let list of listData" class="category-card" [ngStyle]="{'border': '1px solid' + categoryColor}">
     <ion-card-header [routerLink]="['/list-single']" (click)="currentList(list.id)">
       <ion-card-title>
+        {{ list.name }}
+
         <!-- <ion-item> -->
-          {{ list.name }}
-          <!-- <ion-checkbox slot="end" [(ngModel)]="list.isDone"  (ngModelChange)="updateList(list.id, list.name, list.isDone, list.category, list.index)"></ion-checkbox> -->
+        <!-- <ion-checkbox slot="end" [(ngModel)]="list.isDone"  (ngModelChange)="updateList(list.id, list.name, list.isDone, list.category, list.index)"></ion-checkbox> -->
         <!-- </ion-item> -->
       </ion-card-title>
     </ion-card-header>
 
     <ion-card-content *ngFor="let item of list.items">
       <ion-item>
-        <ion-label [routerLink]="['/list-single']" (click)="currentList(list.id)">{{ item.name }}</ion-label>
+        <ion-label [class.boxChecked]="item.isDone">{{ item.name }}</ion-label>
+        <ion-checkbox slot="start" [(ngModel)]="item.isDone"
+          (ngModelChange)="updateItem(item.id, item.name, item.isDone, item.list)"></ion-checkbox>
+        <ion-button (click)="deleteItem(item.id)">Delete</ion-button>
       </ion-item>
     </ion-card-content>
   </ion-card>
