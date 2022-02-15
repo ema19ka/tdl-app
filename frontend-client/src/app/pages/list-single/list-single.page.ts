@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ListService } from 'src/app/services/list.service';
 
 @Component({
@@ -12,10 +11,9 @@ export class ListSinglePage implements OnInit {
   responseArray: any[];
   listName: string;
 
-  constructor(public listService: ListService, private route: ActivatedRoute, private router: Router) {
+  constructor(public listService: ListService) {
     this.listData = [];
     this.responseArray = [];
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
    }
 
   ngOnInit() {
