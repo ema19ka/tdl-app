@@ -11,6 +11,7 @@
     <ion-label [class.boxChecked]="item.isDone">{{ item.name }}</ion-label>
     <ion-checkbox slot="start" [(ngModel)]="item.isDone"
       (ngModelChange)="updateItem(item.id, item.name, item.isDone, item.list)"></ion-checkbox>
+    <ion-button (click)="deleteItem(item.id)">Delete</ion-button>
     <!-- <ion-reorder slot="end"></ion-reorder> -->
   </ion-item>
   <!-- </ion-reorder-group> -->

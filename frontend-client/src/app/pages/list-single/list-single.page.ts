@@ -42,4 +42,8 @@ export class ListSinglePage implements OnInit {
   updateItem(id, name, isDone, list){
     this.listService.updateItem(id, name, isDone, list);
   }
+
+  deleteItem(id){
+    this.listService.deleteItem(id).then(() => window.location.reload());
+  }
 }

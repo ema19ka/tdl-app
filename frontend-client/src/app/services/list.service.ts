@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { Item } from './Item';
 
 const LIST_API = 'http://localhost:3000/';
 
@@ -27,6 +28,10 @@ export class ListService {
     return instance.patch('lists/update', { id, name, isDone, category });
   }
 
+  deleteList(id: string) {
+    return instance.delete('lists/delete', {data: { id }});
+  }
+
   addItem(name: string, isDone: boolean, list: string) {
     return instance.post('items/create', { name, isDone, list });
   }
@@ -38,5 +43,9 @@ export class ListService {
   updateItem(id: string, name: string, isDone: boolean, list: string) {
     // console.log(id, name, isDone, list);
     return instance.patch('items/update', { id, name, isDone, list });
+  }
+
+  deleteItem(id: string) {
+    return instance.delete('items/delete', {data: { id }});
   }
 }
