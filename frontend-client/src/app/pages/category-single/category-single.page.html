@@ -18,12 +18,18 @@
     </ion-card-header>
 
     <ion-card-content *ngFor="let item of list.items">
-      <ion-item>
-        <ion-label [class.boxChecked]="item.isDone">{{ item.name }}</ion-label>
-        <ion-checkbox slot="start" [(ngModel)]="item.isDone"
-          (ngModelChange)="updateItem(item.id, item.name, item.isDone, item.list)"></ion-checkbox>
-        <ion-button (click)="deleteItem(item.id)">Delete</ion-button>
-      </ion-item>
+      <ion-item-sliding>
+        <ion-item>
+          <ion-label [class.boxChecked]="item.isDone">{{ item.name }}</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="item.isDone"
+            (ngModelChange)="updateItem(item.id, item.name, item.isDone, item.list)"></ion-checkbox>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger">
+            <ion-icon (click)="deleteItem(item.id)" slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
     </ion-card-content>
   </ion-card>
 
