@@ -6,7 +6,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/category-overview', pathMatch: 'full'
+    redirectTo: '/home', pathMatch: 'full'
   },
   {
     path: 'register',
@@ -44,10 +44,10 @@ const routes: Routes = [
     path: 'list-overview',
     loadChildren: () => import('./pages/list-overview/list-overview.module').then( m => m.ListOverviewPageModule)
   },
-  {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
+  // {
+  //   path: 'home',
+  //   loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  // },
   {
     path: '**', component: NotFoundComponent ,  // Wildcard route for a 404 page
   },
