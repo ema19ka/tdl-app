@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 import { ListService } from 'src/app/services/list.service';
 
 @Component({
@@ -13,7 +15,7 @@ export class CategorySinglePage implements OnInit {
   categoryColor: string;
   checked: boolean;
 
-  constructor(public listService: ListService) {
+  constructor(public listService: ListService, public userService: AuthService, private router: Router) {
     this.listData = [];
     this.responseArray = [];
   }
@@ -66,6 +68,14 @@ export class CategorySinglePage implements OnInit {
 
   deleteItem(id){
     this.listService.deleteItem(id).then(() => window.location.reload());
+  }
+
+  logout(){
+    localStorage.removeItem('user');
+    localStorage.removeItem('category');
+    localStorage.removeItem('list');
+    this.userService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

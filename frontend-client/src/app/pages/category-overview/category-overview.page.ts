@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -10,7 +12,7 @@ export class CategoryOverviewPage implements OnInit {
   categoryData: any[];
   responseArray: any[];
 
-  constructor(public categoryService: CategoryService) {
+  constructor(public categoryService: CategoryService, public userService: AuthService, private router: Router) {
     this.categoryData = [];
     this.responseArray = [];
   }
@@ -50,5 +52,13 @@ export class CategoryOverviewPage implements OnInit {
   currentList(id){
     // console.log(id);
     localStorage.setItem('list', id);
+  }
+
+  logout(){
+    localStorage.removeItem('user');
+    localStorage.removeItem('category');
+    localStorage.removeItem('list');
+    this.userService.logout();
+    this.router.navigate(['/login']);
   }
 }

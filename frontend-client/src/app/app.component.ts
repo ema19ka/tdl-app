@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from './auth/auth.service';
-import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
@@ -9,21 +7,6 @@ import { Location } from '@angular/common';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(public userService: AuthService, private router: Router, private location: Location) {
-    const isLoggedIn = localStorage.getItem('user');
-  }
-
-  onLogout(){
-    // console.log('test');
-    localStorage.removeItem('user');
-    localStorage.removeItem('category');
-    localStorage.removeItem('list');
-    this.userService.logout();
-    this.router.navigate(['/login']);
-  }
-
-  back() {
-    this.location.back();
-  }
+  constructor() {}
 
 }
