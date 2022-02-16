@@ -8,7 +8,7 @@
   <ion-grid>
     <ion-row>
       <ion-col align-self-center>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" (keydown.enter)="onSubmit()" novalidate>
           <ion-item>
             <ion-label position="floating">Username: </ion-label>
             <ion-input formControlName="username" type="text" class="form-control"></ion-input>
