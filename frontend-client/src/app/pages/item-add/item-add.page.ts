@@ -23,6 +23,7 @@ export class ItemAddPage implements OnInit {
       itemName: ['', [Validators.required, Validators.minLength(2)]]
     });
   }
+
   async presentToast(text) {
     const toast = await this.toastController.create({
       message: text,
