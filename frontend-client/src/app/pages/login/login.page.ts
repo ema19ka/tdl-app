@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -12,7 +13,9 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
   submitted = false;
 
-  constructor(public userService: AuthService, private router: Router, public formBuilder: FormBuilder) { }
+  constructor(
+    public userService: AuthService, private router: Router, public formBuilder: FormBuilder, public toastController: ToastController
+    ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -22,15 +25,23 @@ export class LoginPage implements OnInit {
     }) ;
   }
 
+  async presentToast(text) {
+    const toast = await this.toastController.create({
+      message: text,
+      duration: 2000,
+      position: 'top',
+    });
+    toast.present();
+  }
+
   onSubmit(){
     console.log('test');
     const {username, email, password } = this.loginForm.value;
     this.submitted = true;
     if(!this.loginForm.valid) {
-      console.log('All fields are required');
+      this.presentToast('All fields are required');
       return false;
     } else {
-      console.log(this.loginForm.value);
       try {
         this.userService.login(username,email,password).then(
         resp => {
@@ -38,8 +49,9 @@ export class LoginPage implements OnInit {
           localStorage.setItem('user', resp.data.id);
           this.router.navigate(['/home']).then(() => window.location.reload());
         }
-      );
+      ).catch();
       } catch(err) {
+        this.presentToast(err);
         console.log(err, 'err');
       }
     }

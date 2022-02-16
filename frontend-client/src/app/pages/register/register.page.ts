@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class RegisterPage implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
-  constructor(public userService: AuthService, private router: Router, public formBuilder: FormBuilder) { }
+  constructor(
+    public userService: AuthService, private router: Router, public formBuilder: FormBuilder, public toastController: ToastController) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -22,11 +24,20 @@ export class RegisterPage implements OnInit {
     }) ;
   }
 
+  async presentToast(text) {
+    const toast = await this.toastController.create({
+      message: text,
+      duration: 2000,
+      position: 'top',
+    });
+    toast.present();
+  }
+
   onSubmit(){
     const {username, email, password } = this.registerForm.value;
     this.submitted = true;
     if(!this.registerForm.valid) {
-      console.log('All fields are required');
+      this.presentToast('All fields required');
       return false;
     } else {
       this.userService.register(username,email,password).subscribe(

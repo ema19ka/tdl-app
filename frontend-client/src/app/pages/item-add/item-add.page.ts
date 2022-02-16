@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { ListService } from 'src/app/services/list.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class ItemAddPage implements OnInit {
   addItemForm: FormGroup;
   submitted = false;
 
-  constructor(public listService: ListService, private router: Router, public formBuilder: FormBuilder) {
+  // eslint-disable-next-line max-len
+  constructor(public listService: ListService, private router: Router, public formBuilder: FormBuilder, public toastController: ToastController) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
    }
 
@@ -21,6 +23,14 @@ export class ItemAddPage implements OnInit {
       itemName: ['', [Validators.required, Validators.minLength(2)]]
     });
   }
+  async presentToast(text) {
+    const toast = await this.toastController.create({
+      message: text,
+      duration: 2000,
+      position: 'top',
+    });
+    toast.present();
+  }
 
   onAddItem() {
     const { itemName } = this.addItemForm.value;
@@ -28,7 +38,7 @@ export class ItemAddPage implements OnInit {
     const list = localStorage.getItem('list');
     this.submitted = true;
     if(!this.addItemForm.valid) {
-      console.log('All fields required.');
+      this.presentToast('All fields required.');
       return false;
     } else {
       // console.log(this.addItemForm.value);

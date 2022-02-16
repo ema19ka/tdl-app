@@ -17,6 +17,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  bootstrap: [AppComponent, NotFoundComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

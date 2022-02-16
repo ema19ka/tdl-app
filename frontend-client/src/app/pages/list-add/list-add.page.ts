@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { ListService } from 'src/app/services/list.service';
 
 @Component({
@@ -12,12 +13,22 @@ export class ListAddPage implements OnInit {
   addListForm: FormGroup;
   submitted = false;
 
-  constructor(public listService: ListService, private router: Router, public formBuilder: FormBuilder) { }
+  constructor(
+    public listService: ListService, private router: Router, public formBuilder: FormBuilder, public toastController: ToastController) { }
 
   ngOnInit() {
     this.addListForm = this.formBuilder.group({
       listName: ['', [Validators.required, Validators.minLength(3)]]
     });
+  }
+
+  async presentToast(text) {
+    const toast = await this.toastController.create({
+      message: text,
+      duration: 2000,
+      position: 'top',
+    });
+    toast.present();
   }
 
   onAddList() {
@@ -26,7 +37,7 @@ export class ListAddPage implements OnInit {
     const category = localStorage.getItem('category');
     this.submitted = true;
     if(!this.addListForm.valid) {
-      console.log('All fields required.');
+      this.presentToast('All fields required.');
       return false;
     } else {
       // console.log(this.addListForm.value);
