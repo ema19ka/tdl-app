@@ -23,12 +23,18 @@ let UsersService = class UsersService {
         this.userRepository = userRepository;
     }
     async registerUser(user) {
-        console.log(user);
+        console.log(await this.userRepository.findOne(user.email));
         user.salt = await bcrypt.genSalt();
         user.password = await bcrypt.hash(user.password, user.salt);
-        return await this.userRepository.save(user);
+        console.log(user);
+        try {
+            return await this.userRepository.save(user);
+        }
+        catch (error) {
+            throw new common_1.BadRequestException(error.message);
+        }
     }
-    async getCategoriesOfUser(userId) {
+    async getUser(userId) {
         return await this.userRepository.findOne(userId);
     }
 };

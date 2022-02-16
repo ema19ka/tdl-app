@@ -28,7 +28,7 @@ import {
     username: string;
 
     @IsEmail()
-    @Column()
+    @Column({ unique: true})
     email: string;
   
     @Exclude()

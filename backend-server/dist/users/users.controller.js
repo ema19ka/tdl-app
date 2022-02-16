@@ -29,8 +29,8 @@ let UsersController = class UsersController {
     getAllUsers() {
         return 'true';
     }
-    getCategories(params) {
-        return this.usersService.getCategoriesOfUser(params.id);
+    getUser(params) {
+        return this.usersService.getUser(params.id);
     }
 };
 __decorate([
@@ -55,7 +55,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [RegisterUser_dto_1.RegisterUserDto]),
     __metadata("design:returntype", Promise)
-], UsersController.prototype, "getCategories", null);
+], UsersController.prototype, "getUser", null);
 UsersController = __decorate([
     (0, swagger_1.ApiTags)('Users Controller'),
     (0, common_1.Controller)('users'),

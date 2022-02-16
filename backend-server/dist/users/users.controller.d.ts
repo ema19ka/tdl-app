@@ -6,5 +6,5 @@ export declare class UsersController {
     constructor(usersService: UsersService);
     registerUser(user: User): Promise<User>;
     protected getAllUsers(): string;
-    getCategories(params: RegisterUserDto): Promise<User>;
+    getUser(params: RegisterUserDto): Promise<User>;
 }

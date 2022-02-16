@@ -30,16 +30,9 @@ export class UsersController {
     return 'true';
   }
 
-  // TODO: rename get user
   @UseGuards(AuthGuard)
   @Get('/categories/:id')
-  getCategories(@Param() params: RegisterUserDto): Promise<User> {
-    return this.usersService.getCategoriesOfUser(params.id);
+  getUser(@Param() params: RegisterUserDto): Promise<User> {
+    return this.usersService.getUser(params.id);
   }
-
-  // @ApiOperation({ summary: 'Get Book by given ID' })
-  // @Get('/:id')
-  // public async getBookByID(@Param() params: BooksQueryDto): Promise<Book> {
-  //   return this.booksService.getBookByID(params.id);
-  // }
 }
