@@ -12,17 +12,14 @@
     <ion-card-header [routerLink]="['/category-single']" (click)="currentCategory(category.id)">
       <ion-card-title [ngStyle]="{'color': category.color}">{{ category.name }}</ion-card-title>
     </ion-card-header>
-  
+
     <ion-card-content *ngFor="let list of category.lists">
       <h2 [routerLink]="['/list-single']" (click)="currentList(list.id)">{{ list.name }}</h2>
     </ion-card-content>
   </ion-card>
 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-button class="addBtn" [routerLink]="['/category-add']">Add a new category</ion-button>
+  </ion-fab>
 
 </ion-content>
-
-<ion-footer class="ion-no-border">
-  <ion-toolbar>
-    <ion-button class="addBtn" [routerLink]="['/category-add']">Add a new category</ion-button>
-  </ion-toolbar>
-</ion-footer>
