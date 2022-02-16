@@ -50,17 +50,16 @@ export class AuthService {
       return error;
     }
   }
-  register(username: string, email: string, password: string): Observable<any> {
+  async register(username: string, email: string, password: string){
     try {
-      return this.http.post(API + 'users/register', {
+      return await instance.post('users/register', {
         username,
         email,
         password,
-        withCredentials: true
-      }, httpOptions);
+      });
     } catch (error) {
       this.presentToast('User already exists');
-      return error;
+      return error.message;
     }
   }
 

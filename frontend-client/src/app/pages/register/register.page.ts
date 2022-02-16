@@ -40,7 +40,7 @@ export class RegisterPage implements OnInit {
       this.presentToast('All fields required');
       return false;
     } else {
-      this.userService.register(username,email,password).subscribe(
+      this.userService.register(username,email,password).then(
         data => {
           this.userService.login(username,email,password).then(
             resp => {
@@ -48,6 +48,8 @@ export class RegisterPage implements OnInit {
               this.router.navigate(['/home']).then(() => window.location.reload());
             }
           );
+        }, data => {
+          this.presentToast(data);
         }
       );
     }
