@@ -34,12 +34,11 @@ export class AuthService {
     toast.present();
   }
 
-  async login(username: string, email: string, password: string) {
+  async login(email: string, password: string) {
     try {
       this.isLoggedIn = 'true';
       localStorage.setItem('isLoggedIn', this.isLoggedIn);
        return await instance.post('auth/login', {
-        username,
         email,
         password
       });

@@ -42,7 +42,7 @@ export class RegisterPage implements OnInit {
     } else {
       this.userService.register(username,email,password).then(
         data => {
-          this.userService.login(username,email,password).then(
+          this.userService.login(email,password).then(
             resp => {
               localStorage.setItem('user', resp.data.id);
               this.router.navigate(['/home']).then(() => window.location.reload());

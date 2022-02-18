@@ -19,7 +19,6 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      username: ['',[Validators.required, Validators.minLength(3)]],
       email: ['',[Validators.required, Validators.minLength(3), Validators.email] ],
       password: ['',[Validators.required, Validators.minLength(8)] ],
     }) ;
@@ -36,14 +35,14 @@ export class LoginPage implements OnInit {
 
   onSubmit(){
     console.log('test');
-    const {username, email, password } = this.loginForm.value;
+    const {email, password } = this.loginForm.value;
     this.submitted = true;
     if(!this.loginForm.valid) {
       this.presentToast('All fields are required');
       return false;
     } else {
       try {
-        this.userService.login(username,email,password).then(
+        this.userService.login(email,password).then(
         resp => {
           console.log(resp.data.id);
           localStorage.setItem('user', resp.data.id);
