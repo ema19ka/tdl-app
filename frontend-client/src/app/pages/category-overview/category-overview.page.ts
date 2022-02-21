@@ -51,6 +51,10 @@ export class CategoryOverviewPage implements OnInit {
     localStorage.setItem('category', id);
   }
 
+  deleteCategory(id){
+    this.categoryService.deleteCategory(id).then(() => window.location.reload());
+  }
+
   currentList(id, cat){
     // console.log(id);
     localStorage.setItem('category', cat);

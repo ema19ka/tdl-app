@@ -6,3 +6,8 @@ h1 {
 .boxChecked {
     text-decoration: line-through;
 }
+
+.listHeader{
+    display: flex;
+    justify-content: center;
+}

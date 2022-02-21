@@ -18,13 +18,17 @@
 
   <ion-card *ngFor="let list of listData" class="category-card" [ngStyle]="{'border': '1px solid' + categoryColor}">
     <ion-card-header [routerLink]="['/list-single']" (click)="currentList(list.id)">
-      <ion-card-title>
-        {{ list.name }}
+      <div class="listHeader">
+        <ion-card-title>
+          {{ list.name }}
+        </ion-card-title>
+        <ion-buttons>
+          <ion-button (click)="deleteList(list.id)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
 
-        <!-- <ion-item> -->
-        <!-- <ion-checkbox slot="end" [(ngModel)]="list.isDone"  (ngModelChange)="updateList(list.id, list.name, list.isDone, list.category, list.index)"></ion-checkbox> -->
-        <!-- </ion-item> -->
-      </ion-card-title>
     </ion-card-header>
 
     <ion-card-content *ngFor="let item of list.items">
