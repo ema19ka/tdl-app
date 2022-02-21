@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import { Item } from './Item';
 
 const LIST_API = 'http://localhost:3000/';
 
