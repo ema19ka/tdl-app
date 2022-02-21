@@ -11,12 +11,9 @@ export class UsersService {
   ) {}
 
   public async registerUser(user: User): Promise<User> {
-    console.log(await this.userRepository.findOne(user.email));
-
     user.salt = await bcrypt.genSalt();
     user.password = await bcrypt.hash(user.password, user.salt);
 
-    console.log(user);
     try {
       return await this.userRepository.save(user);
     } catch (error) {
