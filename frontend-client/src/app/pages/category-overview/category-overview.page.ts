@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
+import { ListService } from 'src/app/services/list.service';
 
 @Component({
   selector: 'app-category-overview',
@@ -12,7 +13,8 @@ export class CategoryOverviewPage implements OnInit {
   categoryData: any[];
   responseArray: any[];
 
-  constructor(public categoryService: CategoryService, public userService: AuthService, private router: Router) {
+  // eslint-disable-next-line max-len
+  constructor(public categoryService: CategoryService, public userService: AuthService, private router: Router, public listService: ListService) {
     this.categoryData = [];
     this.responseArray = [];
   }
@@ -53,6 +55,15 @@ export class CategoryOverviewPage implements OnInit {
     // console.log(id);
     localStorage.setItem('list', id);
   }
+
+  updateItem(id, name, isDone, list){
+    this.listService.updateItem(id, name, isDone, list);
+  }
+
+  deleteItem(id){
+    this.listService.deleteItem(id).then(() => window.location.reload());
+  }
+
 
   logout(){
     localStorage.removeItem('user');

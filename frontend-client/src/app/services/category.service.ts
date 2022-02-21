@@ -24,5 +24,9 @@ export class CategoryService {
     return instance.get(`users/categories/${id}`);
   }
 
+  deleteCategory(id: string) {
+    return instance.delete('categories/delete', {data: { id }});
+  }
+
 
 }
