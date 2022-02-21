@@ -15,12 +15,11 @@ export class ItemAddPage implements OnInit {
 
   // eslint-disable-next-line max-len
   constructor(public listService: ListService, private router: Router, public formBuilder: FormBuilder, public toastController: ToastController) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
    }
 
   ngOnInit() {
     this.addItemForm = this.formBuilder.group({
-      itemName: ['', [Validators.required, Validators.minLength(2)]]
+      itemName: ['', [Validators.required, Validators.minLength(1)]]
     });
   }
 

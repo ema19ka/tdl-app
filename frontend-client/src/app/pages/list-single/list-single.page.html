@@ -33,8 +33,16 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  <!-- </ion-reorder-group> -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-button [routerLink]="['/item-add']">Add a new item to {{ listName }}</ion-button>
-  </ion-fab>
+  <form [formGroup]="addItemForm" (keydown.enter)="onAddItem()" novalidate>
+    <ion-item>
+      <ion-checkbox slot="start"></ion-checkbox>
+      <ion-input placeholder="Add List Item" formControlName="itemName" type="text" class="form-control"></ion-input>
+      <ion-buttons slot="end">
+        <ion-button (click)="onAddItem()">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </form>
+
 </ion-content>
