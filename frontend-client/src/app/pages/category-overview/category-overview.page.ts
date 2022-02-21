@@ -51,8 +51,9 @@ export class CategoryOverviewPage implements OnInit {
     localStorage.setItem('category', id);
   }
 
-  currentList(id){
+  currentList(id, cat){
     // console.log(id);
+    localStorage.setItem('category', cat);
     localStorage.setItem('list', id);
   }
 

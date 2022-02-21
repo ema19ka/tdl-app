@@ -13,27 +13,36 @@
     <h1 [routerLink]="['/home']">HOME</h1>
   </ion-text>
 
-  <ion-card *ngFor="let category of categoryData" [ngStyle]="{'border': '1px solid' + category.color}">
-    <ion-card-header [routerLink]="['/category-single']" (click)="currentCategory(category.id)">
-      <ion-card-title [ngStyle]="{'color': category.color}">{{ category.name }}</ion-card-title>
-    </ion-card-header>
+  <div class="gridContainer">
+    <div *ngFor="let category of categoryData" [ngStyle]="{'border': '1px solid' + category.color}"
+      class="categoryStyle">
 
-    <ion-card-content *ngFor="let list of category.lists">
-      <h2 [routerLink]="['/list-single']" (click)="currentList(list.id)">{{ list.name }}</h2>
-      <ion-item-sliding *ngFor="let item of list.items">
-        <ion-item>
-          <ion-label [class.boxChecked]="item.isDone">{{ item.name }}</ion-label>
-          <ion-checkbox slot="start" [(ngModel)]="item.isDone"
-            (ngModelChange)="updateItem(item.id, item.name, item.isDone, item.list)"></ion-checkbox>
-        </ion-item>
-        <ion-item-options side="end">
-          <ion-item-option color="danger">
-            <ion-icon (click)="deleteItem(item.id)" slot="icon-only" name="trash"></ion-icon>
-          </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-card-content>
-  </ion-card>
+      <h2 [routerLink]="['/category-single']" (click)="currentCategory(category.id)"
+        [ngStyle]="{'color': category.color}">{{ category.name }}</h2>
+
+      <ion-card *ngFor="let list of category.lists">
+        <ion-card-header [routerLink]="['/list-single']" (click)="currentList(list.id, category.id)">
+          <ion-card-title>{{ list.name }}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-item-sliding *ngFor="let item of list.items">
+            <ion-item>
+              <ion-label [class.boxChecked]="item.isDone">{{ item.name }}</ion-label>
+              <ion-checkbox slot="start" [(ngModel)]="item.isDone"
+                (ngModelChange)="updateItem(item.id, item.name, item.isDone, item.list)"></ion-checkbox>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger">
+                <ion-icon (click)="deleteItem(item.id)" slot="icon-only" name="trash"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-button class="addBtn" [routerLink]="['/category-add']">Add a new category</ion-button>

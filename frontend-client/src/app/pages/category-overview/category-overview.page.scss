@@ -1,9 +1,27 @@
-
 h1 {
     text-align: center;
     padding-bottom: 0.5rem;
 }
 
+h2 {
+    text-align: center;
+}
+
+.categoryStyle {
+    margin: 1rem;
+}
+
 ion-titel .toolbar-titel {
     text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+    .gridContainer{
+        display: grid;
+    }
+    .categoryStyle {
+        width: 50%;
+        grid-column-start: 1;
+        justify-self: center;
+    }
 }
