@@ -20,6 +20,14 @@ ion-titel .toolbar-titel {
     text-align: center;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
+.boxChecked {
+    text-decoration: line-through;
+}
+
 @media screen and (min-width: 600px) {
     .gridContainer{
         display: grid;
