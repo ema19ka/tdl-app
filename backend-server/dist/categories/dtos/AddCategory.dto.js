@@ -10,17 +10,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AddCategoryDto = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const User_entity_1 = require("../../users/entity/User.entity");
 class AddCategoryDto {
 }
 __decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], AddCategoryDto.prototype, "id", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AddCategoryDto.prototype, "name", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", User_entity_1.User)
 ], AddCategoryDto.prototype, "user", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], AddCategoryDto.prototype, "color", void 0);
 exports.AddCategoryDto = AddCategoryDto;
 //# sourceMappingURL=AddCategory.dto.js.map

@@ -30,6 +30,7 @@ export class UsersController {
     return 'true';
   }
 
+  @ApiOperation({ summary: 'Get all categories from User' })
   @UseGuards(AuthGuard)
   @Get('/categories/:id')
   getUser(@Param() params: RegisterUserDto): Promise<User> {

@@ -26,14 +26,14 @@ let ListsController = class ListsController {
     async createList(createDto) {
         return this.listServices.createList(createDto);
     }
-    getCategories(params) {
-        return this.listServices.getItemFromList(params.id);
-    }
     async updateList(createDto) {
         return this.listServices.updateList(createDto);
     }
     async deleteList(list) {
         return this.listServices.deleteList(list);
+    }
+    getCategories(params) {
+        return this.listServices.getItemFromList(params.id);
     }
 };
 __decorate([
@@ -45,14 +45,6 @@ __decorate([
     __metadata("design:paramtypes", [AddList_dto_1.AddListDto]),
     __metadata("design:returntype", Promise)
 ], ListsController.prototype, "createList", null);
-__decorate([
-    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
-    (0, common_1.Get)('/items/:id'),
-    __param(0, (0, common_1.Param)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [AddList_dto_1.AddListDto]),
-    __metadata("design:returntype", Promise)
-], ListsController.prototype, "getCategories", null);
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Update a list' }),
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
@@ -71,6 +63,15 @@ __decorate([
     __metadata("design:paramtypes", [List_entity_1.List]),
     __metadata("design:returntype", Promise)
 ], ListsController.prototype, "deleteList", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Get all items from List' }),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Get)('/items/:id'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [AddList_dto_1.AddListDto]),
+    __metadata("design:returntype", Promise)
+], ListsController.prototype, "getCategories", null);
 ListsController = __decorate([
     (0, swagger_1.ApiTags)('Lists Controller'),
     (0, common_1.Controller)('lists'),

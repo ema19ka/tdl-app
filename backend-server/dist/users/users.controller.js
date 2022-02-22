@@ -49,6 +49,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getAllUsers", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Get all categories from User' }),
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Get)('/categories/:id'),
     __param(0, (0, common_1.Param)()),

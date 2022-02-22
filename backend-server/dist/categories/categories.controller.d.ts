@@ -5,6 +5,6 @@ export declare class CategoriesController {
     private readonly categoriesService;
     constructor(categoriesService: CategoriesService);
     createCategory(createDto: AddCategoryDto): Promise<any>;
-    getCategories(params: AddCategoryDto): Promise<Category>;
     deleteCateogry(category: Category): Promise<Category>;
+    getCategories(params: AddCategoryDto): Promise<Category>;
 }

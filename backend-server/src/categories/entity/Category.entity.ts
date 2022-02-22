@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { List } from 'src/lists/entity/List.entity';
 import { User } from 'src/users/entity/User.entity';
 import {
@@ -14,12 +15,15 @@ import {
 
 @Entity()
 export class Category {
+  @ApiProperty()
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @ApiProperty()
   @Column()
   name: string;
 
+  @ApiProperty()
   @Column()
   color: string;
 

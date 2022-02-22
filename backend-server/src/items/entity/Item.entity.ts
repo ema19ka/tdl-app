@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { List } from 'src/lists/entity/List.entity';
 
 import {
@@ -6,7 +7,6 @@ import {
   DeleteDateColumn,
   Entity,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   VersionColumn,
@@ -14,15 +14,18 @@ import {
 
 @Entity()
 export class Item {
+  @ApiProperty()
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @ApiProperty()
   @Column()
   name: string;
 
   // @Column()
   // color: string;
 
+  @ApiProperty()
   @Column()
   isDone: boolean;
 

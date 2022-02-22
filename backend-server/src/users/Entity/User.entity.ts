@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import { ApiProperty } from '@nestjs/swagger';
 import * as bcrypt from 'bcrypt';
 import { Exclude } from 'class-transformer';
 import { IsEmail } from 'class-validator';
@@ -21,16 +22,20 @@ import {
   
   @Entity()
   export class User {
+    @ApiProperty()
     @PrimaryGeneratedColumn('uuid')
     id: string;
   
+    @ApiProperty()
     @Column()
     username: string;
 
+    @ApiProperty()
     @IsEmail()
     @Column({ unique: true})
     email: string;
   
+    @ApiProperty()
     @Exclude()
     @Column()
     password: string;

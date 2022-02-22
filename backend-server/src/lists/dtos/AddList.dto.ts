@@ -1,12 +1,12 @@
-import { IsNotEmpty } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 import { Category } from 'src/categories/entity/Category.entity';
 
 export class AddListDto {
-  id: string;
+  @ApiProperty() id: string;
 
-  name: string;
+  @ApiProperty() name: string;
 
-  category: Category;
+  @ApiProperty() category: Category;
 
-  isDone: boolean;
+  @ApiProperty() isDone: boolean;
 }

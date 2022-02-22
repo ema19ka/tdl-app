@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { Category } from 'src/categories/entity/Category.entity';
 import { Item } from 'src/items/entity/Item.entity';
 import {
@@ -13,15 +14,18 @@ import {
 } from 'typeorm';
 @Entity()
 export class List {
+  @ApiProperty()
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @ApiProperty()
   @Column()
   name: string;
 
   // @Column()
   // color: string;
 
+  @ApiProperty()
   @Column()
   isDone: boolean;
 

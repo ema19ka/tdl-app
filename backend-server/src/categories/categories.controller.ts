@@ -27,13 +27,6 @@ export class CategoriesController {
   ): Promise<any> {
     return this.categoriesService.createCategory(createDto);
   }
-
-  // get all lists from category
-  @UseGuards(AuthGuard)
-  @Get('/lists/:id')
-  getCategories(@Param() params: AddCategoryDto): Promise<Category> {
-    return this.categoriesService.getListFromCategory(params.id);
-  }
   // TODO: update
 
   @ApiOperation({ summary: 'Delete a category' })
@@ -43,5 +36,12 @@ export class CategoriesController {
     @Body(ValidationPipe) category: Category,
   ): Promise<Category> {
     return this.categoriesService.deleteCategory(category);
+  }
+
+  @ApiOperation({ summary: 'Get all lists from Category' })
+  @UseGuards(AuthGuard)
+  @Get('/lists/:id')
+  getCategories(@Param() params: AddCategoryDto): Promise<Category> {
+    return this.categoriesService.getListFromCategory(params.id);
   }
 }

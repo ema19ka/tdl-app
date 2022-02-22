@@ -1,12 +1,13 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 import { User } from 'src/users/entity/User.entity';
 
 export class AddCategoryDto {
-  id: string;
+  @ApiProperty() id: string;
 
-  @IsNotEmpty() name: string;
+  @ApiProperty() @IsNotEmpty() name: string;
 
-  @IsNotEmpty() user: User;
+  @ApiProperty() @IsNotEmpty() user: User;
 
-  color: string;
+  @ApiProperty() color: string;
 }

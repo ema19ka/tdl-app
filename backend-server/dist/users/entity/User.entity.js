@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const bcrypt = require("bcrypt");
 const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
@@ -28,19 +29,23 @@ let User = class User {
     }
 };
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
     __metadata("design:type", String)
 ], User.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], User.prototype, "username", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsEmail)(),
     (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
 ], User.prototype, "email", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_transformer_1.Exclude)(),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)

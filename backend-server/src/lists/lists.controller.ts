@@ -27,13 +27,6 @@ export class ListsController {
     return this.listServices.createList(createDto);
   }
 
-  // get all items from list
-  @UseGuards(AuthGuard)
-  @Get('/items/:id')
-  getCategories(@Param() params: AddListDto): Promise<List> {
-    return this.listServices.getItemFromList(params.id);
-  }
-
   @ApiOperation({ summary: 'Update a list' })
   @UseGuards(AuthGuard)
   @Patch('/update')
@@ -41,11 +34,17 @@ export class ListsController {
     return this.listServices.updateList(createDto);
   }
 
-  // delete
   @ApiOperation({ summary: 'Delete list' })
   @UseGuards(AuthGuard)
   @Delete('/delete')
   async deleteList(@Body(ValidationPipe) list: List): Promise<List> {
     return this.listServices.deleteList(list);
+  }
+
+  @ApiOperation({ summary: 'Get all items from List' })
+  @UseGuards(AuthGuard)
+  @Get('/items/:id')
+  getCategories(@Param() params: AddListDto): Promise<List> {
+    return this.listServices.getItemFromList(params.id);
   }
 }

@@ -1,12 +1,12 @@
-import { IsNotEmpty } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 import { List } from 'src/lists/entity/List.entity';
 
 export class AddItemDto {
-  id: string;
+  @ApiProperty() id: string;
 
-  name: string;
+  @ApiProperty() name: string;
 
-  list: List;
+  @ApiProperty() list: List;
 
-  isDone: boolean;
+  @ApiProperty() isDone: boolean;
 }

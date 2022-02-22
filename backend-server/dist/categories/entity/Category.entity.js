@@ -10,20 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Category = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const List_entity_1 = require("../../lists/entity/List.entity");
 const User_entity_1 = require("../../users/entity/User.entity");
 const typeorm_1 = require("typeorm");
 let Category = class Category {
 };
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
     __metadata("design:type", String)
 ], Category.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Category.prototype, "name", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Category.prototype, "color", void 0);
