@@ -7,7 +7,7 @@ const swagger_1 = require("@nestjs/swagger");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const config = new swagger_1.DocumentBuilder()
-        .setTitle('TDL-App')
+        .setTitle('YET, another tdl-App')
         .setDescription('Yes, another to-do-list app')
         .setVersion('1.0')
         .addTag('tdl')

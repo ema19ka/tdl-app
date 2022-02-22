@@ -1,4 +1,4 @@
-# tdl-app
+# YET, another tdl-app
 Yet another to-do-list-app
 
 # FH St.Pölten

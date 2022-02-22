@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('TDL-App')
+    .setTitle('YET, another tdl-App')
     .setDescription('Yes, another to-do-list app')
     .setVersion('1.0')
     .addTag('tdl')
