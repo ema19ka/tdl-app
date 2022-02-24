@@ -1,5 +1,6 @@
-FROM nikolaik/python-nodejs:python3.10-nodejs17-alpine as development
+FROM node:current-alpine3.15 as development
 
+RUN apk add g++ make python
 WORKDIR /app
 RUN npm install -g nodemon
 COPY package*.json /app/
