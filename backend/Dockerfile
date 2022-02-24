@@ -1,5 +1,4 @@
-FROM node:current-alpine3.15 as development
-LABEL maintainer="developers@fmp.com" environment="development" 
+FROM nikolaik/python-nodejs:python3.10-nodejs17-alpine as development
 
 WORKDIR /app
 RUN npm install -g nodemon
