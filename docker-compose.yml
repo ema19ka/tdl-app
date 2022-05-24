@@ -26,6 +26,7 @@ services:
     build: 
       context: ./backend
       target: development
+    command: npm run start:dev
     volumes: 
       - ./backend:/app
       - /app/node_modules
@@ -42,6 +43,7 @@ services:
     build:
       context: ./frontend
       target: development
+    command: ionic serve
     stdin_open: true
     volumes:
       - ./frontend:/app
