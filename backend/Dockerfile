@@ -4,7 +4,7 @@ RUN apk add g++ make python3
 WORKDIR /app
 RUN npm install -g nodemon
 COPY package*.json /app/
-RUN npm install --only=prod
+RUN npm install
 COPY . ./
 EXPOSE ${BACKEND_PORT}
 
