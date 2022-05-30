@@ -22,7 +22,8 @@
     "@ionic/angular": "^6.0.0",
     "@ionic/pwa-elements": "^3.1.1",
     "rxjs": "~6.6.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "axios": "^0.21.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^13.2.5",
