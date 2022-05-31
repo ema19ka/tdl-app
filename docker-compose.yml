@@ -43,15 +43,14 @@ services:
     build:
       context: ./frontend
       # target: development
-    command: ionic serve --external
-    stdin_open: true
-    # volumes:
-    #   - ./frontend:/app
-    #   - /app/node_modules
-    restart: on-failure
+    volumes:
+      - .:/opt/library
+    tty: true
+    restart: unless-stopped
     ports:
       - ${FRONTEND_PORT}:${FRONTEND_PORT}
     env_file: ./.env
+    command: ionic serve --external
 
 volumes:
   db_data: {}
