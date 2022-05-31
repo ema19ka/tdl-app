@@ -27,10 +27,8 @@ services:
       context: ./backend
       # target: development
     command: npm run start:dev
-    # volumes: 
-    #   - ./backend:/app
-    #   - /app/node_modules
-    #   - /app/dist
+    volumes: 
+     - ./backend/src:/app/src:z
     restart: on-failure
     ports:
       - ${BACKEND_PORT}:${BACKEND_PORT}
@@ -44,7 +42,7 @@ services:
       context: ./frontend
       # target: development
     volumes:
-      - .:/opt/library
+     - ./frontend/src:/app/src:z
     tty: true
     restart: unless-stopped
     ports:
