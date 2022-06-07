@@ -27,10 +27,8 @@ services:
       context: ./backend
       # target: development
     command: npm run start:dev
-    # volumes: 
-    #   - ./backend:/app
-    #   - /app/node_modules
-    #   - /app/dist
+    volumes: 
+     - ./backend/src:/app/src:z
     restart: on-failure
     ports:
       - ${BACKEND_PORT}:${BACKEND_PORT}
@@ -43,15 +41,14 @@ services:
     build:
       context: ./frontend
       # target: development
-    command: ionic serve --external
-    stdin_open: true
-    # volumes:
-    #   - ./frontend:/app
-    #   - /app/node_modules
-    restart: on-failure
+    volumes:
+     - ./frontend/src:/app/src:z
+    tty: true
+    restart: unless-stopped
     ports:
       - ${FRONTEND_PORT}:${FRONTEND_PORT}
     env_file: ./.env
+    command: ionic serve --external
 
 volumes:
   db_data: {}
