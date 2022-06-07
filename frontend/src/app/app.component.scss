@@ -1,0 +1,18 @@
+ion-tab-button {
+    --color: white;
+    text-transform: uppercase;
+}
+
+ion-tab-bar {
+    height: 4rem;
+}
+
+ion-label {
+    margin-top: 0.4rem;
+    font-weight: bold;
+}
+
+.hide {
+    --color: green;
+    display: none;
+}
