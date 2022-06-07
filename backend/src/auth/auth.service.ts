@@ -15,7 +15,9 @@ export class AuthService {
 
   public async login(loginDto: LoginDto, response: Response): Promise<any> {
     const user = await this.userRepository.findOne({
-      email: loginDto.email,
+      where: {
+        email: loginDto.email,
+      },
     });
     if (!user) {
       throw new BadRequestException('User not found or password incorrect');
