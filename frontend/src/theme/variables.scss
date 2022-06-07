@@ -6,13 +6,20 @@
   // default font
   --ion-font-family: Futura;
 
-
   --ion-color-primary: #794a99;
   --ion-color-primary-rgb: 121, 74, 153;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #6a4187;
   --ion-color-primary-tint: #865ca3;
+
+  --ion-color-surface: #eadfea;
+  --ion-color-surface-rgb: 234, 223, 234;
+  --ion-color-surface-contrast: #000000;
+  --ion-color-surface-contrast-rgb: 0, 0, 0;
+  --ion-color-surface-shade: #cec4ce;
+  --ion-color-surface-tint: #ece2ec;
+
   --ion-color-secondary: #67596e;
   --ion-color-secondary-rgb: 103, 89, 110;
   --ion-color-secondary-contrast: #ffffff;
@@ -168,6 +175,14 @@
     --ion-color-primary-contrast-rgb: 0, 0, 0;
     --ion-color-primary-shade: #ca9ee0;
     --ion-color-primary-tint: #e8bcff;
+
+    --ion-color-surface: #4b454d;
+    --ion-color-surface-rgb: 75, 69, 77;
+    --ion-color-surface-contrast: #ffffff;
+    --ion-color-surface-contrast-rgb: 255, 255, 255;
+    --ion-color-surface-shade: #423d44;
+    --ion-color-surface-tint: #5d585f;
+
     --ion-color-secondary: #d3c1d9;
     --ion-color-secondary-rgb: 211, 193, 217;
     --ion-color-secondary-contrast: #000000;

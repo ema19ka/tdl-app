@@ -1,10 +1,11 @@
-ion-tab-button {
-    --color: white;
-    text-transform: uppercase;
-}
-
 ion-tab-bar {
     height: 4rem;
+    --background: var(--ion-color-surface);
+}
+
+ion-tab-button {
+    --color: var(--ion-text-color);
+    text-transform: uppercase;
 }
 
 ion-label {
