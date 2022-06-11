@@ -1,17 +1,9 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button href="/category-single">
-        <ion-icon name="list"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button (click)="logout()">
-        <ion-icon name="log-out-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    <ion-title class="ion-text-center">{{ categoryName }}</ion-title>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
   <h1>{{ listName }}</h1>

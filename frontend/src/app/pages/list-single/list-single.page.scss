@@ -32,3 +32,13 @@ ion-checkbox {
     height: 2rem;
     --background: var(--ion-background-color);
 }
+
+
+// header 
+ion-toolbar {
+    --background: var(--ion-color-background);
+}
+
+ion-title {
+    --color: var(--ion-color-category);
+}

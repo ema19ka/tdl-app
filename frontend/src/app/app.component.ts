@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,7 +10,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   check: boolean;
-  constructor() {}
+  constructor (public userService: AuthService, private router: Router) {
+   }
 
   ngOnInit() {
     this.checkLoginStatus();
@@ -23,6 +26,14 @@ export class AppComponent {
       this.check = false;
       return false;
     }
+  }
+
+  logout(){
+    localStorage.removeItem('user');
+    localStorage.removeItem('category');
+    localStorage.removeItem('list');
+    this.userService.logout();
+    this.router.navigate(['/login']).then(() => window.location.reload());;
   }
 
 }

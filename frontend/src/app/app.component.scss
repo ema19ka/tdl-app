@@ -13,7 +13,16 @@ ion-label {
     font-weight: bold;
 }
 
+ion-toolbar {
+    --background: var(--ion-color-background);
+}
+
+ion-toolbar{ 
+    ion-button {
+        --color: var(--ion-color-primary);
+    }
+} 
+
 .hide {
-    --color: green;
     display: none;
 }
