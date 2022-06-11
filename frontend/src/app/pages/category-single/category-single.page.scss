@@ -15,3 +15,12 @@ h1 {
 .pointer {
     cursor: pointer;
 }
+
+
+ion-toolbar {
+    --background: var(--ion-color-background);
+}
+
+ion-title {
+    font-size: 15px;
+}
