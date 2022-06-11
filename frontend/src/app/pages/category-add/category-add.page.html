@@ -1,4 +1,8 @@
-<ion-title>Add a category</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Add a category</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
   <ion-grid>
@@ -9,10 +13,22 @@
             <ion-label>Name: </ion-label>
             <ion-input formControlName="catName" type="text" class="form-control"></ion-input>
           </ion-item>
-          <ion-item>
+          <!-- <ion-item>
             <ion-label>Pick a category color:</ion-label>
             <ion-input formControlName="catColor" class="ion-no-padding" id="catColor" type="color" value="#ff0000">
             </ion-input>
+          </ion-item> -->
+          <ion-item>
+            <ion-label>Pick a category color:</ion-label>
+            <ion-select class="custom-options" formControlName="newColor" value="--ion-color-blue" okText="Confirm" cancelText="Dismiss" id="colorSelect">
+              <ion-select-option class="red-option" value="var(--ion-color-red)">Red</ion-select-option>
+              <ion-select-option value="var(--ion-color-orange)">Orange</ion-select-option>
+              <ion-select-option value="var(--ion-color-yellow)">Yellow</ion-select-option>
+              <ion-select-option value="var(--ion-color-green)">Green</ion-select-option>
+              <ion-select-option value="var(--ion-color-cyan)">Cyan</ion-select-option>
+              <ion-select-option value="var(--ion-color-blue)">Blue</ion-select-option>
+              <ion-select-option value="var(--ion-color-pink)">Pink</ion-select-option>
+            </ion-select>
           </ion-item>
           <ion-item>
             <ion-button type="submit">Add Category</ion-button>

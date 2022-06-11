@@ -1,0 +1,13 @@
+ion-toolbar {
+    --background: var(--ion-color-background);
+}
+
+form {
+    background: var(--ion-color-background);
+}
+
+.custom-options {
+    .red-option {
+        color: var(--ion-color-red);
+    }
+}

@@ -27,7 +27,7 @@ export class CategoryOverviewPage implements OnInit {
     const userId = localStorage.getItem('user');
     // console.log(userId);
     this.categoryService.getCategory(userId).then(response => {
-      // console.log(response);
+      console.log(response);
       this.responseArray.push(response.data);
       // console.log(this.responseArray);
 
@@ -39,12 +39,9 @@ export class CategoryOverviewPage implements OnInit {
           color: element.color
         });
       });
+      console.log(response.data.category[0].color);
     });
   }
-
-  // changeColor(color) {
-  //    console.log(color);
-  // }
 
   currentCategory(id){
     // console.log(id);

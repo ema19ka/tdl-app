@@ -16,13 +16,24 @@ export class CategoryPage implements OnInit {
   // public category: Category;
 
   // eslint-disable-next-line max-len
-  constructor(public categoryService: CategoryService, private router: Router, public formBuilder: FormBuilder, public toastController: ToastController) { }
+  constructor(
+    public categoryService: CategoryService,
+    private router: Router,
+    public formBuilder: FormBuilder,
+    public toastController: ToastController
+  ) {}
 
   ngOnInit() {
     this.addCategoryForm = this.formBuilder.group({
       catName: ['', [Validators.required, Validators.minLength(3)]],
-      catColor: ['', Validators.required],
+      // catColor: ['', Validators.required],
+      newColor: ['', Validators.required],
     });
+
+    // const select = document.querySelector('.custom-options');
+    // select.interfaceOptions = {
+    //   cssClass: 'my-custom-interface',
+    // };
   }
 
   async presentToast(text) {
@@ -33,21 +44,21 @@ export class CategoryPage implements OnInit {
     });
     toast.present();
   }
-  onAddCategory(){
+  onAddCategory() {
     // console.log(this.category.name);
     const userid = localStorage.getItem('user');
-    const { catName, catColor } = this.addCategoryForm.value;
+    const { catName, catColor, newColor } = this.addCategoryForm.value;
+    // console.log(newColor);
+    // console.log('var(--ion-color-blue)');
+
     this.submitted = true;
     if (!this.addCategoryForm.valid) {
       this.presentToast('All fields required.');
       return false;
     } else {
-      this.categoryService.add(catName, catColor, userid).then(
-        data => {
-          this.router.navigate(['/home']).then(() => window.location.reload());
-        },
-      );
+      this.categoryService.add(catName, newColor, userid).then((data) => {
+        this.router.navigate(['/home']).then(() => window.location.reload());
+      });
     }
   }
-
 }
