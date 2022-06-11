@@ -5,6 +5,7 @@
 :root {
   // default font
   --ion-font-family: Futura;
+  --ion-color-shadow: #1D1B1E3B;
 
   --ion-color-primary: #794a99;
   --ion-color-primary-rgb: 121, 74, 153;
@@ -179,6 +180,8 @@
    * -------------------------------------------
    */
   body {
+    --ion-color-shadow: #000000;
+
     --ion-color-primary: #e5b4ff;
     --ion-color-primary-rgb: 229, 180, 255;
     --ion-color-primary-contrast: #000000;

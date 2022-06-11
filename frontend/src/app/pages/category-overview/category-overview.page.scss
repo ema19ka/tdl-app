@@ -14,11 +14,14 @@ h2 {
 
 .categoryStyle {
     margin: 1rem;
+    border-radius: 25px;
+    box-shadow: 0px 3px 6px var(--ion-color-shadow);
+    margin-bottom: 2rem;
 }
 
-ion-titel .toolbar-titel {
-    text-align: center;
-}
+// ion-titel .toolbar-titel {
+//     text-align: center;
+// }
 
 .pointer {
     cursor: pointer;
@@ -37,4 +40,53 @@ ion-titel .toolbar-titel {
         grid-column-start: 1;
         justify-self: center;
     }
+}
+
+
+ion-toolbar {
+    --background: var(--ion-color-background);
+}
+
+ion-title {
+    font-size: 15px;
+}
+
+ion-card-header {
+    font-size: 20px;
+    text-align: center;
+}
+
+// card
+ion-card {
+    --background: var(--ion-background-color);
+    border-radius: 30px;
+    margin: 1.5rem 1rem;
+    box-shadow: 0px 3px 6px var(--ion-color-shadow);
+    padding: 0;
+}
+
+// item
+ion-list {
+    background: var(--ion-background-color);
+}
+
+ion-item {
+    --background: var(--ion-background-color);
+    --border-radius: 64px;
+    font-size: 20px;
+    --border-color: var(--ion-color-outline);
+    --border-width: 2px;
+    margin-bottom: 0.7rem;
+}
+
+ion-item-option {
+    border-radius: 0 64px 64px 0;
+    margin: 10px;
+}
+
+ion-checkbox {
+    --border-radius: 50px;
+    width: 2rem;
+    height: 2rem;
+    --background: var(--ion-background-color);
 }

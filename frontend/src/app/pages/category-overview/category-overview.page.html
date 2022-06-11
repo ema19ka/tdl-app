@@ -1,8 +1,10 @@
-<ion-content>
-  <ion-text>
-    <h1 [routerLink]="['/home']">HOME</h1>
-  </ion-text>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Home</ion-title>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content>
   <div class="gridContainer">
     <div *ngFor="let category of categoryData" [ngStyle]="{'border': '1px solid' + category.color}"
       class="categoryStyle">
