@@ -18,7 +18,7 @@ ion-toolbar {
 }
 
 ion-toolbar{ 
-    ion-button {
+    ion-button, ion-back-button {
         --color: var(--ion-color-primary);
     }
 } 
