@@ -7,7 +7,8 @@
 <ion-content>
   <h1 [routerLink]="['/home']" [ngStyle]="{'color': categoryColor}" class="pointer">{{ categoriesName }}</h1>
 
-  <ion-card *ngFor="let list of listData" class="category-card" [ngStyle]="{'border': '1px solid' + categoryColor}">
+  <!-- <ion-card *ngFor="let list of listData" class="category-card" [ngStyle]="{'border': '1px solid' + categoryColor}"> -->
+    <ion-card *ngFor="let list of listData" class="category-card">
     <ion-card-header [routerLink]="['/list-single']" (click)="currentList(list.id)">
       <div class="listHeader">
         <ion-card-title class="pointer">
@@ -39,6 +40,6 @@
   </ion-card>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-button [routerLink]="['/list-add']">Add a new list to {{categoriesName}}</ion-button>
+    <ion-button [routerLink]="['/list-add']"><ion-icon name="add"></ion-icon>Add a list</ion-button>
   </ion-fab>
 </ion-content>
