@@ -5,9 +5,10 @@ h1 {
 
 h2 {
     text-align: center;
+    font-size: 25px;
 }
 
-.catHeader{
+.catHeader {
     display: flex;
     justify-content: center;
 }
@@ -32,7 +33,7 @@ h2 {
 }
 
 @media screen and (min-width: 600px) {
-    .gridContainer{
+    .gridContainer {
         display: grid;
     }
     .categoryStyle {
@@ -58,6 +59,7 @@ ion-card-header {
 
 ion-card-title {
     color: var(--ion-text-color);
+    font-size: 18px;
 }
 
 // card
@@ -77,7 +79,7 @@ ion-list {
 ion-item {
     --background: var(--ion-background-color);
     --border-radius: 64px;
-    font-size: 20px;
+    font-size: 15px;
     --border-color: var(--ion-color-outline);
     --border-width: 2px;
     margin-bottom: 0.7rem;
@@ -90,7 +92,15 @@ ion-item-option {
 
 ion-checkbox {
     --border-radius: 50px;
-    width: 2rem;
-    height: 2rem;
+    width: 2em;
+    height: 2em;
     --background: var(--ion-background-color);
 }
+
+
+// popover
+// ion-popover {
+//     ion-button {
+//         width: 80%;
+//     }
+// }

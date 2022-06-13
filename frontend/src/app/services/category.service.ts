@@ -3,6 +3,7 @@ import axios from 'axios';
 
 
 const CATEGORY_API = 'http://localhost:3000/';
+// const CATEGORY_API = 'http://10.0.0.52:3000';
 
 const instance = axios.create({
   withCredentials: true,

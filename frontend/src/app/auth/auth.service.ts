@@ -5,6 +5,7 @@ import axios from 'axios';
 import { ToastController } from '@ionic/angular';
 
 const API = 'http://localhost:3000/';
+// const API = 'http://10.0.0.52:3000';
 
 const httpOptions = {
   headers: new HttpHeaders({ contentType: 'application/json' })
