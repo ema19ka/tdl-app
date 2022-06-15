@@ -8,30 +8,18 @@
   <h1 [routerLink]="['/home']" [ngStyle]="{'color': categoryColor}" class="pointer">{{ categoriesName }}</h1>
 
   <!-- <ion-card *ngFor="let list of listData" class="category-card" [ngStyle]="{'border': '1px solid' + categoryColor}"> -->
-    <ion-card *ngFor="let list of listData; index as indexOfelement" class="category-card">
-    <ion-card-header>
+  <ion-card *ngFor="let list of listData" class="category-card">
+    <ion-card-header [routerLink]="['/list-single']" (click)="currentList(list.id)">
       <div class="listHeader">
-        <ion-card-title class="pointer" [routerLink]="['/list-single']" (click)="currentList(list.id)">
+        <ion-card-title class="pointer">
           {{ list.name }}
         </ion-card-title>
-         <ion-buttons>
-          <ion-button id="size-button2">
-            <ion-icon name="ellipsis-vertical"></ion-icon>
+        <ion-buttons>
+          <ion-button (click)="deleteList(list.id)">
+            <ion-icon name="trash"></ion-icon>
           </ion-button>
-        </ion-buttons> 
-        <ion-popover trigger="size-button2" side="bottom" alignment="center">
-          <ng-template>
-            <ion-button (click)="deleteList(list.id)">
-              Delete
-            </ion-button>
-            <ion-button>
-              Edit
-            </ion-button>
-          </ng-template>
-        </ion-popover>
-
+        </ion-buttons>
       </div>
-
     </ion-card-header>
 
     <ion-card-content *ngFor="let item of list.items">
@@ -51,6 +39,8 @@
   </ion-card>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-button [routerLink]="['/list-add']"><ion-icon name="add"></ion-icon>Add a list</ion-button>
+    <ion-button [routerLink]="['/list-add']">
+      <ion-icon name="add"></ion-icon>Add a list
+    </ion-button>
   </ion-fab>
 </ion-content>

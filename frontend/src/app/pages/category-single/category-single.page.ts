@@ -63,7 +63,7 @@ export class CategorySinglePage implements OnInit {
   }
 
   deleteList(id) {
-    this.listService.deleteList(id).then(() => window.location.reload());
+    this.listService.deleteList(id).then(() => this.router.navigate(['/home']).then(() => window.location.reload()));
   }
 
   updateItem(id, name, isDone, list){
