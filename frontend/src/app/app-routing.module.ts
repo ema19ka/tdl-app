@@ -41,6 +41,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/item-add/item-add.module').then( m => m.ItemAddPageModule)
   },
   {
+    path: 'calendar',
+    loadChildren: () => import('./pages/calendar/calendar.module').then( m => m.CalendarPageModule)
+  },
+  {
+    path: 'timer',
+    loadChildren: () => import('./pages/focus-timer/focus-timer.module').then( m => m.FocusTimerPageModule)
+  },
+  {
+    path: 'planner',
+    loadChildren: () => import('./pages/planner/planner.module').then( m => m.PlannerPageModule)
+  },
+  {
     path: '**', component: NotFoundComponent ,  // Wildcard route for a 404 page
   },
 ];
