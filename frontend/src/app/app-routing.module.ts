@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-// import { ExploreContainerComponentModule } from './explore-container/explore-container.component';
 
 const routes: Routes = [
   {
@@ -22,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/category-overview/category-overview.module').then( m => m.CategoryOverviewPageModule)
+    loadChildren: () => import('./pages/home/category-overview.module').then( m => m.CategoryOverviewPageModule)
   },
   {
     path: 'category-single',
