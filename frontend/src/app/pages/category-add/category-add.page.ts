@@ -13,9 +13,8 @@ import { CategoryService } from 'src/app/services/category.service';
 export class CategoryPage implements OnInit {
   addCategoryForm: FormGroup;
   submitted = false;
-  // public category: Category;
+  color: string;
 
-  // eslint-disable-next-line max-len
   constructor(
     public categoryService: CategoryService,
     private router: Router,
@@ -23,17 +22,15 @@ export class CategoryPage implements OnInit {
     public toastController: ToastController
   ) {}
 
+  customAlertOptions: any = {
+    cssClass: 'my-custom-interface',
+  };
+
   ngOnInit() {
     this.addCategoryForm = this.formBuilder.group({
       catName: ['', [Validators.required, Validators.minLength(3)]],
-      // catColor: ['', Validators.required],
       newColor: ['', Validators.required],
     });
-
-    // const select = document.querySelector('.custom-options');
-    // select.interfaceOptions = {
-    //   cssClass: 'my-custom-interface',
-    // };
   }
 
   async presentToast(text) {
@@ -45,11 +42,9 @@ export class CategoryPage implements OnInit {
     toast.present();
   }
   onAddCategory() {
-    // console.log(this.category.name);
     const userid = localStorage.getItem('user');
-    const { catName, catColor, newColor } = this.addCategoryForm.value;
+    const { catName, newColor } = this.addCategoryForm.value;
     // console.log(newColor);
-    // console.log('var(--ion-color-blue)');
 
     this.submitted = true;
     if (!this.addCategoryForm.valid) {
@@ -60,5 +55,16 @@ export class CategoryPage implements OnInit {
         this.router.navigate(['/home']).then(() => window.location.reload());
       });
     }
+  }
+
+  setColor(color) {
+    color = this.addCategoryForm.value.newColor;
+    console.log(color);
+    // console.log(`Changed value(s) only: ${$event.detail.value}`);
+
+    // const select = document.querySelector('.custom-options');
+    // select.interfaceOptions = {
+    //   cssClass: 'my-custom-interface'
+    // };
   }
 }
