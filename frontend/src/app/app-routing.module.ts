@@ -37,10 +37,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/list-single/list-single.module').then( m => m.ListSinglePageModule)
   },
   {
-    path: 'item-add',
-    loadChildren: () => import('./pages/item-add/item-add.module').then( m => m.ItemAddPageModule)
-  },
-  {
     path: 'calendar',
     loadChildren: () => import('./pages/calendar/calendar.module').then( m => m.CalendarPageModule)
   },
