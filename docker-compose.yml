@@ -25,7 +25,6 @@ services:
       - db
     build: 
       context: ./backend
-      # target: development
     command: npm run start:dev
     volumes: 
      - ./backend/src:/app/src:z
@@ -37,10 +36,8 @@ services:
   front:
     depends_on:
       - back
-      - db
     build:
       context: ./frontend
-      # target: development
     volumes:
      - ./frontend/src:/app/src:z
     tty: true
