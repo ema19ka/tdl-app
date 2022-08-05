@@ -14,7 +14,7 @@ export class CategoriesService {
     private userRepository: Repository<User>,
   ) {}
 
-  async createCategory(createDto: AddCategoryDto): Promise<any> {
+  async createCategory(createDto: AddCategoryDto): Promise<Category> {
     const user = await this.userRepository.findOne(createDto.user);
     const category = this.categoryRepository.create({
       name: createDto.name,

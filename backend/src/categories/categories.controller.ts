@@ -24,7 +24,7 @@ export class CategoriesController {
   @Post('/create')
   async createCategory(
     @Body(ValidationPipe) createDto: AddCategoryDto,
-  ): Promise<any> {
+  ): Promise<Category> {
     return this.categoriesService.createCategory(createDto);
   }
   // TODO: update

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Category } from 'src/categories/entity/Category.entity';
+import { Item } from 'src/items/entity/Item.entity';
 import { Repository } from 'typeorm';
 import { AddListDto } from './dtos/AddList.dto';
 import { List } from './entity/List.entity';
@@ -14,7 +15,7 @@ export class ListsService {
     private categoryRepository: Repository<Category>,
   ) {}
 
-  async createList(createDto: AddListDto): Promise<any> {
+  async createList(createDto: AddListDto): Promise<List> {
     const category = await this.categoryRepository.findOne(createDto.category);
     const list = this.listRepository.create({
       name: createDto.name,
@@ -28,7 +29,7 @@ export class ListsService {
     return await this.listRepository.findOne(listId);
   }
 
-  async updateList(createDto: AddListDto): Promise<any> {
+  async updateList(createDto: AddListDto): Promise<List> {
     const list = await this.listRepository.findOne(createDto.id);
     list.isDone = createDto.isDone;
     list.name = createDto.name;

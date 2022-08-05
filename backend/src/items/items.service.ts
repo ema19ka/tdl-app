@@ -14,7 +14,7 @@ export class ItemsService {
     private listRepository: Repository<List>,
   ) {}
 
-  async createItem(createDto: AddItemDto): Promise<any> {
+  async createItem(createDto: AddItemDto): Promise<Item> {
     const list = await this.listRepository.findOne(createDto.list);
     const item = this.itemRepository.create({
       name: createDto.name,
@@ -24,7 +24,7 @@ export class ItemsService {
     return this.itemRepository.save(item);
   }
 
-  async updateItem(createDto: AddItemDto): Promise<any> {
+  async updateItem(createDto: AddItemDto): Promise<Item> {
     const item = await this.itemRepository.findOne(createDto.id);
     item.isDone = createDto.isDone;
     item.name = createDto.name;

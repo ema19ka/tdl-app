@@ -23,14 +23,14 @@ export class ListsController {
   @ApiOperation({ summary: 'Add a list' })
   @UseGuards(AuthGuard)
   @Post('/create')
-  async createList(@Body(ValidationPipe) createDto: AddListDto): Promise<any> {
+  async createList(@Body(ValidationPipe) createDto: AddListDto): Promise<List> {
     return this.listServices.createList(createDto);
   }
 
   @ApiOperation({ summary: 'Update a list' })
   @UseGuards(AuthGuard)
   @Patch('/update')
-  async updateList(@Body(ValidationPipe) createDto: AddListDto): Promise<any> {
+  async updateList(@Body(ValidationPipe) createDto: AddListDto): Promise<List> {
     return this.listServices.updateList(createDto);
   }
 
