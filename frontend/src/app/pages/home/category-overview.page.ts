@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Category } from 'src/app/services/Category';
 import { CategoryService } from 'src/app/services/category.service';
 import { ListService } from 'src/app/services/list.service';
 
@@ -10,7 +11,7 @@ import { ListService } from 'src/app/services/list.service';
   styleUrls: ['./category-overview.page.scss'],
 })
 export class CategoryOverviewPage implements OnInit {
-  categoryData: any[];
+  categoryData: Category[];
   responseArray: any[];
 
   // eslint-disable-next-line max-len
