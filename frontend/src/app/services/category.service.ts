@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { environment } from 'src/environments/environment';
 
 
-const CATEGORY_API = 'http://localhost:3000/';
+// const CATEGORY_API = 'http://localhost:3000/';
 // const CATEGORY_API = 'http://10.0.0.52:3000';
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: CATEGORY_API,
+  baseURL: environment.baseUrl,
 });
 
 @Injectable({
