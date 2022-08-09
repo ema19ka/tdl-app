@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
-import { ListService } from 'src/app/services/list.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-category-single',
@@ -15,7 +15,7 @@ export class CategorySinglePage implements OnInit {
   categoryColor: string;
   checked: boolean;
 
-  constructor(public listService: ListService, public userService: AuthService, private router: Router, private activeRoute: ActivatedRoute) {
+  constructor(public categoryService: CategoryService, public userService: AuthService, private router: Router, private activeRoute: ActivatedRoute) {
     this.listData = [];
     this.responseArray = [];
   }
@@ -29,7 +29,7 @@ export class CategorySinglePage implements OnInit {
   getLists(){
     const categoryId = localStorage.getItem('category');
     // console.log(categoryId);
-    this.listService.getList(categoryId).then(response => {
+    this.categoryService.getList(categoryId).then(response => {
       // console.log(response);
       this.categoriesName = response.data.name;
       this.categoryColor = response.data.color;
@@ -56,24 +56,24 @@ export class CategorySinglePage implements OnInit {
 
   updateList(id, name, isDone, category, index){
     // console.log(id, name, isDone, category);
-    this.listService.updateList(id, name, isDone, category);
+    this.categoryService.updateList(id, name, isDone, category);
     const currentStatus = this.listData[index].isDone;
     this.listData[index].items.forEach(element => {
-      this.listService.updateItem(element.id, element.name, currentStatus, this.listData[index]);
+      this.categoryService.updateItem(element.id, element.name, currentStatus, this.listData[index]);
     });
     // console.log(this.listData[index]);
   }
 
   deleteList(id) {
-    this.listService.deleteList(id).then(() => this.router.navigate(['/home']).then(() => window.location.reload()));
+    this.categoryService.deleteList(id).then(() => this.router.navigate(['/home']).then(() => window.location.reload()));
   }
 
   updateItem(id, name, isDone, list){
-    this.listService.updateItem(id, name, isDone, list);
+    this.categoryService.updateItem(id, name, isDone, list);
   }
 
   deleteItem(id){
-    this.listService.deleteItem(id).then(() => window.location.reload());
+    this.categoryService.deleteItem(id).then(() => window.location.reload());
   }
 
   logout(){

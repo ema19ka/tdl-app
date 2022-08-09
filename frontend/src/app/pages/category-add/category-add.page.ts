@@ -51,7 +51,7 @@ export class CategoryPage implements OnInit {
       this.presentToast('All fields required.');
       return false;
     } else {
-      this.categoryService.add(catName, newColor, userid).then((data) => {
+      this.categoryService.addCategory(catName, newColor, userid).then((data) => {
         this.router.navigate(['/home']);
       });
     }

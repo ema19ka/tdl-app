@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { ListService } from 'src/app/services/list.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-list-add',
@@ -14,7 +14,7 @@ export class ListAddPage implements OnInit {
   submitted = false;
 
   constructor(
-    public listService: ListService, private router: Router, public formBuilder: FormBuilder, public toastController: ToastController) { }
+    public categoryService: CategoryService, private router: Router, public formBuilder: FormBuilder, public toastController: ToastController) { }
 
   ngOnInit() {
     this.addListForm = this.formBuilder.group({
@@ -41,7 +41,7 @@ export class ListAddPage implements OnInit {
       return false;
     } else {
       // console.log(this.addListForm.value);
-      this.listService.add(listName, isDone, category).then(
+      this.categoryService.addList(listName, isDone, category).then(
         res => {
           // console.log(res);
           this.router.navigate(['/category-single']);

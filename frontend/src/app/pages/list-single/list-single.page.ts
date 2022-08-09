@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
+import { CategoryService } from 'src/app/services/category.service';
+import { Item } from 'src/app/services/Item';
+import { List } from 'src/app/services/List';
 import { ListService } from 'src/app/services/list.service';
 
 @Component({
@@ -12,7 +15,8 @@ import { ListService } from 'src/app/services/list.service';
 })
 export class ListSinglePage implements OnInit {
   addItemForm: FormGroup;
-  listData: any[];
+  listData: List;
+  itemData: Item;
   responseArray: any[];
   listName: string;
   categoryName: string;
@@ -20,17 +24,19 @@ export class ListSinglePage implements OnInit {
 
   // eslint-disable-next-line max-len
   constructor(
-    public listService: ListService,
+    public categoryService: CategoryService,
     public userService: AuthService,
     private router: Router,
+    private route: ActivatedRoute,
     public formBuilder: FormBuilder,
     public toastController: ToastController
   ) {
-    this.listData = [];
+    // this.listData = [];
     this.responseArray = [];
   }
 
   ngOnInit() {
+    // const questionId = this.route.snapshot.paramMap.get('id');
     this.getCategory();
     this.getList();
     this.addItemForm = this.formBuilder.group({
@@ -40,7 +46,7 @@ export class ListSinglePage implements OnInit {
 
   getList() {
     const listId = localStorage.getItem('list');
-    this.listService.getItems(listId).then((response) => {
+    this.categoryService.getItems(listId).then((response) => {
       this.listName = response.data.name;
       this.responseArray.push(response.data);
 
@@ -57,7 +63,7 @@ export class ListSinglePage implements OnInit {
 
   getCategory() {
     const categoryId = localStorage.getItem('category');
-    this.listService.getList(categoryId).then((response) => {
+    this.categoryService.getList(categoryId).then((response) => {
       this.categoryName = response.data.name;
       this.categoryColor = response.data.color;
       document.body.style.setProperty('--ion-color-category', this.categoryColor);
@@ -84,20 +90,20 @@ export class ListSinglePage implements OnInit {
       return false;
     } else {
       // console.log(this.addItemForm.value);
-      this.listService.addItem(itemName, isDone, list).then((res) => {
+      this.categoryService.addItem(itemName, isDone, list).then((res) => {
         // console.log(res);
         this.router
-          .navigate(['/list-single'])
-          .then(() => window.location.reload());
+          .navigate([this.listData.id])
+          // .then(() => window.location.reload());
       });
     }
   }
 
   updateItem(id, name, isDone, list) {
-    this.listService.updateItem(id, name, isDone, list);
+    this.categoryService.updateItem(id, name, isDone, list);
   }
 
   deleteItem(id) {
-    this.listService.deleteItem(id).then(() => window.location.reload());
+    this.categoryService.deleteItem(id).then(() => window.location.reload());
   }
 }
