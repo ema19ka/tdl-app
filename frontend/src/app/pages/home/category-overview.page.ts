@@ -41,6 +41,9 @@ export class CategoryOverviewPage implements OnInit {
         });
       });
       console.log(response.data.category[0].color);
+      // console.log(this.respon);
+
+      console.log(this.categoryData);
     });
   }
 

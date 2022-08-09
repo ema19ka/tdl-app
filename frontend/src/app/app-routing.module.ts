@@ -24,7 +24,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/category-overview.module').then( m => m.CategoryOverviewPageModule)
   },
   {
-    path: 'category-single',
+    // path: 'category-single',
+    path: 'home/:id',
     loadChildren: () => import('./pages/category-single/category-single.module').then( m => m.CategorySinglePageModule)
   },
   {
@@ -32,7 +33,9 @@ const routes: Routes = [
     loadChildren: () => import('./pages/list-add/list-add.module').then( m => m.ListAddPageModule)
   },
   {
-    path: 'list-single',
+    // path: 'list-single',
+     //path: 'category/:id, ???
+    path: 'home/:id/:id',
     loadChildren: () => import('./pages/list-single/list-single.module').then( m => m.ListSinglePageModule)
   },
   {

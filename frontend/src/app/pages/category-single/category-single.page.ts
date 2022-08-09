@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ListService } from 'src/app/services/list.service';
 
@@ -15,12 +15,14 @@ export class CategorySinglePage implements OnInit {
   categoryColor: string;
   checked: boolean;
 
-  constructor(public listService: ListService, public userService: AuthService, private router: Router) {
+  constructor(public listService: ListService, public userService: AuthService, private router: Router, private activeRoute: ActivatedRoute) {
     this.listData = [];
     this.responseArray = [];
   }
 
   ngOnInit() {
+    const id = this.activeRoute.snapshot.paramMap.get('id');
+    console.log(id);
    this.getLists();
   }
 

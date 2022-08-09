@@ -52,7 +52,7 @@ export class CategoryPage implements OnInit {
       return false;
     } else {
       this.categoryService.add(catName, newColor, userid).then((data) => {
-        this.router.navigate(['/home']).then(() => window.location.reload());
+        this.router.navigate(['/home']);
       });
     }
   }

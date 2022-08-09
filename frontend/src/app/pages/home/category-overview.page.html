@@ -10,7 +10,7 @@
       [ngStyle]="{'border': '1px solid', 'border-color': category.color}" class="categoryStyle">
 
       <div class="catHeader">
-        <h2 [routerLink]="['/category-single']" (click)="currentCategory(category.id)"
+        <h2 [routerLink]="[category.id]" (click)="currentCategory(category.id)"
           [ngStyle]="{'color': category.color}" class="pointer">{{ category.name }}</h2>
         <ion-buttons>
           <ion-button (click)="deleteCategory(category.id)">
@@ -20,7 +20,7 @@
       </div>
 
       <ion-card *ngFor="let list of category.lists">
-        <ion-card-header [routerLink]="['/list-single']" (click)="currentList(list.id, category.id)">
+        <ion-card-header [routerLink]="[category.id/list.id]" (click)="currentList(list.id, category.id)">
           <ion-card-title class="pointer">{{ list.name }}</ion-card-title>
         </ion-card-header>
 
