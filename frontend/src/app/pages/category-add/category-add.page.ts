@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { Category } from 'src/app/services/Category';
 // import { Category } from 'src/app/services/Category';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -44,6 +45,12 @@ export class CategoryPage implements OnInit {
   onAddCategory() {
     const userid = localStorage.getItem('user');
     const { catName, newColor } = this.addCategoryForm.value;
+    const categoryTest: Category = {
+      name: catName,
+      color: newColor,
+      id: userid,
+      lists: []
+    }
     // console.log(newColor);
 
     this.submitted = true;
@@ -52,6 +59,9 @@ export class CategoryPage implements OnInit {
       return false;
     } else {
       this.categoryService.addCategory(catName, newColor, userid).then((data) => {
+        this.categoryService.ApiResult.category = [...this.categoryService.ApiResult.category, categoryTest];
+        console.log(this.categoryService.ApiResult.category);
+
         this.router.navigate(['/home']);
       });
     }
