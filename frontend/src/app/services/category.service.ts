@@ -52,7 +52,7 @@ export class CategoryService {
   */
 
   addCategory(name: string, color: string, user: string) {
-    return instance.post('categories/create', { name, color, user });
+    return instance.post<Category>('categories/create', { name, color, user });
   }
 
   getCategory(id: string) {
@@ -67,11 +67,11 @@ export class CategoryService {
   }
 
   addList(name: string, isDone: boolean, category: string) {
-    return instance.post('lists/create', { name, isDone, category });
+    return instance.post<List>('lists/create', { name, isDone, category });
   }
 
   getList(id: string) {
-    return instance.get(`categories/lists/${id}`)
+    return instance.get<Category>(`categories/lists/${id}`)
     .then((response) => {
       this.catData = response.data;
     });
@@ -86,11 +86,11 @@ export class CategoryService {
   }
 
   addItem(name: string, isDone: boolean, list: string) {
-    return instance.post('items/create', { name, isDone, list });
+    return instance.post<Item>('items/create', { name, isDone, list });
   }
 
   getItems(listId: string) {
-    return instance.get(`lists/items/${listId}`)
+    return instance.get<List>(`lists/items/${listId}`)
     .then((response) => {
       this.listData = response.data;
     });
