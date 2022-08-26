@@ -68,14 +68,14 @@ export class CategoryService {
       // console.log(response);
       // console.log('service test');
       this.ApiResult = response.data;
-      this.ApiResult.category.forEach((category) => {
-        this.catData = {
-          name: category.name,
-          id: category.id,
-          lists: category.lists,
-          color: category.color,
-        };
-      });
+      // this.ApiResult.category.forEach((category) => {
+      //   this.catData = {
+      //     name: category.name,
+      //     id: category.id,
+      //     lists: category.lists,
+      //     color: category.color,
+      //   };
+      // });
       // console.log(this.catData);
     });
   }
@@ -90,7 +90,12 @@ export class CategoryService {
   }
 
   getList(id: string) {
-    return instance.get(`categories/lists/${id}`);
+    return instance.get(`categories/lists/${id}`)
+    .then((response) => {
+      console.log(response);
+      this.catData = response.data;
+      console.log(this.catData);
+    });
   }
 
   updateList(id: string, name: string, isDone: boolean, category: string) {

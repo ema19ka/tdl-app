@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { CategoryService } from 'src/app/services/category.service';
+import { List } from 'src/app/services/List';
 
 @Component({
   selector: 'app-list-add',
@@ -36,6 +37,16 @@ export class ListAddPage implements OnInit {
     const isDone = false;
     const category = localStorage.getItem('category');
     this.submitted = true;
+
+    const currentList: List = {
+      name: listName,
+      isDone: isDone,
+      id: 'asdf', 
+      items: [],
+
+    }
+
+
     if(!this.addListForm.valid) {
       this.presentToast('All fields required.');
       return false;
@@ -44,7 +55,8 @@ export class ListAddPage implements OnInit {
       this.categoryService.addList(listName, isDone, category).then(
         res => {
           // console.log(res);
-          this.router.navigate(['/category-single']);
+          this.categoryService.catData.lists = [...this.categoryService.catData.lists, currentList];
+          this.router.navigate([`home/${currentList.id}`]);
         },
       );
     }
