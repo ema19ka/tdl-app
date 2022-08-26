@@ -85,7 +85,7 @@ export class CategoryService {
   }
 
   addList(name: string, isDone: boolean, category: string) {
-    // console.log(name);
+    console.log(name, isDone);
     return instance.post('lists/create', { name, isDone, category });
   }
 
@@ -108,11 +108,16 @@ export class CategoryService {
   }
 
   addItem(name: string, isDone: boolean, list: string) {
+    console.log(name, isDone, list);
     return instance.post('items/create', { name, isDone, list });
   }
 
   getItems(listId: string) {
-    return instance.get(`lists/items/${listId}`);
+    return instance.get(`lists/items/${listId}`)
+    .then((response) => {
+      console.log(response);
+      this.listData = response.data;
+    });
   }
 
   updateItem(id: string, name: string, isDone: boolean, list: string) {

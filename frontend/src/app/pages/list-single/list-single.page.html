@@ -1,16 +1,16 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title class="ion-text-center">{{ categoryName }}</ion-title>
+    <ion-title class="ion-text-center">{{ categoryService.catData.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  <h1>{{ listName }}</h1>
+  <h1>{{ categoryService.listData.name }}</h1>
 
   <!-- <ion-reorder-group disabled="false"> -->
   <ion-list >
-    <ion-item-sliding *ngFor="let item of listData">
+    <ion-item-sliding *ngFor="let item of categoryService.listData.items">
       <ion-item class="listItem">
         <ion-label [class.boxChecked]="item.isDone">{{ item.name }}</ion-label>
         <ion-checkbox slot="start" [(ngModel)]="item.isDone"
