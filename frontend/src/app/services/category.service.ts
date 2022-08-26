@@ -6,9 +6,6 @@ import { Item } from './Item';
 import { List } from './List';
 import { User } from './User';
 
-// const CATEGORY_API = 'http://localhost:3000/';
-// const CATEGORY_API = 'http://10.0.0.52:3000';
-
 const instance = axios.create({
   withCredentials: true,
   baseURL: environment.baseUrl,
@@ -45,14 +42,10 @@ export class CategoryService {
     username: '',
     email: '',
     password: '',
-    // salt: '',
-    // created_at: new Date,
-    // updated_at: new Date,
     category: this.catData[0],
   };
 
   /*
-  
   getUser(user: User) {
     return instance.get(`users/categories/${user.id}`);
   }
@@ -65,18 +58,7 @@ export class CategoryService {
   getCategory(id: string) {
     return instance.get<User>(`users/categories/${id}`)
     .then((response) => {
-      // console.log(response);
-      // console.log('service test');
       this.ApiResult = response.data;
-      // this.ApiResult.category.forEach((category) => {
-      //   this.catData = {
-      //     name: category.name,
-      //     id: category.id,
-      //     lists: category.lists,
-      //     color: category.color,
-      //   };
-      // });
-      // console.log(this.catData);
     });
   }
 
@@ -85,21 +67,17 @@ export class CategoryService {
   }
 
   addList(name: string, isDone: boolean, category: string) {
-    console.log(name, isDone);
     return instance.post('lists/create', { name, isDone, category });
   }
 
   getList(id: string) {
     return instance.get(`categories/lists/${id}`)
     .then((response) => {
-      console.log(response);
       this.catData = response.data;
-      console.log(this.catData);
     });
   }
 
   updateList(id: string, name: string, isDone: boolean, category: string) {
-    // console.log(id, name, isDone, category);
     return instance.patch('lists/update', { id, name, isDone, category });
   }
 
@@ -108,20 +86,17 @@ export class CategoryService {
   }
 
   addItem(name: string, isDone: boolean, list: string) {
-    console.log(name, isDone, list);
     return instance.post('items/create', { name, isDone, list });
   }
 
   getItems(listId: string) {
     return instance.get(`lists/items/${listId}`)
     .then((response) => {
-      console.log(response);
       this.listData = response.data;
     });
   }
 
   updateItem(id: string, name: string, isDone: boolean, list: string) {
-    // console.log(id, name, isDone, list);
     return instance.patch('items/update', { id, name, isDone, list });
   }
 

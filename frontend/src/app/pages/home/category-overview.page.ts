@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Category } from 'src/app/services/Category';
 import { CategoryService } from 'src/app/services/category.service';
-import { ListService } from 'src/app/services/list.service';
 import { User } from 'src/app/services/User';
 
 @Component({
@@ -20,7 +19,6 @@ export class CategoryOverviewPage implements OnInit {
     public categoryService: CategoryService,
     public userService: AuthService,
     private router: Router,
-    public listService: ListService
   ) {
     this.categoryData = [];
     this.responseArray = [];
