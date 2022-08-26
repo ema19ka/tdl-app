@@ -32,40 +32,10 @@ export class CategoryOverviewPage implements OnInit {
 
   getCategory() {
     const userId = localStorage.getItem('user');
-
-    // console.log(userId);
     this.categoryService.getCategory(userId);
-    // .then(() => {
-      // this.responseArray.push(response.data);
-      // // console.log(this.responseArray);
-      // this.responseArray[0].category.forEach((element) => {
-      //   this.categoryData.push({
-      //     name: element.name,
-      //     id: element.id,
-      //     lists: element.lists,
-      //     color: element.color,
-      //   });
-      // });
-      // console.log(response.data.category[0].color);
-      // console.log(this.respon);
-      // console.log(this.categoryData);
-      // console.log(this.categoryService.ApiResult);
-      // this.categoryService.ApiResult.category.forEach((element) => {
-      //   this.categoryData.push({
-      //     name: element.name,
-      //     id: element.id,
-      //     lists: element.lists,
-      //     color: element.color,
-      //   });
-      // });
-      // console.log(this.categoryService.ApiResult.category);
-
-  
-    // });
   }
 
   currentCategory(id) {
-    // console.log(id);
     localStorage.setItem('category', id);
   }
 
@@ -76,7 +46,6 @@ export class CategoryOverviewPage implements OnInit {
   }
 
   currentList(id, cat) {
-    // console.log(id);
     localStorage.setItem('category', cat);
     localStorage.setItem('list', id);
   }

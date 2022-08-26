@@ -45,13 +45,12 @@ export class CategoryPage implements OnInit {
   onAddCategory() {
     const userid = localStorage.getItem('user');
     const { catName, newColor } = this.addCategoryForm.value;
-    const categoryTest: Category = {
+    const currentCategory: Category = {
       name: catName,
       color: newColor,
       id: userid,
       lists: []
     }
-    // console.log(newColor);
 
     this.submitted = true;
     if (!this.addCategoryForm.valid) {
@@ -59,7 +58,7 @@ export class CategoryPage implements OnInit {
       return false;
     } else {
       this.categoryService.addCategory(catName, newColor, userid).then((data) => {
-        this.categoryService.ApiResult.category = [...this.categoryService.ApiResult.category, categoryTest];
+        this.categoryService.ApiResult.category = [...this.categoryService.ApiResult.category, currentCategory];
         console.log(this.categoryService.ApiResult.category);
 
         this.router.navigate(['/home']);
@@ -69,12 +68,5 @@ export class CategoryPage implements OnInit {
 
   setColor(color) {
     color = this.addCategoryForm.value.newColor;
-    console.log(color);
-    // console.log(`Changed value(s) only: ${$event.detail.value}`);
-
-    // const select = document.querySelector('.custom-options');
-    // select.interfaceOptions = {
-    //   cssClass: 'my-custom-interface'
-    // };
   }
 }
