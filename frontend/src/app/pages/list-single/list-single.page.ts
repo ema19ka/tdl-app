@@ -108,6 +108,7 @@ export class ListSinglePage implements OnInit {
       this.categoryService.addItem(itemName, itemDone, list).then((res) => {
         // console.log(res);
         this.categoryService.listData.items = [...this.categoryService.listData.items, currentItem];
+        this.addItemForm.reset();
         // this.router
         //   .navigate([this.listData.id])
           // .then(() => window.location.reload());

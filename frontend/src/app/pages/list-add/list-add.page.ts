@@ -56,6 +56,7 @@ export class ListAddPage implements OnInit {
         res => {
           // console.log(res);
           this.categoryService.catData.lists = [...this.categoryService.catData.lists, currentList];
+          this.addListForm.reset();
           this.router.navigate([`home/${currentList.id}`]);
         },
       );

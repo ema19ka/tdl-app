@@ -60,7 +60,7 @@ export class CategoryPage implements OnInit {
       this.categoryService.addCategory(catName, newColor, userid).then((data) => {
         this.categoryService.ApiResult.category = [...this.categoryService.ApiResult.category, currentCategory];
         console.log(this.categoryService.ApiResult.category);
-
+        this.addCategoryForm.reset();
         this.router.navigate(['/home']);
       });
     }
