@@ -106,6 +106,8 @@ export class CategoryService {
   }
 
   deleteItem(id: string) {
-    return instance.delete('items/delete', { data: { id } });
+    return instance.delete('items/delete', { data: { id } }).then( () => {
+      this.getItems(localStorage.getItem('list'));
+    });
   }
 }

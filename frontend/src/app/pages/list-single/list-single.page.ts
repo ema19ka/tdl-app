@@ -123,6 +123,6 @@ export class ListSinglePage implements OnInit {
   }
 
   deleteItem(id) {
-    this.categoryService.deleteItem(id).then(() => window.location.reload());
+    this.categoryService.deleteItem(id);
   }
 }
