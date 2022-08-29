@@ -5,7 +5,7 @@ import { ToastController } from '@ionic/angular';
 import { Category } from 'src/app/services/Category';
 // import { Category } from 'src/app/services/Category';
 import { CategoryService } from 'src/app/services/category.service';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-category-add',
@@ -45,25 +45,31 @@ export class CategoryPage implements OnInit {
   }
   onAddCategory() {
     const userid = localStorage.getItem('user');
+    console.log(userid);
     const { catName, newColor } = this.addCategoryForm.value;
     const currentCategory: Category = {
       name: catName,
       color: newColor,
       id: uuidv4(),
-      lists: []
-    }
+      lists: [],
+    };
 
     this.submitted = true;
     if (!this.addCategoryForm.valid) {
       this.presentToast('All fields required.');
       return false;
     } else {
-      this.categoryService.addCategory(catName, newColor, userid).then((data) => {
-        this.categoryService.ApiResult.category = [...this.categoryService.ApiResult.category, currentCategory];
-        console.log(this.categoryService.ApiResult.category);
-        this.addCategoryForm.reset();
-        this.router.navigate(['/home']);
-      });
+      this.categoryService
+        .addCategory(currentCategory.id, catName, newColor, userid)
+        .then((data) => {
+          this.categoryService.ApiResult.category = [
+            ...this.categoryService.ApiResult.category,
+            currentCategory,
+          ];
+          console.log(this.categoryService.ApiResult.category);
+          this.addCategoryForm.reset();
+          this.router.navigate(['/home']);
+        });
     }
   }
 

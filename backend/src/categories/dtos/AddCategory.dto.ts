@@ -3,7 +3,7 @@ import { IsNotEmpty } from 'class-validator';
 import { User } from 'src/users/entity/User.entity';
 
 export class AddCategoryDto {
-  @ApiProperty() id: string;
+  @ApiProperty() @IsNotEmpty() id: string;
 
   @ApiProperty() @IsNotEmpty() name: string;
 
