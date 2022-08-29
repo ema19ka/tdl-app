@@ -54,7 +54,7 @@ export class ListAddPage implements OnInit {
       return false;
     } else {
       // console.log(this.addListForm.value);
-      this.categoryService.addList(listName, isDone, category).then(
+      this.categoryService.addList(currentList.id, listName, isDone, category).then(
         res => {
           // console.log(res);
           this.categoryService.catData.lists = [...this.categoryService.catData.lists, currentList];

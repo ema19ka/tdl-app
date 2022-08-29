@@ -8,6 +8,7 @@ import {
   Entity,
   ManyToOne,
   OneToMany,
+  PrimaryColumn,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   VersionColumn,
@@ -15,7 +16,7 @@ import {
 @Entity()
 export class List {
   @ApiProperty()
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn()
   id: string;
 
   @ApiProperty()

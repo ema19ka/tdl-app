@@ -69,8 +69,8 @@ export class CategoryService {
     });
   }
 
-  addList(name: string, isDone: boolean, category: string) {
-    return instance.post<List>('lists/create', { name, isDone, category });
+  addList(id: string, name: string, isDone: boolean, category: string) {
+    return instance.post<List>('lists/create', { id, name, isDone, category });
   }
 
   getList(id: string) {
