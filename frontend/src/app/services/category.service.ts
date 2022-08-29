@@ -85,7 +85,9 @@ export class CategoryService {
   }
 
   deleteList(id: string) {
-    return instance.delete('lists/delete', { data: { id } });
+    return instance.delete('lists/delete', { data: { id } }).then( () => {
+      this.getList(localStorage.getItem('category'));
+    });
   }
 
   addItem(name: string, isDone: boolean, list: string) {

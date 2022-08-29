@@ -9,9 +9,9 @@
 
   <!-- <ion-card *ngFor="let list of listData" class="category-card" [ngStyle]="{'border': '1px solid' + categoryColor}"> -->
   <ion-card *ngFor="let list of categoryService.catData.lists" class="category-card">
-    <ion-card-header [routerLink]="[list.id]" (click)="currentList(list.id)">
+    <ion-card-header (click)="currentList(list.id)">
       <div class="listHeader">
-        <ion-card-title class="pointer">
+        <ion-card-title class="pointer" [routerLink]="[list.id]">
           {{ list.name }}
         </ion-card-title>
         <ion-buttons>
