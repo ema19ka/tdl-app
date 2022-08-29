@@ -6,6 +6,8 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { Item } from 'src/app/services/Item';
 import { List } from 'src/app/services/List';
+import {v4 as uuidv4} from 'uuid';
+
 
 @Component({
   selector: 'app-list-single',
@@ -96,7 +98,7 @@ export class ListSinglePage implements OnInit {
     const currentItem: Item = {
       name: itemName,
       isDone: itemDone,
-      id: 'asdfjkl',
+      id: uuidv4(),
     }
 
     // this.submitted = true;

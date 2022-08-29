@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { CategoryService } from 'src/app/services/category.service';
 import { List } from 'src/app/services/List';
+import {v4 as uuidv4} from 'uuid';
+
 
 @Component({
   selector: 'app-list-add',
@@ -41,7 +43,7 @@ export class ListAddPage implements OnInit {
     const currentList: List = {
       name: listName,
       isDone: isDone,
-      id: 'asdf', 
+      id: uuidv4(),
       items: [],
 
     }

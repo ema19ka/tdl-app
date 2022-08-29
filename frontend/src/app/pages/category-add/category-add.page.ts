@@ -5,6 +5,7 @@ import { ToastController } from '@ionic/angular';
 import { Category } from 'src/app/services/Category';
 // import { Category } from 'src/app/services/Category';
 import { CategoryService } from 'src/app/services/category.service';
+import {v4 as uuidv4} from 'uuid';
 
 @Component({
   selector: 'app-category-add',
@@ -48,7 +49,7 @@ export class CategoryPage implements OnInit {
     const currentCategory: Category = {
       name: catName,
       color: newColor,
-      id: userid,
+      id: uuidv4(),
       lists: []
     }
 
