@@ -51,19 +51,22 @@ export class CategoryService {
   }
   */
 
-  addCategory(name: string, color: string, user: string) {
-    return instance.post<Category>('categories/create', { name, color, user });
+  addCategory(id: string, name: string, color: string, user: string) {
+    return instance.post<Category>('categories/create', { id, name, color, user });
   }
 
   getCategory(id: string) {
     return instance.get<User>(`users/categories/${id}`)
     .then((response) => {
       this.ApiResult = response.data;
+      console.log(this.ApiResult.category);
     });
   }
 
   deleteCategory(id: string) {
-    return instance.delete('categories/delete', { data: { id } });
+    return instance.delete('categories/delete', { data: { id } }).then( () => {
+      this.getCategory(this.ApiResult.id)
+    });
   }
 
   addList(name: string, isDone: boolean, category: string) {

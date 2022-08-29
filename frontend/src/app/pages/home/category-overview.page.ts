@@ -18,7 +18,7 @@ export class CategoryOverviewPage implements OnInit {
   constructor(
     public categoryService: CategoryService,
     public userService: AuthService,
-    private router: Router,
+    private router: Router
   ) {
     this.categoryData = [];
     this.responseArray = [];
@@ -40,9 +40,8 @@ export class CategoryOverviewPage implements OnInit {
   }
 
   deleteCategory(id) {
-    this.categoryService
-      .deleteCategory(id)
-      .then(() => window.location.reload());
+    this.categoryService.deleteCategory(id);
+    console.log(this.categoryService.ApiResult.category);
   }
 
   currentList(id, cat) {
