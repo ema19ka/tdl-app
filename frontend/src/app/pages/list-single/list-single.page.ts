@@ -113,7 +113,6 @@ export class ListSinglePage implements OnInit {
         this.addItemForm.reset();
         // this.router
         //   .navigate([this.listData.id])
-          // .then(() => window.location.reload());
       });
     }
   }

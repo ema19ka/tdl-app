@@ -54,7 +54,7 @@ export class CategoryOverviewPage implements OnInit {
   }
 
   deleteItem(id) {
-    this.categoryService.deleteItem(id).then(() => window.location.reload());
+    this.categoryService.deleteItem(id).then(() => this.getCategory());
   }
 
   logout() {
