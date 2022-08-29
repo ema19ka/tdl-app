@@ -7,6 +7,7 @@ import {
   DeleteDateColumn,
   Entity,
   ManyToOne,
+  PrimaryColumn,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   VersionColumn,
@@ -15,7 +16,7 @@ import {
 @Entity()
 export class Item {
   @ApiProperty()
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn()
   id: string;
 
   @ApiProperty()

@@ -90,8 +90,8 @@ export class CategoryService {
     });
   }
 
-  addItem(name: string, isDone: boolean, list: string) {
-    return instance.post<Item>('items/create', { name, isDone, list });
+  addItem(id: string, name: string, isDone: boolean, list: string) {
+    return instance.post<Item>('items/create', { id, name, isDone, list });
   }
 
   getItems(listId: string) {

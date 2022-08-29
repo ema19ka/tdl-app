@@ -107,7 +107,7 @@ export class ListSinglePage implements OnInit {
       return false;
     } else {
       // console.log(this.addItemForm.value);
-      this.categoryService.addItem(itemName, itemDone, list).then((res) => {
+      this.categoryService.addItem(currentItem.id, itemName, itemDone, list).then((res) => {
         // console.log(res);
         this.categoryService.listData.items = [...this.categoryService.listData.items, currentItem];
         this.addItemForm.reset();

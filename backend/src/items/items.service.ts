@@ -17,6 +17,7 @@ export class ItemsService {
   async createItem(createDto: AddItemDto): Promise<Item> {
     const list = await this.listRepository.findOne(createDto.list);
     const item = this.itemRepository.create({
+      id: createDto.id,
       name: createDto.name,
       list: list,
       isDone: createDto.isDone,
