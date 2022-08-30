@@ -117,8 +117,8 @@ export class ListSinglePage implements OnInit {
     }
   }
 
-  updateItem(id, name, isDone, list) {
-    this.categoryService.updateItem(id, name, isDone, list);
+  updateItem(id, name, isDone) {
+    this.categoryService.updateItem(id, name, isDone);
   }
 
   deleteItem(id) {

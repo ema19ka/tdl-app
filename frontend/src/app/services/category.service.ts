@@ -103,8 +103,8 @@ export class CategoryService {
     });
   }
 
-  updateItem(id: string, name: string, isDone: boolean, list: string) {
-    return instance.patch('items/update', { id, name, isDone, list });
+  updateItem(id: string, name: string, isDone: boolean) {
+    return instance.patch('items/update', { id, name, isDone });
   }
 
   deleteItem(id: string) {

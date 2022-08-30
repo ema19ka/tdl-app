@@ -60,7 +60,7 @@ export class CategorySinglePage implements OnInit {
     this.categoryService.updateList(id, name, isDone, category);
     const currentStatus = this.listData[index].isDone;
     this.listData[index].items.forEach(element => {
-      this.categoryService.updateItem(element.id, element.name, currentStatus, this.listData[index]);
+      this.categoryService.updateItem(element.id, element.name, currentStatus);
     });
     // console.log(this.listData[index]);
   }
@@ -69,8 +69,8 @@ export class CategorySinglePage implements OnInit {
     this.categoryService.deleteList(id);
   }
 
-  updateItem(id, name, isDone, list){
-    this.categoryService.updateItem(id, name, isDone, list);
+  updateItem(id, name, isDone){
+    this.categoryService.updateItem(id, name, isDone);
   }
 
   deleteItem(id){

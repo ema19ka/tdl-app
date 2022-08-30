@@ -20,7 +20,7 @@
       </div>
 
       <ion-card *ngFor="let list of category.lists">
-        <ion-card-header [routerLink]="[category.id/list.id]" (click)="currentList(list.id, category.id)">
+        <ion-card-header [routerLink]="[list.id]" (click)="currentList(list.id, category.id)">
           <ion-card-title class="pointer">{{ list.name }}</ion-card-title>
         </ion-card-header>
 
@@ -29,7 +29,7 @@
             <ion-item>
               <ion-label [class.boxChecked]="item.isDone">{{ item.name }}</ion-label>
               <ion-checkbox slot="start" [(ngModel)]="item.isDone"
-                (ngModelChange)="updateItem(item.id, item.name, item.isDone, item.list)"></ion-checkbox>
+                (ngModelChange)="updateItem(item.id, item.name, item.isDone)"></ion-checkbox>
             </ion-item>
             <ion-item-options side="end">
               <ion-item-option color="danger">

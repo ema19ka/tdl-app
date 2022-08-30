@@ -49,8 +49,8 @@ export class CategoryOverviewPage implements OnInit {
     localStorage.setItem('list', id);
   }
 
-  updateItem(id, name, isDone, list) {
-    this.categoryService.updateItem(id, name, isDone, list);
+  updateItem(id, name, isDone) {
+    this.categoryService.updateItem(id, name, isDone);
   }
 
   deleteItem(id) {
