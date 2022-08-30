@@ -46,7 +46,7 @@ export class LoginPage implements OnInit {
         resp => {
           console.log(resp.data.id);
           localStorage.setItem('user', resp.data.id);
-          this.router.navigate(['/home']).then(() => window.location.reload());
+          this.router.navigate(['/home']);
         }
       ).catch();
       } catch(err) {

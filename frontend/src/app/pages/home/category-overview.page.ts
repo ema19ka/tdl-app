@@ -62,6 +62,6 @@ export class CategoryOverviewPage implements OnInit {
     localStorage.removeItem('category');
     localStorage.removeItem('list');
     this.userService.logout();
-    this.router.navigate(['/login']).then(() => window.location.reload());
+    this.router.navigate(['/login']);
   }
 }

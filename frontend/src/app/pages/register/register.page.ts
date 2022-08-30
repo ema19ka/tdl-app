@@ -45,7 +45,7 @@ export class RegisterPage implements OnInit {
           this.userService.login(email,password).then(
             resp => {
               localStorage.setItem('user', resp.data.id);
-              this.router.navigate(['/home']).then(() => window.location.reload());
+              this.router.navigate(['/home']);
             }
           );
         }, data => {

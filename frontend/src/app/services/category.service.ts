@@ -17,6 +17,8 @@ const instance = axios.create({
 export class CategoryService {
   constructor() {}
 
+  //isLoggedIn: boolean;
+
   public itemsData: Item = {
     id: '0',
     name: 'Item',
