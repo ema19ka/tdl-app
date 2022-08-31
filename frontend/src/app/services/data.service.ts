@@ -53,7 +53,6 @@ export class DataService {
     return instance.get<User>(`users/categories/${id}`)
     .then((response) => {
       this.ApiResult = response.data;
-      console.log(this.ApiResult.category);
     });
   }
 

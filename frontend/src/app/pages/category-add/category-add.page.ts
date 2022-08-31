@@ -45,7 +45,6 @@ export class CategoryPage implements OnInit {
   }
   onAddCategory() {
     const userid = localStorage.getItem('user');
-    console.log(userid);
     const { catName, newColor } = this.addCategoryForm.value;
     const currentCategory: Category = {
       name: catName,
@@ -66,7 +65,6 @@ export class CategoryPage implements OnInit {
             ...this.dataService.ApiResult.category,
             currentCategory,
           ];
-          console.log(this.dataService.ApiResult.category);
           this.addCategoryForm.reset();
           this.router.navigate(['/home']);
         });

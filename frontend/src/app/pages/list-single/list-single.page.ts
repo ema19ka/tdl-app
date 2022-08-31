@@ -66,7 +66,6 @@ export class ListSinglePage implements OnInit {
   }
 
   onAddItem() {
-    console.log
     const { itemName } = this.addItemForm.value;
     const itemDone = false;
 
