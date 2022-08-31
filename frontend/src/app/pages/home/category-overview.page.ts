@@ -28,7 +28,9 @@ export class CategoryOverviewPage implements OnInit {
     this.getCategory();
   }
 
-  getUserData() {}
+  ionViewDidEnter(){
+    this.getCategory();
+  }
 
   getCategory() {
     const userId = localStorage.getItem('user');
