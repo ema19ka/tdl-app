@@ -21,8 +21,8 @@ export class CategorySinglePage implements OnInit {
   }
 
   ngOnInit() {
-    const id = this.activeRoute.snapshot.paramMap.get('id');
-    console.log(id);
+    // const id = this.activeRoute.snapshot.paramMap.get('id');
+    // console.log(id);
    this.getLists();
   }
 

@@ -47,16 +47,8 @@ export class CategoryService {
     category: this.catData[0],
   };
 
-  /*
-  getUser(user: User) {
-    return instance.get(`users/categories/${user.id}`);
-  }
-  */
 
-  addCategory(id: string, name: string, color: string, user: string) {
-    return instance.post<Category>('categories/create', { id, name, color, user });
-  }
-
+  // Categories
   getCategory(id: string) {
     return instance.get<User>(`users/categories/${id}`)
     .then((response) => {
@@ -65,16 +57,24 @@ export class CategoryService {
     });
   }
 
+  addCategory(id: string, name: string, color: string, user: string) {
+    return instance.post<Category>('categories/create', { id, name, color, user }).then(() => {
+      this.getCategory(this.ApiResult.id);
+    });
+  
+  }
+
+  //update
+  
   deleteCategory(id: string) {
     return instance.delete('categories/delete', { data: { id } }).then( () => {
       this.getCategory(this.ApiResult.id)
     });
   }
 
-  addList(id: string, name: string, isDone: boolean, category: string) {
-    return instance.post<List>('lists/create', { id, name, isDone, category });
-  }
 
+
+  // Lists
   getList(id: string) {
     return instance.get<Category>(`categories/lists/${id}`)
     .then((response) => {
@@ -82,8 +82,16 @@ export class CategoryService {
     });
   }
 
+  addList(id: string, name: string, isDone: boolean, category: string) {
+    return instance.post<List>('lists/create', { id, name, isDone, category }).then(() => {
+      this.getList(this.catData.id);
+    });
+  }
+
   updateList(id: string, name: string, isDone: boolean, category: string) {
-    return instance.patch('lists/update', { id, name, isDone, category });
+    return instance.patch('lists/update', { id, name, isDone, category }).then(() => {
+      this.getList(this.catData.id);
+    });
   }
 
   deleteList(id: string) {
@@ -92,10 +100,9 @@ export class CategoryService {
     });
   }
 
-  addItem(id: string, name: string, isDone: boolean, list: string) {
-    return instance.post<Item>('items/create', { id, name, isDone, list });
-  }
 
+  
+  // Items
   getItems(listId: string) {
     return instance.get<List>(`lists/items/${listId}`)
     .then((response) => {
@@ -103,8 +110,16 @@ export class CategoryService {
     });
   }
 
+  addItem(id: string, name: string, isDone: boolean, list: string) {
+    return instance.post<Item>('items/create', { id, name, isDone, list }).then(() => {
+      this.getItems(this.listData.id);
+    });
+  }
+
   updateItem(id: string, name: string, isDone: boolean) {
-    return instance.patch('items/update', { id, name, isDone });
+    return instance.patch('items/update', { id, name, isDone }).then(() => {
+      this.getItems(this.listData.id);
+    });
   }
 
   deleteItem(id: string) {
