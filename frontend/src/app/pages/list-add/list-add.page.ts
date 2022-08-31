@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { CategoryService } from 'src/app/services/category.service';
+import { DataService } from 'src/app/services/data.service';
 import { List } from 'src/app/services/List';
 import {v4 as uuidv4} from 'uuid';
 
@@ -17,7 +17,7 @@ export class ListAddPage implements OnInit {
   submitted = false;
 
   constructor(
-    public categoryService: CategoryService, private router: Router, public formBuilder: FormBuilder, public toastController: ToastController) { }
+    public dataService: DataService, private router: Router, public formBuilder: FormBuilder, public toastController: ToastController) { }
 
   ngOnInit() {
     this.addListForm = this.formBuilder.group({
@@ -53,9 +53,9 @@ export class ListAddPage implements OnInit {
       this.presentToast('All fields required.');
       return false;
     } else {
-      this.categoryService.addList(currentList.id, currentList.name, currentList.isDone, category).then(
+      this.dataService.addList(currentList.id, currentList.name, currentList.isDone, category).then(
         () => {
-          this.categoryService.catData.lists = [...this.categoryService.catData.lists, currentList];
+          this.dataService.catData.lists = [...this.dataService.catData.lists, currentList];
           this.addListForm.reset();
           this.router.navigate([`home/${currentList.id}`]);
         },

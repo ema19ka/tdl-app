@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
-import { CategoryService } from 'src/app/services/category.service';
+import { DataService } from 'src/app/services/data.service';
 import { Item } from 'src/app/services/Item';
 import { List } from 'src/app/services/List';
 import {v4 as uuidv4} from 'uuid';
@@ -33,7 +33,7 @@ export class ListSinglePage implements OnInit {
 
   // eslint-disable-next-line max-len
   constructor(
-    public categoryService: CategoryService,
+    public dataService: DataService,
     public userService: AuthService,
     public formBuilder: FormBuilder,
     public toastController: ToastController
@@ -52,7 +52,7 @@ export class ListSinglePage implements OnInit {
   //saves all Items into listData
   getList() {
     const listId = localStorage.getItem('list');
-    this.categoryService.getItems(listId);
+    this.dataService.getItems(listId);
   }
 
 
@@ -82,18 +82,18 @@ export class ListSinglePage implements OnInit {
       this.presentToast('All fields required.');
       return false;
     } else {
-      this.categoryService.addItem(currentItem.id, currentItem.name, currentItem.isDone, list).then(() => {
-        this.categoryService.listData.items = [...this.categoryService.listData.items, currentItem];
+      this.dataService.addItem(currentItem.id, currentItem.name, currentItem.isDone, list).then(() => {
+        this.dataService.listData.items = [...this.dataService.listData.items, currentItem];
         this.addItemForm.reset();
       });
     }
   }
 
   updateItem(id, name, isDone) {
-    this.categoryService.updateItem(id, name, isDone);
+    this.dataService.updateItem(id, name, isDone);
   }
 
   deleteItem(id) {
-    this.categoryService.deleteItem(id);
+    this.dataService.deleteItem(id);
   }
 }

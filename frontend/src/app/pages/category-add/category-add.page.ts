@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Category } from 'src/app/services/Category';
 // import { Category } from 'src/app/services/Category';
-import { CategoryService } from 'src/app/services/category.service';
+import { DataService } from 'src/app/services/data.service';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
@@ -18,7 +18,7 @@ export class CategoryPage implements OnInit {
   color: string;
 
   constructor(
-    public categoryService: CategoryService,
+    public dataService: DataService,
     private router: Router,
     public formBuilder: FormBuilder,
     public toastController: ToastController
@@ -59,14 +59,14 @@ export class CategoryPage implements OnInit {
       this.presentToast('All fields required.');
       return false;
     } else {
-      this.categoryService
+      this.dataService
         .addCategory(currentCategory.id, currentCategory.name, currentCategory.color, userid)
         .then(() => {
-          this.categoryService.ApiResult.category = [
-            ...this.categoryService.ApiResult.category,
+          this.dataService.ApiResult.category = [
+            ...this.dataService.ApiResult.category,
             currentCategory,
           ];
-          console.log(this.categoryService.ApiResult.category);
+          console.log(this.dataService.ApiResult.category);
           this.addCategoryForm.reset();
           this.router.navigate(['/home']);
         });

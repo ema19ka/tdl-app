@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Category } from 'src/app/services/Category';
-import { CategoryService } from 'src/app/services/category.service';
+import { DataService } from 'src/app/services/data.service';
 import { User } from 'src/app/services/User';
 
 @Component({
@@ -16,7 +16,7 @@ export class CategoryOverviewPage implements OnInit {
 
   // eslint-disable-next-line max-len
   constructor(
-    public categoryService: CategoryService,
+    public dataService: DataService,
     public userService: AuthService,
     private router: Router
   ) {
@@ -34,7 +34,7 @@ export class CategoryOverviewPage implements OnInit {
 
   getCategory() {
     const userId = localStorage.getItem('user');
-    this.categoryService.getCategory(userId);
+    this.dataService.getCategory(userId);
   }
 
   currentCategory(id) {
@@ -42,7 +42,7 @@ export class CategoryOverviewPage implements OnInit {
   }
 
   deleteCategory(id) {
-    this.categoryService.deleteCategory(id);
+    this.dataService.deleteCategory(id);
   }
 
   currentList(id, cat) {
@@ -51,11 +51,11 @@ export class CategoryOverviewPage implements OnInit {
   }
 
   updateItem(id, name, isDone) {
-    this.categoryService.updateItem(id, name, isDone);
+    this.dataService.updateItem(id, name, isDone);
   }
 
   deleteItem(id) {
-    this.categoryService.deleteItem(id).then(() => this.getCategory());
+    this.dataService.deleteItem(id).then(() => this.getCategory());
   }
 
   logout() {

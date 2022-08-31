@@ -14,7 +14,7 @@ const instance = axios.create({
 @Injectable({
   providedIn: 'root',
 })
-export class CategoryService {
+export class DataService {
   constructor() {}
 
   //isLoggedIn: boolean;

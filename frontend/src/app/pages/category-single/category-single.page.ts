@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
-import { CategoryService } from 'src/app/services/category.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-category-single',
@@ -15,7 +15,7 @@ export class CategorySinglePage implements OnInit {
   categoryColor: string;
   checked: boolean;
 
-  constructor(public categoryService: CategoryService, public userService: AuthService, private router: Router, private activeRoute: ActivatedRoute) {
+  constructor(public dataService: DataService, public userService: AuthService, private router: Router, private activeRoute: ActivatedRoute) {
     this.listData = [];
     this.responseArray = [];
   }
@@ -28,7 +28,7 @@ export class CategorySinglePage implements OnInit {
 
   getLists(){
     const categoryId = localStorage.getItem('category');
-    this.categoryService.getList(categoryId);
+    this.dataService.getList(categoryId);
   }
 
   currentList(id){
@@ -36,23 +36,23 @@ export class CategorySinglePage implements OnInit {
   }
 
   updateList(id, name, isDone, category, index){
-    this.categoryService.updateList(id, name, isDone, category);
+    this.dataService.updateList(id, name, isDone, category);
     const currentStatus = this.listData[index].isDone;
     this.listData[index].items.forEach(element => {
-      this.categoryService.updateItem(element.id, element.name, currentStatus);
+      this.dataService.updateItem(element.id, element.name, currentStatus);
     });
   }
 
   deleteList(id) {
-    this.categoryService.deleteList(id);
+    this.dataService.deleteList(id);
   }
 
   updateItem(id, name, isDone){
-    this.categoryService.updateItem(id, name, isDone);
+    this.dataService.updateItem(id, name, isDone);
   }
 
   deleteItem(id){
-    this.categoryService.deleteItem(id).then(() => this.getLists());
+    this.dataService.deleteItem(id).then(() => this.getLists());
   }
 
   logout(){

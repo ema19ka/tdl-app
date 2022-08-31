@@ -6,7 +6,7 @@
 
 <ion-content>
   <div class="gridContainer">
-    <div *ngFor="let category of categoryService.ApiResult.category, index as i"
+    <div *ngFor="let category of dataService.ApiResult.category, index as i"
       [ngStyle]="{'border': '1px solid', 'border-color': category.color}" class="categoryStyle">
 
       <div class="catHeader">
