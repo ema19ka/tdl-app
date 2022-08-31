@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
@@ -36,18 +35,14 @@ export class ListSinglePage implements OnInit {
   constructor(
     public categoryService: CategoryService,
     public userService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute,
     public formBuilder: FormBuilder,
     public toastController: ToastController
   ) {
-    // this.listData = [];
     this.responseArray = [];
   }
 
   ngOnInit() {
     // const questionId = this.route.snapshot.paramMap.get('id');
-    this.getCategory();
     this.getList();
     this.addItemForm = this.formBuilder.group({
       itemName: ['', [Validators.required, Validators.minLength(1)]],
@@ -57,25 +52,9 @@ export class ListSinglePage implements OnInit {
   //saves all Items into listData
   getList() {
     const listId = localStorage.getItem('list');
-    this.categoryService.getItems(listId).then((response) => {
-      console.log(response);
-
-      // this.listData.items.push(response.data);
-
-      console.log(this.listData);
-
-    });
+    this.categoryService.getItems(listId);
   }
 
-  getCategory() {
-    // const categoryId = localStorage.getItem('category');
-    // this.categoryService.getList(categoryId).then((response) => {
-    //   this.categoryName = response.data.name;
-    //   this.categoryColor = response.data.color;
-    //   document.body.style.setProperty('--ion-color-category', this.categoryColor);
-    // });
-    
-  }
 
   async presentToast(text) {
     const toast = await this.toastController.create({
@@ -91,8 +70,6 @@ export class ListSinglePage implements OnInit {
     const { itemName } = this.addItemForm.value;
     const itemDone = false;
 
-    // this.itemData.name = this.addItemForm.value;
-    // this.itemData.isDone = false;
     const list = localStorage.getItem('list');
 
     const currentItem: Item = {
@@ -101,18 +78,13 @@ export class ListSinglePage implements OnInit {
       id: uuidv4(),
     }
 
-    // this.submitted = true;
     if (!this.addItemForm.valid) {
       this.presentToast('All fields required.');
       return false;
     } else {
-      // console.log(this.addItemForm.value);
-      this.categoryService.addItem(currentItem.id, itemName, itemDone, list).then((res) => {
-        // console.log(res);
+      this.categoryService.addItem(currentItem.id, currentItem.name, currentItem.isDone, list).then(() => {
         this.categoryService.listData.items = [...this.categoryService.listData.items, currentItem];
         this.addItemForm.reset();
-        // this.router
-        //   .navigate([this.listData.id])
       });
     }
   }

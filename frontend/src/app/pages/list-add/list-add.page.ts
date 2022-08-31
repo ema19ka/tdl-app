@@ -53,10 +53,8 @@ export class ListAddPage implements OnInit {
       this.presentToast('All fields required.');
       return false;
     } else {
-      // console.log(this.addListForm.value);
-      this.categoryService.addList(currentList.id, listName, isDone, category).then(
-        res => {
-          // console.log(res);
+      this.categoryService.addList(currentList.id, currentList.name, currentList.isDone, category).then(
+        () => {
           this.categoryService.catData.lists = [...this.categoryService.catData.lists, currentList];
           this.addListForm.reset();
           this.router.navigate([`home/${currentList.id}`]);

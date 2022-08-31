@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <h1 [routerLink]="['/home']" [ngStyle]="{'color': categoryColor}" class="pointer">{{ categoriesName }}</h1>
+  <h1 [routerLink]="['/home']" [ngStyle]="{'color': categoryService.catData.color}" class="pointer">{{ categoryService.catData.name }}</h1>
 
   <!-- <ion-card *ngFor="let list of listData" class="category-card" [ngStyle]="{'border': '1px solid' + categoryColor}"> -->
   <ion-card *ngFor="let list of categoryService.catData.lists" class="category-card">

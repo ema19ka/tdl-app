@@ -41,7 +41,7 @@ export class RegisterPage implements OnInit {
       return false;
     } else {
       this.userService.register(username,email,password).then(
-        data => {
+        () => {
           this.userService.login(email,password).then(
             resp => {
               localStorage.setItem('user', resp.data.id);

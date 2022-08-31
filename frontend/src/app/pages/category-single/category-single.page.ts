@@ -28,41 +28,19 @@ export class CategorySinglePage implements OnInit {
 
   getLists(){
     const categoryId = localStorage.getItem('category');
-    // console.log(categoryId);
     this.categoryService.getList(categoryId);
-    // .then(response => {
-      // console.log(response);
-      // this.categoriesName = response.data.name;
-      // this.categoryColor = response.data.color;
-      // this.responseArray.push(response.data);
-
-      // this.responseArray[0].lists.forEach((element, index) =>  {
-      //   this.listData.push({
-      //     name: element.name,
-      //     id: element.id,
-      //     isDone: element.isDone,
-      //     items: element.items,
-      //     category: categoryId,
-      //     index
-      //   });
-      // });
-
-    // });
   }
 
   currentList(id){
-    // console.log(id);
     localStorage.setItem('list', id);
   }
 
   updateList(id, name, isDone, category, index){
-    // console.log(id, name, isDone, category);
     this.categoryService.updateList(id, name, isDone, category);
     const currentStatus = this.listData[index].isDone;
     this.listData[index].items.forEach(element => {
       this.categoryService.updateItem(element.id, element.name, currentStatus);
     });
-    // console.log(this.listData[index]);
   }
 
   deleteList(id) {

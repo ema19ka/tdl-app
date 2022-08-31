@@ -41,7 +41,6 @@ export class CategoryOverviewPage implements OnInit {
 
   deleteCategory(id) {
     this.categoryService.deleteCategory(id);
-    console.log(this.categoryService.ApiResult.category);
   }
 
   currentList(id, cat) {

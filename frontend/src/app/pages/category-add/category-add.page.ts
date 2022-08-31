@@ -60,8 +60,8 @@ export class CategoryPage implements OnInit {
       return false;
     } else {
       this.categoryService
-        .addCategory(currentCategory.id, catName, newColor, userid)
-        .then((data) => {
+        .addCategory(currentCategory.id, currentCategory.name, currentCategory.color, userid)
+        .then(() => {
           this.categoryService.ApiResult.category = [
             ...this.categoryService.ApiResult.category,
             currentCategory,
@@ -73,7 +73,7 @@ export class CategoryPage implements OnInit {
     }
   }
 
-  setColor(color) {
+  setColor(color: string) {
     color = this.addCategoryForm.value.newColor;
   }
 }

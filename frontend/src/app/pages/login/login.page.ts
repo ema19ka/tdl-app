@@ -44,7 +44,6 @@ export class LoginPage implements OnInit {
       try {
         this.userService.login(email,password).then(
         resp => {
-          console.log(resp.data.id);
           localStorage.setItem('user', resp.data.id);
           this.router.navigate(['/home']);
         }
