@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
 import { DataService } from 'src/app/services/data.service';
@@ -36,22 +37,23 @@ export class ListSinglePage implements OnInit {
     public dataService: DataService,
     public userService: AuthService,
     public formBuilder: FormBuilder,
-    public toastController: ToastController
+    public toastController: ToastController,
+    public route: ActivatedRoute
   ) {
     this.responseArray = [];
   }
 
   ngOnInit() {
-    // const questionId = this.route.snapshot.paramMap.get('id');
-    this.getList();
+    const listId = this.route.snapshot.paramMap.get('listId');
+    this.getList(listId);
     this.addItemForm = this.formBuilder.group({
       itemName: ['', [Validators.required, Validators.minLength(1)]],
     });
   }
 
   //saves all Items into listData
-  getList() {
-    const listId = localStorage.getItem('list');
+  getList(listId) {
+    // const listId = localStorage.getItem('list');
     this.dataService.getItems(listId);
   }
 

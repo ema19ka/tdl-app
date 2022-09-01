@@ -10,7 +10,7 @@
       [ngStyle]="{'border': '1px solid', 'border-color': category.color}" class="categoryStyle">
 
       <div class="catHeader">
-        <h2 [routerLink]="[category.id]" (click)="currentCategory(category.id)"
+        <h2 (click)="currentCategory(category.id)" [routerLink]="[category.id]"
           [ngStyle]="{'color': category.color}" class="pointer">{{ category.name }}</h2>
         <ion-buttons>
           <ion-button (click)="deleteCategory(category.id)">
