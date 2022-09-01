@@ -26,7 +26,7 @@ const routes: Routes = [
       },
       {
         // path: 'category-single',
-        path: 'home/:id',
+        path: 'home/:catid',
         loadChildren: () =>
           import('./pages/category-single/category-single.module').then(
             (m) => m.CategorySinglePageModule
@@ -42,7 +42,7 @@ const routes: Routes = [
       {
         // path: 'list-single',
         //path: 'category/:id, ???
-        path: 'home/:id/:id',
+        path: 'home/:catid/:listid',
         loadChildren: () =>
           import('./pages/list-single/list-single.module').then(
             (m) => m.ListSinglePageModule
