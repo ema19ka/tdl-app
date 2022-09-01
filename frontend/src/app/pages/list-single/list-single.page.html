@@ -6,7 +6,7 @@
 
 
 <ion-content>
-  <h1>{{ dataService.listData.name }}</h1>
+  <h1 [routerLink]="['/home/' + dataService.catData.id]" >{{ dataService.listData.name }}</h1>
 
   <!-- <ion-reorder-group disabled="false"> -->
   <ion-list >
