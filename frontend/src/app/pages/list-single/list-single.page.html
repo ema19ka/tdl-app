@@ -9,7 +9,6 @@
   <h1 [routerLink]="['/home/' + dataService.catData.id]" >{{ dataService.listData.name }}</h1>
 
   <!-- <ion-reorder-group disabled="false"> -->
-  <ion-list >
     <ion-item-sliding *ngFor="let item of dataService.listData.items">
       <ion-item class="listItem">
         <ion-label [class.boxChecked]="item.isDone">{{ item.name }}</ion-label>
@@ -24,7 +23,6 @@
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
-  </ion-list>
   <form [formGroup]="addItemForm" (keydown.enter)="onAddItem()" novalidate>
     <ion-item>
       <ion-checkbox slot="start"></ion-checkbox>

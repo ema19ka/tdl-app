@@ -7,10 +7,6 @@ h1 {
     padding-bottom: 0.5rem;
 }
 
-// item
-ion-list {
-    background: var(--ion-background-color);
-}
 
 ion-item {
     --background: var(--ion-background-color);
@@ -19,6 +15,7 @@ ion-item {
     font-size: 20px;
     --border-color: var(--ion-color-outline);
     --border-width: 2px;
+    margin-top: 10px;
 }
 
 ion-item-option {
