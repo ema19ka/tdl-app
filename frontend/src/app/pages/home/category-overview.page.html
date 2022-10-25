@@ -26,7 +26,7 @@
 
         <ion-card-content>
           <ion-item-sliding *ngFor="let item of list.items">
-            <ion-item>
+            <ion-item lines="none">
               <ion-label [class.boxChecked]="item.isDone">{{ item.name }}</ion-label>
               <ion-checkbox slot="start" [(ngModel)]="item.isDone"
                 (ngModelChange)="updateItem(item.id, item.name, item.isDone)"></ion-checkbox>

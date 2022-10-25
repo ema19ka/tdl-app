@@ -10,7 +10,7 @@
 
   <!-- <ion-reorder-group disabled="false"> -->
     <ion-item-sliding *ngFor="let item of dataService.listData.items">
-      <ion-item class="listItem">
+      <ion-item lines="none" class="listItem">
         <ion-label [class.boxChecked]="item.isDone">{{ item.name }}</ion-label>
         <ion-checkbox slot="start" [(ngModel)]="item.isDone"
           (ngModelChange)="updateItem(item.id, item.name, item.isDone)"></ion-checkbox>
@@ -24,7 +24,7 @@
       </ion-item-options>
     </ion-item-sliding>
   <form [formGroup]="addItemForm" (keydown.enter)="onAddItem()" novalidate>
-    <ion-item>
+    <ion-item lines="none">
       <ion-checkbox slot="start"></ion-checkbox>
       <ion-input placeholder="Add List Item" formControlName="itemName" type="text" class="form-control"></ion-input>
       <ion-buttons slot="end">
