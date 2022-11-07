@@ -9,7 +9,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "ionic:serve:before": "echo {} > src/ngsw.json && cp www/ngsw.json src/ngsw.json",
+    "ionic:build:after": "npm run ngsw:rebuild",
+    "postbuild": "npm run ngsw:rebuild",
+    "ngsw:rebuild": "ngsw-config www ngsw-config.json && cp www/ngsw.json src/ngsw.json"
   },
   "private": true,
   "dependencies": {

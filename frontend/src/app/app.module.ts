@@ -21,9 +21,11 @@ import { AppLayoutComponent } from './components/app-layout/app-layout.component
   // eslint-disable-next-line max-len
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule, ServiceWorkerModule.register('ngsw-worker.js', {
   enabled: environment.production,
+  //enabled: true,
   // Register the ServiceWorker as soon as the app is stable
   // or after 30 seconds (whichever comes first).
   registrationStrategy: 'registerWhenStable:30000'
+  
 })],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

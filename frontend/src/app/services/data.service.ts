@@ -8,7 +8,8 @@ import { User } from './User';
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: environment.baseUrl,
+  // baseURL: environment.baseUrl,
+  baseURL: 'http://localhost:3000/'
 });
 
 @Injectable({
