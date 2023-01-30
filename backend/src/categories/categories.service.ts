@@ -28,7 +28,15 @@ export class CategoriesService {
     return await this.categoryRepository.findOne(categoryId);
   }
 
-  public async deleteCategory(category: Category): Promise<any> {
-    return await this.categoryRepository.delete(category);
+  public async deleteCategory(category: Category): Promise<Category> {
+    try {
+      await this.categoryRepository.delete(category);
+      return category;
+    } catch (error) {
+      throw new HttpException(
+        'Error deleting category',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 }
