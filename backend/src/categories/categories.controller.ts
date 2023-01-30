@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   Post,
+  Put,
   UseGuards,
   ValidationPipe,
 } from '@nestjs/common';
@@ -27,7 +28,16 @@ export class CategoriesController {
   ): Promise<Category> {
     return this.categoriesService.createCategory(createDto);
   }
-  // TODO: update
+  // TODO: test out update function
+  @ApiOperation({ summary: 'Update a category' })
+  @UseGuards(AuthGuard)
+  @Put(':id')
+  async updateCategory(
+    @Param('id') id: number,
+    @Body() updateDto: AddCategoryDto,
+  ): Promise<Category> {
+    return this.categoriesService.updateCategory(id, updateDto);
+  }
 
   @ApiOperation({ summary: 'Delete a category' })
   @UseGuards(AuthGuard)
