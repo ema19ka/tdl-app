@@ -13,7 +13,8 @@ import { ItemsModule } from './items/items.module';
     UsersModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'db',
+      //host: 'db',
+      host: 'localhost',
       port: 8889,
       username: 'root',
       password: 'root',
